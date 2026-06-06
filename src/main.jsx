@@ -21,8 +21,6 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
-const contactEmail = "contacto@zagapro.store";
-const supportEmail = "soporte@zagapro.store";
 const whatsappNumber = "34624728398";
 
 const emailTemplate = `Hola Gerardo,
@@ -423,8 +421,7 @@ function App() {
             <p className="section-kicker">Contacto directo</p>
             <h2>Cuéntanos qué necesitas y preparamos una respuesta concreta.</h2>
             <p>
-              Completa los datos principales y recibiremos tu mensaje directamente. Para soporte operativo usa{" "}
-              <span>{supportEmail}</span>.
+              Completa los datos principales y recibiremos tu mensaje directamente para revisar tu consulta.
             </p>
           </div>
 
@@ -483,7 +480,6 @@ function App() {
                 {contactSubmitting ? "Enviando..." : "Enviar consulta"}
                 <ArrowRight size={18} />
               </button>
-              <span className="secondary-link">{contactEmail}</span>
             </div>
           </form>
         </section>
@@ -511,7 +507,7 @@ function App() {
         </div>
         <button className="footer-contact" type="button" onClick={openContact}>
           <Mail size={17} />
-          {contactEmail}
+          Contactar
         </button>
       </footer>
 

@@ -677,16 +677,6 @@ h2 {
   line-height: 1.7;
 }
 
-.contact-copy a {
-  color: #0a7f64;
-  font-weight: 850;
-}
-
-.contact-copy span {
-  color: #0a7f64;
-  font-weight: 850;
-}
-
 .contact-form {
   display: grid;
   gap: 18px;
@@ -775,11 +765,6 @@ h2 {
   flex-wrap: wrap;
   gap: 14px;
   align-items: center;
-}
-
-.secondary-link {
-  color: #0a7f64;
-  font-weight: 850;
 }
 
 .contact-form button:disabled {
