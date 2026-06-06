@@ -925,8 +925,12 @@ h2 {
 
   .hero-content {
     align-self: center;
-    padding-top: 150px;
-    padding-bottom: 92px;
+    padding-top: 176px;
+    padding-bottom: 54px;
+  }
+
+  .hero-actions {
+    justify-content: center;
   }
 
   .proof-band,
@@ -1053,6 +1057,7 @@ h2 {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+    justify-content: flex-start;
   }
 
   .primary-button,
