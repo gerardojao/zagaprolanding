@@ -115,7 +115,7 @@ const addOnModules = [
   {
     icon: BellRing,
     title: "Seguimiento Inteligente",
-    text: "ZagaPro le avisa automáticamente cuáles clientes necesitan cambio de aceite o mantenimiento y le permite contactarles directamente por WhatsApp en segundos.",
+    text: "ZagaPro le avisa automáticamente qué clientes necesitan seguimiento, renovación, revisión o una nueva visita, y le permite contactarles por WhatsApp en segundos.",
     activation: "69,99 €",
     monthly: "14,99 €/mes",
   },
