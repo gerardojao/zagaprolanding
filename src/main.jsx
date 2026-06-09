@@ -281,8 +281,7 @@ function App() {
 
         <div className="hero-content">
           <div className="hero-copy-block">
-          <p className="eyebrow">
-            <Sparkles size={16} />
+          <p className="eyebrow">            
             Gestión profesional para negocios que prestan servicios
           </p>
           <h1>ZagaPro</h1>
