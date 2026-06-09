@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import ReactDOM from "react-dom/client";
 import {
   ArrowRight,
@@ -126,6 +126,48 @@ const addOnModules = [
   },
 ];
 
+const productSlides = [
+  {
+    title: "Panel principal",
+    src: "/pantalla1.png",
+    alt: "Panel principal de ZagaPro con indicadores y accesos de gestión.",
+  },
+  {
+    title: "Vista operativa",
+    src: "/Pantalla2.png",
+    alt: "Vista operativa de ZagaPro para el control diario del negocio.",
+  },
+  {
+    title: "Alertas de cliente",
+    src: "/PantallaAlerta.png",
+    alt: "Pantalla de alertas de cliente y seguimiento en ZagaPro.",
+  },
+  {
+    title: "Órdenes de trabajo",
+    src: "/GenerarOrdenes.png",
+    alt: "Pantalla para generar órdenes de trabajo en ZagaPro.",
+  },
+  {
+    title: "Emisión de facturas",
+    src: "/Emision_reimpresion_de_facturas.png",
+    alt: "Pantalla de emisión y reimpresión de facturas en ZagaPro.",
+  },
+  {
+    title: "Reimpresión de facturas",
+    src: "/ReimprimirFacturas.png",
+    alt: "Pantalla para reimprimir facturas emitidas en ZagaPro.",
+  },
+  {
+    title: "Rentabilidad de líneas",
+    src: "/RentabilidadLineasFacturadas.png",
+    alt: "Pantalla de rentabilidad de líneas facturadas en ZagaPro.",
+  },
+  {
+    title: "Recuperación de contraseña",
+    src: "/RecuperacionContraseñas.png",
+    alt: "Pantalla de recuperación de contraseña de ZagaPro.",
+  },
+];
 function App() {
   const demoWhatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappTemplate)}`;
   const onboardingWhatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(onboardingWhatsappTemplate)}`;
@@ -134,6 +176,8 @@ function App() {
   const [contactStatus, setContactStatus] = React.useState(null);
   const [contactSubmitting, setContactSubmitting] = React.useState(false);
   const [successModal, setSuccessModal] = React.useState(null);
+  const [activeSlide, setActiveSlide] = React.useState(0);
+  const [expandedSlide, setExpandedSlide] = React.useState(null);
   const [contactForm, setContactForm] = React.useState({
     name: "",
     company: "",
@@ -143,6 +187,25 @@ function App() {
     message: "",
     website: "",
   });
+
+  React.useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % productSlides.length);
+    }, 5200);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  React.useEffect(() => {
+    if (!expandedSlide) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setExpandedSlide(null);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [expandedSlide]);
 
   const openContact = () => {
     setContactVisible(true);
@@ -217,6 +280,7 @@ function App() {
         </nav>
 
         <div className="hero-content">
+          <div className="hero-copy-block">
           <p className="eyebrow">
             <Sparkles size={16} />
             Gestión profesional para negocios que prestan servicios
@@ -234,6 +298,40 @@ function App() {
             <a className="secondary-button" href="#sistema">
               Ver cómo ayuda
             </a>
+          </div>
+          </div>
+          <div className="product-showcase" aria-label="Capturas del producto ZagaPro">
+            <div className="showcase-frame">
+              {productSlides.map((slide, index) => (
+                <figure
+                  className={`product-slide ${index === activeSlide ? "is-active" : ""}`}
+                  key={slide.title}
+                  aria-hidden={index !== activeSlide}
+                >
+                  <button
+                    type="button"
+                    className="slide-image-button"
+                    onClick={() => setExpandedSlide(slide)}
+                    aria-label={`Ampliar ${slide.title}`}
+                  >
+                    <img src={slide.src} alt={slide.alt} loading={index === 0 ? "eager" : "lazy"} />
+                  </button>
+                  <figcaption>{slide.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+
+            <div className="showcase-controls" aria-label="Seleccionar captura">
+              {productSlides.map((slide, index) => (
+                <button
+                  type="button"
+                  key={slide.title}
+                  className={index === activeSlide ? "is-active" : ""}
+                  onClick={() => setActiveSlide(index)}
+                  aria-label={`Ver ${slide.title}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -496,6 +594,29 @@ function App() {
             <button className="primary-button" type="button" onClick={() => setSuccessModal(null)}>
               Entendido
             </button>
+          </div>
+        </div>
+      )}
+
+      {expandedSlide && (
+        <div
+          className="image-modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-label={expandedSlide.title}
+          onClick={() => setExpandedSlide(null)}
+        >
+          <div className="image-modal" onClick={(event) => event.stopPropagation()}>
+            <button
+              className="image-modal-close"
+              type="button"
+              onClick={() => setExpandedSlide(null)}
+              aria-label="Cerrar imagen ampliada"
+            >
+              Cerrar
+            </button>
+            <img src={expandedSlide.src} alt={expandedSlide.alt} />
+            <p>{expandedSlide.title}</p>
           </div>
         </div>
       )}
