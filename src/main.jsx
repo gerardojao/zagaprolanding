@@ -10,12 +10,12 @@ import {
   Download,
   FileText,
   Gauge,
+  HeartHandshake,
   Mail,
   MessageCircle,
   MessageSquareText,
   ReceiptText,
   ShieldCheck,
-  Sparkles,
   UsersRound,
   Wrench,
 } from "lucide-react";
@@ -60,13 +60,14 @@ Negocio:
 Tipo de negocio:
 Usuarios aproximados:
 
-Quiero información sobre el Plan Empresa de 129,99 EUR/mes y la instalación inicial de 349,99 EUR.`;
+Quiero información sobre el Plan Empresa de 99,99 EUR/mes, el Pack Fidelización de 19,99 EUR/mes y la puesta en marcha inicial 349,99 EUR.`;
 
 const audiences = [
   "Talleres automotrices",
   "Servicios técnicos",
   "Mantenimiento a domicilio",
   "Negocios que presupuestan y facturan",
+  "Instaladores y profesionales independientes",
 ];
 
 const features = [
@@ -113,7 +114,7 @@ const addOnModules = [
   {
     icon: BellRing,
     title: "Seguimiento Inteligente",
-    text: "ZagaPro le avisa automáticamente qué clientes necesitan seguimiento, renovación, revisión o una nueva visita, y le permite contactarles por WhatsApp en segundos.",
+    text: "ZagaPro identifica qué clientes necesitan seguimiento y prepara el contenido del mensaje y el contacto por WhatsApp en segundos.",
     activation: "69,99 €",
     monthly: "14,99 €/mes",
   },
@@ -123,6 +124,15 @@ const addOnModules = [
     text: "Descargue las facturas de un período en un solo archivo, organizado y listo para enviar a su gestoría o conservar como respaldo administrativo.",
     activation: "49,99 €",
     monthly: "9,99 €/mes",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Pack Fidelización",
+    text: "Recupera clientes y simplifica la administración mensual desde una única solución.",
+    monthly: "19,99 €/mes",
+    featured: true,
+    badge: "Pack recomendado",
+    msg: "Con que vuelva un solo cliente, el pack practicamente se paga solo.",
   },
 ];
 
@@ -210,7 +220,10 @@ function App() {
   const openContact = () => {
     setContactVisible(true);
     window.setTimeout(() => {
-      contactRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      contactRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }, 50);
   };
 
@@ -254,7 +267,8 @@ function App() {
     } catch (error) {
       setContactStatus({
         type: "error",
-        text: error?.message || "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+        text:
+          error?.message || "No se pudo enviar el mensaje. Inténtalo de nuevo.",
       });
     } finally {
       setContactSubmitting(false);
@@ -281,25 +295,34 @@ function App() {
 
         <div className="hero-content">
           <div className="hero-copy-block">
-          <p className="eyebrow">            
-            Gestión profesional para negocios que prestan servicios
-          </p>
-          <h1>ZagaPro</h1>
-          <p className="hero-copy">
-            Controla clientes, órdenes, presupuestos, facturas, ingresos y alertas desde una sola plataforma pensada
-            para negocios que necesitan operar con más orden y mejor imagen.
-          </p>
-          <div className="hero-actions">
-            <a className="primary-button" href={demoWhatsappHref} target="_blank" rel="noreferrer">
-              Solicitar demo
-              <ArrowRight size={18} />
-            </a>
-            <a className="secondary-button" href="#sistema">
-              Ver cómo ayuda
-            </a>
+            <p className="eyebrow">
+              Gestión profesional para negocios que prestan servicios
+            </p>
+            <h1>ZagaPro</h1>
+            <p className="hero-copy">
+              Controla clientes, órdenes, presupuestos, facturas, ingresos y
+              alertas desde una sola plataforma pensada para negocios que
+              necesitan operar con más orden y mejor imagen.
+            </p>
+            <div className="hero-actions">
+              <a
+                className="primary-button"
+                href={demoWhatsappHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Solicitar demo
+                <ArrowRight size={18} />
+              </a>
+              <a className="secondary-button" href="#sistema">
+                Ver cómo ayuda
+              </a>
+            </div>
           </div>
-          </div>
-          <div className="product-showcase" aria-label="Capturas del producto ZagaPro">
+          <div
+            className="product-showcase"
+            aria-label="Capturas del producto ZagaPro"
+          >
             <div className="showcase-frame">
               {productSlides.map((slide, index) => (
                 <figure
@@ -313,7 +336,11 @@ function App() {
                     onClick={() => setExpandedSlide(slide)}
                     aria-label={`Ampliar ${slide.title}`}
                   >
-                    <img src={slide.src} alt={slide.alt} loading={index === 0 ? "eager" : "lazy"} />
+                    <img
+                      src={slide.src}
+                      alt={slide.alt}
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
                   </button>
                   <figcaption>{slide.title}</figcaption>
                 </figure>
@@ -353,11 +380,15 @@ function App() {
       <section className="section split" id="sistema">
         <div>
           <p className="section-kicker">Qué hace</p>
-          <h2>Une la operación diaria con la parte comercial y administrativa.</h2>
+          <h2>
+            Une la operación diaria con la parte comercial y administrativa.
+          </h2>
         </div>
         <p className="section-lead">
-          ZagaPro ayuda a registrar lo que entra, lo que se trabaja, lo que se presupuesta, lo que se factura y lo que
-          se cobra. La idea es simple: que el negocio tenga memoria, trazabilidad y datos útiles para decidir.
+          ZagaPro ayuda a registrar lo que entra, lo que se trabaja, lo que se
+          presupuesta, lo que se factura y lo que se cobra. La idea es simple:
+          que el negocio tenga memoria, trazabilidad y datos útiles para
+          decidir.
         </p>
       </section>
 
@@ -377,10 +408,14 @@ function App() {
       <section className="section audience" id="para-quien">
         <div className="audience-copy">
           <p className="section-kicker">Para quién es</p>
-          <h2>Para negocios que necesitan pasar de resolver el día a controlar el negocio.</h2>
+          <h2>
+            Para negocios que necesitan pasar de resolver el día a controlar el
+            negocio.
+          </h2>
           <p>
-            Funciona especialmente bien cuando hay clientes recurrentes, servicios pendientes, presupuestos que
-            convertir, facturas por emitir y avisos que no se pueden olvidar.
+            Funciona especialmente bien cuando hay clientes recurrentes,
+            servicios pendientes, presupuestos que convertir, facturas por
+            emitir y avisos que no se pueden olvidar.
           </p>
         </div>
         <div className="audience-list">
@@ -428,7 +463,8 @@ function App() {
           <p className="section-kicker">Plan empresarial</p>
           <h2>Un precio claro para operar con ZagaPro desde el primer mes.</h2>
           <p>
-            Pensado para negocios que quieren centralizar su gestión sin complicarse con herramientas dispersas.
+            Pensado para negocios que quieren centralizar su gestión sin
+            complicarse con herramientas dispersas.
           </p>
         </div>
 
@@ -438,11 +474,12 @@ function App() {
           </div>
           <p className="price-label">Plan Empresa</p>
           <div className="price">
-            <span>129,99 €</span>
-            <small>/ mes</small>
+            <small className="price-prefix">Desde</small>
+            <span>99€</span>
+            <small>/mes</small>
           </div>
           <p className="setup-price">
-            Puesta en marcha inicial: <strong>349,99 €</strong>
+            Puesta en marcha inicial: <strong>349,00 €</strong>
           </p>
           <ul>
             <li>Configuración inicial del negocio.</li>
@@ -452,7 +489,12 @@ function App() {
             <li>Hasta 3 usuarios por negocio.</li>
             <li>Acompañamiento inicial para empezar a usarlo.</li>
           </ul>
-          <a className="primary-button" href={onboardingWhatsappHref} target="_blank" rel="noreferrer">
+          <a
+            className="primary-button"
+            href={onboardingWhatsappHref}
+            target="_blank"
+            rel="noreferrer"
+          >
             Solicitar puesta en marcha
             <ArrowRight size={18} />
           </a>
@@ -461,35 +503,61 @@ function App() {
 
       <section className="modules-section" aria-label="Módulos opcionales">
         <div className="modules-heading">
-          <p className="section-kicker">Módulos opcionales</p>
-          <h2>Amplía ZagaPro cuando tu negocio lo necesite.</h2>
+          <p className="section-kicker">Módulos adicionales</p>
+          <h2>Potencia ZagaPro con herramientas de fidelización y gestión.</h2>
           <p>
-            Activa solo las funciones avanzadas que aportan valor a tu operación. Sin paquetes forzados ni costes
-            innecesarios desde el primer día.
+            Añade herramientas para recuperar clientes, mantener el contacto y
+            simplificar la gestión administrativa de tu negocio.
           </p>
         </div>
 
         <div className="modules-grid">
           {addOnModules.map((module) => {
             const Icon = module.icon;
+
             return (
-              <article className="module-card" key={module.title}>
+              <article
+                className={`module-card ${
+                  module.featured ? "featured-module" : ""
+                }`}
+                key={module.title}
+              >
+                {module.badge && (
+                  <span className="module-badge">{module.badge}</span>
+                )}
+
                 <div className="module-icon">
                   <Icon size={24} />
                 </div>
+
                 <div>
                   <h3>{module.title}</h3>
                   <p>{module.text}</p>
                 </div>
+
                 <div className="module-prices">
                   <span className="activation-promo">
-                    <span className="promo-label">Promoción de lanzamiento</span>
-                    Activación <strong className="activation-old">{module.activation}</strong>
+                    <span className="promo-label">
+                      Promoción de lanzamiento
+                    </span>
+
+                    {module.activation && (
+                      <>
+                        Activación{" "}
+                        <strong className="activation-old">
+                          {module.activation}
+                        </strong>
+                      </>
+                    )}
+
                     <em>Sin coste de activación por tiempo limitado</em>
                   </span>
-                  <span>
+
+                  <span className="monthly-price">
                     Uso mensual <strong>{module.monthly}</strong>
                   </span>
+
+                  {module.msg && <p className="roi-text">{module.msg}</p>}
                 </div>
               </article>
             );
@@ -502,11 +570,16 @@ function App() {
           <p className="section-kicker">Demo personalizada</p>
           <h2>Ve ZagaPro aplicado a tu propio negocio.</h2>
           <p>
-            Cuéntanos qué tipo de servicio ofreces y te mostramos un flujo real: cliente, orden, presupuesto, factura,
-            ingreso y alertas.
+            Cuéntanos qué tipo de servicio ofreces y te mostramos un flujo real:
+            cliente, orden, presupuesto, factura, ingreso y alertas.
           </p>
         </div>
-        <a className="primary-button" href={demoWhatsappHref} target="_blank" rel="noreferrer">
+        <a
+          className="primary-button"
+          href={demoWhatsappHref}
+          target="_blank"
+          rel="noreferrer"
+        >
           Solicitar una demo
           <ArrowRight size={18} />
         </a>
@@ -516,50 +589,85 @@ function App() {
         <section className="contact-section" id="contacto" ref={contactRef}>
           <div className="contact-copy">
             <p className="section-kicker">Contacto directo</p>
-            <h2>Cuéntanos qué necesitas y preparamos una respuesta concreta.</h2>
+            <h2>
+              Cuéntanos qué necesitas y preparamos una respuesta concreta.
+            </h2>
             <p>
-              Completa los datos principales y recibiremos tu mensaje directamente para revisar tu consulta.
+              Completa los datos principales y recibiremos tu mensaje
+              directamente para revisar tu consulta.
             </p>
           </div>
 
           <form className="contact-form" onSubmit={submitContact}>
             <label className="hp-field" aria-hidden="true">
               Sitio web
-              <input tabIndex={-1} autoComplete="off" value={contactForm.website} onChange={updateContactField("website")} />
+              <input
+                tabIndex={-1}
+                autoComplete="off"
+                value={contactForm.website}
+                onChange={updateContactField("website")}
+              />
             </label>
             {contactStatus?.type === "error" && (
-              <div className={`contact-status ${contactStatus.type}`} role="status">
+              <div
+                className={`contact-status ${contactStatus.type}`}
+                role="status"
+              >
                 {contactStatus.text}
               </div>
             )}
             <div className="form-row">
               <label>
                 Nombre
-                <input value={contactForm.name} onChange={updateContactField("name")} required />
+                <input
+                  value={contactForm.name}
+                  onChange={updateContactField("name")}
+                  required
+                />
               </label>
               <label>
                 Empresa o negocio
-                <input value={contactForm.company} onChange={updateContactField("company")} required />
+                <input
+                  value={contactForm.company}
+                  onChange={updateContactField("company")}
+                  required
+                />
               </label>
             </div>
             <div className="form-row">
               <label>
                 Email
-                <input type="email" value={contactForm.email} onChange={updateContactField("email")} required />
+                <input
+                  type="email"
+                  value={contactForm.email}
+                  onChange={updateContactField("email")}
+                  required
+                />
               </label>
               <label>
                 Teléfono
-                <input value={contactForm.phone} onChange={updateContactField("phone")} />
+                <input
+                  value={contactForm.phone}
+                  onChange={updateContactField("phone")}
+                />
               </label>
             </div>
             <label>
               Tipo de negocio
-              <select value={contactForm.businessType} onChange={updateContactField("businessType")} required>
+              <select
+                value={contactForm.businessType}
+                onChange={updateContactField("businessType")}
+                required
+              >
                 <option value="">Selecciona una opción</option>
                 <option value="Taller automotriz">Taller automotriz</option>
                 <option value="Servicio técnico">Servicio técnico</option>
-                <option value="Mantenimiento a domicilio">Mantenimiento a domicilio</option>
-                <option value="Otro negocio de servicios">Otro negocio de servicios</option>
+                <option value="Mantenimiento a domicilio">
+                  Mantenimiento a domicilio
+                </option>
+                <option value="Otro negocio de servicios">
+                  Otro negocio de servicios
+                </option>
               </select>
             </label>
             <label>
@@ -573,7 +681,11 @@ function App() {
               />
             </label>
             <div className="contact-actions">
-              <button className="primary-button" type="submit" disabled={contactSubmitting}>
+              <button
+                className="primary-button"
+                type="submit"
+                disabled={contactSubmitting}
+              >
                 {contactSubmitting ? "Enviando..." : "Enviar consulta"}
                 <ArrowRight size={18} />
               </button>
@@ -583,14 +695,23 @@ function App() {
       )}
 
       {successModal && (
-        <div className="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="contact-success-title">
+        <div
+          className="modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="contact-success-title"
+        >
           <div className="success-modal">
             <div className="success-icon">
               <CheckCircle2 size={30} />
             </div>
             <h2 id="contact-success-title">Mensaje enviado</h2>
             <p>{successModal.text}</p>
-            <button className="primary-button" type="button" onClick={() => setSuccessModal(null)}>
+            <button
+              className="primary-button"
+              type="button"
+              onClick={() => setSuccessModal(null)}
+            >
               Entendido
             </button>
           </div>
@@ -605,7 +726,10 @@ function App() {
           aria-label={expandedSlide.title}
           onClick={() => setExpandedSlide(null)}
         >
-          <div className="image-modal" onClick={(event) => event.stopPropagation()}>
+          <div
+            className="image-modal"
+            onClick={(event) => event.stopPropagation()}
+          >
             <button
               className="image-modal-close"
               type="button"
