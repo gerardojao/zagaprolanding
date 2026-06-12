@@ -24,16 +24,16 @@ import "./styles.css";
 
 const whatsappNumber = "34624728398";
 
-const whatsappTemplate = `Hola Gerardo, me gustaria solicitar una demo de ZagaPro.
+const whatsappTemplate = `Hola Gerardo, me gustaría solicitar una demo de ZagaPro.
 
 Mi nombre es:
 Negocio:
 Tipo de servicio:
 Ciudad:
 
-Me interesa conocer como ZagaPro puede ayudarme con clientes, presupuestos, ordenes de trabajo, facturacion y seguimiento.`;
+Me interesa conocer cómo ZagaPro puede ayudarme con clientes, presupuestos, órdenes de trabajo, facturación y seguimiento.`;
 
-const onboardingWhatsappTemplate = `Hola Gerardo, quiero solicitar informacion para poner en marcha ZagaPro.
+const onboardingWhatsappTemplate = `Hola Gerardo, quiero solicitar información para poner en marcha ZagaPro.
 
 Mi nombre es:
 Negocio:
@@ -41,14 +41,14 @@ Tipo de negocio:
 Usuarios aproximados:
 Ciudad:
 
-Quiero revisar el Plan Empresa, modulos adicionales y puesta en marcha inicial.`;
+Quiero revisar el Plan Empresa, módulos adicionales y puesta en marcha inicial.`;
 
 const sectors = [
-  "Talleres mecanicos",
-  "Servicios tecnicos",
+  "Talleres mecánicos",
+  "Servicios técnicos",
   "Instaladores",
   "Reformas y mantenimiento",
-  "Climatizacion",
+  "Climatización",
   "Limpieza profesional",
   "Multiservicios",
   "Negocios locales de servicios",
@@ -57,7 +57,7 @@ const sectors = [
 const features = [
   {
     icon: UsersRound,
-    title: "Gestion de clientes",
+    title: "Gestión de clientes",
     text: "Historial, datos de contacto, documentos, avisos y trazabilidad de cada cliente en un mismo lugar.",
   },
   {
@@ -67,49 +67,49 @@ const features = [
   },
   {
     icon: ClipboardList,
-    title: "Ordenes de trabajo",
-    text: "Controla estados, responsables, materiales, cantidades, costes y tareas pendientes sin perder contexto.",
+    title: "Órdenes de trabajo",
+    text: "Controla estados, responsables, materiales, cantidades, costos y tareas pendientes sin perder contexto.",
   },
   {
     icon: ReceiptText,
-    title: "Facturacion e ingresos",
-    text: "Emite facturas, registra cobros y conecta la parte administrativa con el trabajo que ya se realizo.",
+    title: "Facturación e ingresos",
+    text: "Emite facturas, registra cobros y conecta la parte administrativa con el trabajo que ya se realizó.",
   },
   {
     icon: BellRing,
     title: "Alertas y seguimiento",
-    text: "Recuerda revisiones, servicios recurrentes, clientes pendientes y oportunidades de fidelizacion.",
+    text: "Recuerda revisiones, servicios recurrentes, clientes pendientes y oportunidades de Fidelidad.",
   },
   {
     icon: ShieldCheck,
-    title: "Multi negocio",
-    text: "Una base adaptable para talleres, servicios tecnicos, instaladores y empresas con varios usuarios.",
+    title: "Multinegocio",
+    text: "Una base adaptable para talleres, servicios técnicos, instaladores y empresas con varios usuarios.",
   },
 ];
 
 const seoPages = [
   {
     title: "Clientes siempre localizados",
-    text: "Toda la informacion comercial y operativa queda asociada al cliente, con historial y datos listos para consultar.",
+    text: "Toda la información comercial y operativa queda asociada al cliente, con historial y datos listos para consultar.",
   },
   {
     title: "Presupuestos que avanzan",
-    text: "Prepara propuestas profesionales, haz seguimiento y convierte los trabajos aceptados en ordenes de servicio.",
+    text: "Prepara propuestas profesionales, haz seguimiento y convierte los trabajos aceptados en órdenes de servicio.",
   },
   {
     title: "Trabajo diario bajo control",
-    text: "El equipo sabe que esta pendiente, que esta en curso, que falta por cobrar y que requiere atencion.",
+    text: "El equipo sabe que está pendiente, que está en curso, que falta por cobrar y que requiere atención.",
   },
   {
-    title: "Facturacion sin duplicar tareas",
+    title: "Facturación sin duplicar tareas",
     text: "Los datos del trabajo pasan a presupuestos, facturas e ingresos para reducir errores administrativos.",
   },
 ];
 
 const benefits = [
-  "Reduce la dependencia de hojas de calculo, libretas y conversaciones dispersas.",
-  "Ayuda a saber que trabajos estan pendientes, aceptados, facturados o cobrados.",
-  "Da una imagen mas profesional con presupuestos y facturas consistentes.",
+  "Reduce la dependencia de hojas de cálculo, libretas y conversaciones dispersas.",
+  "Ayuda a saber qué trabajos están pendientes, aceptados, facturados o cobrados.",
+  "Da una imagen más profesional con presupuestos y facturas consistentes.",
   "Facilita recuperar clientes con alertas, recordatorios y seguimiento comercial.",
 ];
 
@@ -117,12 +117,12 @@ const financeHighlights = [
   {
     label: "Ingresos",
     value: "Por factura",
-    text: "Consulta cada ingreso con su numero de factura, cliente, fecha, concepto e importe.",
+    text: "Consulta cada ingreso con su número de factura, cliente, fecha, concepto e importe.",
   },
   {
     label: "Egresos",
     value: "Por periodo",
-    text: "Registra gastos, proveedores, compras y salidas para saber donde se va el dinero.",
+    text: "Registra gastos, proveedores, compras y salidas para saber dónde se va el dinero.",
   },
   {
     label: "Balance",
@@ -135,48 +135,48 @@ const addOnModules = [
   {
     icon: BellRing,
     title: "Seguimiento Inteligente",
-    text: "ZagaPro identifica que clientes necesitan seguimiento y prepara el contenido del mensaje y el contacto por WhatsApp en segundos.",
+    text: "ZagaPro identifica qué clientes necesitan seguimiento y prepara el contenido del mensaje y el contacto por WhatsApp en segundos.",
     activation: "69,99 EUR",
     monthly: "14,99 EUR/mes",
   },
   {
     icon: Download,
-    title: "Pack Facturas Gestoria",
-    text: "Descarga las facturas de un periodo en un solo archivo, organizado y listo para enviar a tu gestoria o conservar como respaldo administrativo.",
+    title: "Pack Facturas Gestoría",
+    text: "Descarga las facturas de un periodo en un solo archivo, organizado y listo para enviar a tu gestoría o conservar como respaldo administrativo.",
     activation: "49,99 EUR",
     monthly: "9,99 EUR/mes",
   },
   {
     icon: HeartHandshake,
-    title: "Pack Fidelizacion",
-    text: "Recupera clientes y simplifica la administracion mensual desde una unica solucion.",
+    title: "Pack Fidelidad",
+    text: "Recupera clientes y simplifica la administración mensual desde una única solucion.",
     monthly: "19,99 EUR/mes",
     badge: "Pack recomendado",
-    msg: "Con que vuelva un solo cliente, el pack practicamente se paga solo.",
+    msg: "Con que vuelva un solo cliente, el pack prácticamente se paga solo.",
     featured: true,
   },
 ];
 
 const faqs = [
   {
-    question: "Que es ZagaPro?",
+    question: "¿Qué es ZagaPro?",
     answer:
-      "ZagaPro es un software de gestion para negocios de servicios que centraliza clientes, presupuestos, ordenes de trabajo, facturas, stock, ingresos y seguimiento comercial.",
+      "ZagaPro es un software de gestión para negocios de servicios que centraliza clientes, presupuestos, órdenes de trabajo, facturas, stock, ingresos y seguimiento comercial.",
   },
   {
-    question: "Sirve solo para talleres mecanicos?",
+    question: "¿Sirve solo para talleres mecánicos?",
     answer:
-      "No. ZagaPro funciona para talleres mecanicos, servicios tecnicos, instaladores, empresas de mantenimiento, reformas, climatizacion, limpieza profesional y negocios multiservicio.",
+      "No. ZagaPro funciona para talleres mecánicos, servicios técnicos, instaladores, empresas de mantenimiento, reformas, climatización, limpieza profesional y negocios multiservicio.",
   },
   {
-    question: "Puedo crear presupuestos y convertirlos en trabajos?",
+    question: "¿Puedo crear presupuestos y convertirlos en trabajos?",
     answer:
-      "Si. Puedes preparar presupuestos profesionales, registrar conceptos, controlar estados y convertir trabajos aceptados en ordenes de servicio o facturas.",
+      "Sí. Puedes preparar presupuestos profesionales, registrar conceptos, controlar estados y convertir trabajos aceptados en órdenes de servicio o facturas.",
   },
   {
-    question: "ZagaPro ayuda a controlar clientes recurrentes?",
+    question: "¿ZagaPro ayuda a controlar clientes recurrentes?",
     answer:
-      "Si. El sistema permite mantener historial del cliente, alertas, recordatorios y seguimiento para recuperar oportunidades y mejorar la fidelizacion.",
+      "Sí. El sistema permite mantener historial del cliente, alertas, recordatorios y seguimiento para recuperar oportunidades y mejorar la Fidelidad.",
   },
 ];
 
@@ -184,7 +184,7 @@ const productSlides = [
   {
     title: "Panel principal",
     src: "/pantalla1.png",
-    alt: "Panel principal de ZagaPro con indicadores y accesos de gestion.",
+    alt: "Panel principal de ZagaPro con indicadores y accesos de gestión.",
   },
   {
     title: "Vista operativa",
@@ -197,19 +197,19 @@ const productSlides = [
     alt: "Pantalla de alertas de cliente y seguimiento en ZagaPro.",
   },
   {
-    title: "Ordenes de trabajo",
-    src: "/GenerarOrdenes.png",
-    alt: "Pantalla para generar ordenes de trabajo en ZagaPro.",
+    title: "Órdenes de trabajo",
+    src: "/GenerarÓrdenes.png",
+    alt: "Pantalla para generar órdenes de trabajo en ZagaPro.",
   },
   {
-    title: "Emision de facturas",
-    src: "/Emision_reimpresion_de_facturas.png",
-    alt: "Pantalla de emision y reimpresion de facturas en ZagaPro.",
+    title: "Emisión de facturas",
+    src: "/Emisión_reimpresión_de_facturas.png",
+    alt: "Pantalla de emisión y reimpresión de facturas en ZagaPro.",
   },
   {
-    title: "Rentabilidad de lineas",
+    title: "Rentabilidad de líneas",
     src: "/RentabilidadLineasFacturadas.png",
-    alt: "Pantalla de rentabilidad de lineas facturadas en ZagaPro.",
+    alt: "Pantalla de rentabilidad de líneas facturadas en ZagaPro.",
   },
 ];
 
@@ -302,7 +302,7 @@ function App() {
       setContactStatus({
         type: "error",
         text:
-          error?.message || "No se pudo enviar el mensaje. Intentalo de nuevo.",
+          error?.message || "No se pudo enviar el mensaje. Inténtalo de nuevo.",
       });
     } finally {
       setContactSubmitting(false);
@@ -312,7 +312,7 @@ function App() {
   return (
     <main>
       <section className="hero" id="inicio">
-        <nav className="nav" aria-label="Navegacion principal">
+        <nav className="nav" aria-label="Navegación principal">
           <a className="brand" href="#inicio" aria-label="ZagaPro inicio">
             <img src="/logozagapro.png" alt="ZagaPro" />
           </a>
@@ -333,14 +333,14 @@ function App() {
         <div className="hero-content">
           <div className="hero-copy-block">
             <p className="eyebrow">
-              Software de gestion para negocios de servicios
+              Software de gestión para negocios de servicios
             </p>
             <h1>ZagaPro</h1>
             <p className="hero-copy">
-              Controla clientes, presupuestos, ordenes de trabajo, facturas,
+              Controla clientes, presupuestos, órdenes de trabajo, facturas,
               stock, ingresos, egresos, balance y seguimiento desde una
               plataforma adaptable a talleres, instaladores, mantenimiento y
-              servicios tecnicos.
+              servicios técnicos.
             </p>
             <div className="hero-actions">
               <a
@@ -369,7 +369,7 @@ function App() {
             aria-label="Capturas del producto ZagaPro"
           >
             <div className="showcase-status">
-              <span>Operacion activa</span>
+              <span>Operación activa</span>
               <strong>Clientes, trabajos y cobros conectados</strong>
             </div>
             <div className="showcase-frame">
@@ -383,7 +383,7 @@ function App() {
                     type="button"
                     className="slide-image-button"
                     onClick={() => setExpandedSlide(slide)}
-                    aria-label={`Ampliar ${slide.title}`}
+                    aria-label={`Amplíar ${slide.title}`}
                   >
                     <img
                       src={slide.src}
@@ -414,7 +414,7 @@ function App() {
       <section className="proof-band" aria-label="Indicadores del sistema">
         <div>
           <strong>360</strong>
-          <span>gestion operativa</span>
+          <span>gestión operativa</span>
         </div>
         <div>
           <strong>Balance</strong>
@@ -428,16 +428,16 @@ function App() {
 
       <section className="section split" id="software">
         <div>
-          <p className="section-kicker">Gestion completa</p>
+          <p className="section-kicker">Gestión completa</p>
           <h2>
             Todo lo que tu negocio necesita para vender, ejecutar y cobrar servicios.
           </h2>
         </div>
         <p className="section-lead">
-          ZagaPro centraliza la gestion diaria de empresas de servicios:
-          clientes, presupuestos, ordenes de trabajo, facturas, gastos, stock y
-          seguimiento comercial. Menos informacion perdida, menos tareas
-          repetidas y mas control sobre lo que ocurre en el negocio.
+          ZagaPro centraliza la gestión diaria de empresas de servicios:
+          clientes, presupuestos, órdenes de trabajo, facturas, gastos, stock y
+          seguimiento comercial. Menos información perdida, menos tareas
+          repetidas y más control sobre lo que ocurre en el negocio.
         </p>
       </section>
 
@@ -456,14 +456,14 @@ function App() {
 
       <section className="section audience" id="sectores">
         <div className="audience-copy">
-          <p className="section-kicker">Para quien es</p>
+          <p className="section-kicker">Para quién es</p>
           <h2>
             Para negocios que viven de atender clientes y cerrar trabajos.
           </h2>
           <p>
             Si tu empresa recibe solicitudes, prepara presupuestos, agenda
             servicios, compra materiales, factura y necesita hacer seguimiento,
-            ZagaPro te ayuda a tener una operativa ordenada desde el primer dia.
+            ZagaPro te ayuda a tener una operativa ordenada desde el primer día.
           </p>
         </div>
         <div className="audience-list">
@@ -514,14 +514,14 @@ function App() {
         <div>
           <p className="section-kicker">Probado en operativa real</p>
           <h2>
-            ZagaPro ya se usa en un taller mecanico en Valencia.
+            ZagaPro ya se usa en un taller mecánico en Valencia.
           </h2>
         </div>
         <p className="section-lead">
           El primer caso de uso viene de un taller que necesitaba ordenar
           clientes, trabajos, presupuestos, facturas, repuestos e ingresos.
-          Esa misma base sirve para otros negocios de servicios con problemas
-          parecidos: demasiada informacion repartida y poca visibilidad del dia
+          Esa misma base sirve para otros negocios de servicios con problemás
+          parecidos: demásiada información repartida y poca visibilidad del día
           a dia.
         </p>
       </section>
@@ -544,10 +544,10 @@ function App() {
           <p className="section-kicker">Control financiero</p>
           <h2>Ingresos, egresos y balance visibles todo el tiempo.</h2>
           <p>
-            ZagaPro permite revisar el estado economico del negocio por periodos
+            ZagaPro permite revisar el estado económico del negocio por periodos
             de tiempo. Puedes filtrar ingresos, egresos y balance mensual,
             semanal o por el rango que necesites, con detalle de cada movimiento
-            y referencia al numero de factura cuando corresponde.
+            y referencia al número de factura cuando corresponde.
           </p>
         </div>
 
@@ -567,10 +567,10 @@ function App() {
           <figure className="finance-shot">
             <img
               src="/balance-control-redacted.png"
-              alt="Pantalla de ZagaPro con filtros por periodo, ingresos, IVA, total y detalle por numero de factura con nombres protegidos."
+              alt="Pantalla de ZagaPro con filtros por periodo, ingresos, IVA, total y detalle por número de factura con nombres protegidos."
               loading="lazy"
             />
-            <figcaption>Detalle por periodo con numero de factura, tipo de ingreso, IVA, importe y total.</figcaption>
+            <figcaption>Detalle por periodo con número de factura, tipo de ingreso, IVA, importe y total.</figcaption>
           </figure>
         </div>
 
@@ -592,7 +592,7 @@ function App() {
           <h2>Un precio claro para empezar a operar con ZagaPro.</h2>
           <p>
             Pensado para negocios de servicios que necesitan organizar su
-            gestion y tener una base preparada para crecer.
+            gestión y tener una base preparada para crecer.
           </p>
         </div>
 
@@ -610,12 +610,12 @@ function App() {
             Puesta en marcha inicial: <strong>349,00 EUR</strong>
           </p>
           <ul>
-            <li>Configuracion inicial del negocio.</li>
-            <li>Clientes, presupuestos y ordenes de trabajo.</li>
-            <li>Facturacion, ingresos, gastos y seguimiento.</li>
+            <li>Configuración inicial del negocio.</li>
+            <li>Clientes, presupuestos y órdenes de trabajo.</li>
+            <li>Facturación, ingresos, gastos y seguimiento.</li>
             <li>Stock, proveedores y servicios frecuentes.</li>
             <li>Hasta 3 usuarios por negocio.</li>
-            <li>Acompanamiento inicial para empezar a usarlo.</li>
+            <li>Acompañamiento inicial para empezar a usarlo.</li>
           </ul>
           <a
             className="primary-button"
@@ -629,16 +629,16 @@ function App() {
         </article>
       </section>
 
-      <section className="modules-section" id="modulos">
+      <section className="modules-section" id="módulos">
         <div className="modules-heading">
           <div>
-            <p className="section-kicker">Modulos adicionales</p>
-            <h2>Amplia ZagaPro segun lo que necesite tu negocio.</h2>
+            <p className="section-kicker">Módulos adicionales</p>
+            <h2>Amplía ZagaPro según lo que necesite tu negocio.</h2>
           </div>
           <p>
-            Empieza con la gestion principal y suma herramientas para
-            seguimiento, gestoria y fidelizacion cuando quieras vender mas,
-            controlar mejor la administracion o recuperar clientes.
+            Empieza con la gestión principal y suma herramientas para
+            seguimiento, gestoría y Fidelidad cuando quieras vender más,
+            controlar mejor la administración o recuperar clientes.
           </p>
         </div>
 
@@ -666,19 +666,19 @@ function App() {
                 <div className="module-prices">
                   <span className="activation-promo">
                     <span className="promo-label">
-                      Promocion de lanzamiento
+                      Promoción de lanzamiento
                     </span>
 
                     {module.activation && (
                       <>
-                        Activacion{" "}
+                        Activación{" "}
                         <strong className="activation-old">
                           {module.activation}
                         </strong>
                       </>
                     )}
 
-                    <em>Sin coste de activacion por tiempo limitado</em>
+                    <em>Sin coste de activación por tiempo limitado</em>
                   </span>
 
                   <span className="monthly-price">
@@ -698,8 +698,8 @@ function App() {
           <p className="section-kicker">Demo personalizada</p>
           <h2>Ve ZagaPro aplicado a tu propio negocio de servicios.</h2>
           <p>
-            Cuentanos tu sector, ciudad y flujo de trabajo. Te mostramos como
-            se verian clientes, presupuestos, ordenes, facturas y seguimiento en
+            Cuéntanos tu sector, ciudad y flujo de trabajo. Te mostramos cómo
+            se verían clientes, presupuestos, órdenes, facturas y seguimiento en
             una demo concreta.
           </p>
         </div>
@@ -717,10 +717,10 @@ function App() {
       <section className="faq-section" id="preguntas">
         <div className="faq-heading">
           <p className="section-kicker">Preguntas frecuentes</p>
-          <h2>Software de gestion para servicios, talleres e instaladores.</h2>
+          <h2>Software de gestión para servicios, talleres e instaladores.</h2>
           <p>
-            ZagaPro esta pensado para negocios que necesitan organizar clientes,
-            presupuestos, ordenes de trabajo, facturacion, stock y seguimiento
+            ZagaPro está pensado para negocios que necesitan organizar clientes,
+            presupuestos, órdenes de trabajo, facturación, stock y seguimiento
             sin perder tiempo entre herramientas separadas.
           </p>
         </div>
@@ -738,7 +738,7 @@ function App() {
         <section className="contact-section" id="contacto" ref={contactRef}>
           <div className="contact-copy">
             <p className="section-kicker">Contacto directo</p>
-            <h2>Cuentanos que negocio quieres gestionar con ZagaPro.</h2>
+            <h2>Cuéntanos qué negocio quieres gestiónar con ZagaPro.</h2>
             <p>
               Recibiremos tu consulta para preparar una respuesta concreta por
               sector, necesidad y estado actual del negocio.
@@ -792,7 +792,7 @@ function App() {
                 />
               </label>
               <label>
-                Telefono
+                Teléfono
                 <input
                   value={contactForm.phone}
                   onChange={updateContactField("phone")}
@@ -806,9 +806,9 @@ function App() {
                 onChange={updateContactField("businessType")}
                 required
               >
-                <option value="">Selecciona una opcion</option>
-                <option value="Taller mecanico">Taller mecanico</option>
-                <option value="Servicio tecnico">Servicio tecnico</option>
+                <option value="">Selecciona una opción</option>
+                <option value="Taller mecánico">Taller mecánico</option>
+                <option value="Servicio técnico">Servicio técnico</option>
                 <option value="Instalador">Instalador</option>
                 <option value="Reformas o mantenimiento">
                   Reformas o mantenimiento
@@ -824,7 +824,7 @@ function App() {
                 rows={5}
                 value={contactForm.message}
                 onChange={updateContactField("message")}
-                placeholder="Cuentanos que quieres revisar: demo, sector, modulos, precios, usuarios o puesta en marcha."
+                placeholder="Cuéntanos qué quieres revisar: demo, sector, módulos, precios, usuarios o puesta en marcha."
                 required
               />
             </label>
@@ -897,8 +897,8 @@ function App() {
           <div className="footer-brand">
             <img src="/logozagapro.png" alt="ZagaPro" />
             <p>
-              Software de gestion para negocios de servicios: clientes,
-              presupuestos, ordenes de trabajo, facturacion, stock y
+              Software de gestión para negocios de servicios: clientes,
+              presupuestos, órdenes de trabajo, facturación, stock y
               seguimiento comercial.
             </p>
           </div>
@@ -907,12 +907,12 @@ function App() {
             <a href="#software">Software</a>
             <a href="#sectores">Sectores</a>
             <a href="#planes">Plan Empresa</a>
-            <a href="#modulos">Modulos</a>
+            <a href="#módulos">Módulos</a>
           </div>
           <div className="footer-column">
             <strong>Soluciones</strong>
-            <span>Talleres mecanicos</span>
-            <span>Servicios tecnicos</span>
+            <span>Talleres mecánicos</span>
+            <span>Servicios técnicos</span>
             <span>Instaladores</span>
             <span>Mantenimiento</span>
           </div>
@@ -929,7 +929,7 @@ function App() {
         </div>
         <div className="footer-bottom">
           <span>ZagaPro</span>
-          <span>Gestion profesional para empresas de servicios.</span>
+          <span>Gestión profesional para empresas de servicios.</span>
         </div>
       </footer>
 
