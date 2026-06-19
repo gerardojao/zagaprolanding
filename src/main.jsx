@@ -24,93 +24,92 @@ import "./styles.css";
 
 const whatsappNumber = "34624728398";
 
-const whatsappTemplate = `Hola Gerardo, me gustaría solicitar una demo de ZagaPro.
+const whatsappTemplate = `Hola Gerardo, me gustaría solicitar una demo de ZagaPro para mi taller mecánico.
 
 Mi nombre es:
-Negocio:
-Tipo de servicio:
+Taller:
+Tipo de servicio mecánico:
 Ciudad:
 
-Me interesa conocer cómo ZagaPro puede ayudarme con clientes, presupuestos, órdenes de trabajo, facturación y seguimiento.`;
+Me interesa conocer cómo ZagaPro puede ayudarme a pasar menos tiempo entre papeles, WhatsApp y hojas de cálculo, y más tiempo atendiendo vehículos y clientes.`;
 
-const onboardingWhatsappTemplate = `Hola Gerardo, quiero solicitar información para poner en marcha ZagaPro.
+const onboardingWhatsappTemplate = `Hola Gerardo, quiero solicitar información para poner en marcha ZagaPro en mi taller mecánico.
 
 Mi nombre es:
-Negocio:
-Tipo de negocio:
+Taller:
 Usuarios aproximados:
 Ciudad:
 
-Quiero revisar el Plan Empresa, módulos adicionales y puesta en marcha inicial.`;
+Quiero revisar condiciones de lanzamiento, módulos adicionales y puesta en marcha inicial.`;
 
 const sectors = [
   "Talleres mecánicos",
-  "Servicios técnicos",
-  "Instaladores",
-  "Reformas y mantenimiento",
-  "Climatización",
-  "Limpieza profesional",
-  "Multiservicios",
-  "Negocios locales de servicios",
+  "Talleres de reparación rápida",
+  "Electromecánica",
+  "Chapa y pintura",
+  "Neumáticos y mantenimiento",
+  "Talleres multimarca",
+  "Servicios de diagnosis",
+  "Negocios locales de automoción",
 ];
 
 const features = [
   {
     icon: UsersRound,
-    title: "Gestión de clientes",
-    text: "Historial, datos de contacto, documentos, avisos y trazabilidad de cada cliente en un mismo lugar.",
+    title: "Encuentra cada reparación en segundos",
+    text: "Ten clientes, vehículos, matrículas e historial organizados para no perder tiempo buscando datos en libretas o conversaciones.",
   },
   {
     icon: FileText,
-    title: "Presupuestos profesionales",
-    text: "Crea presupuestos claros, reutiliza conceptos frecuentes y convierte trabajos aceptados en operativa real.",
+    title: "Dedica menos tiempo al papeleo",
+    text: "Prepara presupuestos y facturas con menos tareas repetidas para que la administración no frene el ritmo del taller.",
   },
   {
     icon: ClipboardList,
-    title: "Órdenes de trabajo",
-    text: "Controla estados, responsables, materiales, cantidades, costos y tareas pendientes sin perder contexto.",
+    title: "Sabe qué pasa en cada vehículo",
+    text: "Mantén trabajos, estados, responsables, repuestos y tareas pendientes bajo control sin depender de notas sueltas.",
   },
   {
     icon: ReceiptText,
-    title: "Facturación e ingresos",
-    text: "Emite facturas, registra cobros y conecta la parte administrativa con el trabajo que ya se realizó.",
+    title: "Cobra con más orden",
+    text: "Conecta reparaciones, facturas, ingresos y gastos para tener más claridad sobre lo que entra, lo que sale y lo que falta por cobrar.",
   },
   {
     icon: BellRing,
-    title: "Alertas y seguimiento",
-    text: "Recuerda revisiones, servicios recurrentes, clientes pendientes y oportunidades de Fidelidad.",
+    title: "Haz que tus clientes vuelvan",
+    text: "Mantén el contacto con clientes pendientes, revisiones y mantenimientos para aumentar las oportunidades de trabajo recurrente.",
   },
   {
     icon: ShieldCheck,
-    title: "Multinegocio",
-    text: "Una base adaptable para talleres, servicios técnicos, instaladores y empresas con varios usuarios.",
+    title: "Da una imagen más profesional",
+    text: "Trabaja con documentos, seguimiento y comunicación más consistentes para que el cliente perciba un taller más organizado.",
   },
 ];
 
 const seoPages = [
   {
-    title: "Clientes siempre localizados",
-    text: "Toda la información comercial y operativa queda asociada al cliente, con historial y datos listos para consultar.",
+    title: "Más tiempo",
+    text: "Recupera horas cada semana reduciendo tareas repetidas en presupuestos, órdenes, facturas y seguimiento.",
   },
   {
-    title: "Presupuestos que avanzan",
-    text: "Prepara propuestas profesionales, haz seguimiento y convierte los trabajos aceptados en órdenes de servicio.",
+    title: "Más control",
+    text: "Ten toda la información del taller organizada en un solo lugar para saber qué está pendiente, en curso, facturado o cobrado.",
   },
   {
-    title: "Trabajo diario bajo control",
-    text: "El equipo sabe que está pendiente, que está en curso, que falta por cobrar y que requiere atención.",
+    title: "Más ingresos",
+    text: "Dedica menos tiempo al papeleo y más tiempo a trabajos que generan dinero dentro del taller.",
   },
   {
-    title: "Facturación sin duplicar tareas",
-    text: "Los datos del trabajo pasan a presupuestos, facturas e ingresos para reducir errores administrativos.",
+    title: "Clientes que regresan",
+    text: "Mantente presente con recordatorios y seguimiento para que tus clientes vuelvan cuando necesiten mantenimiento o reparación.",
   },
 ];
 
 const benefits = [
-  "Reduce la dependencia de hojas de cálculo, libretas y conversaciones dispersas.",
-  "Ayuda a saber qué trabajos están pendientes, aceptados, facturados o cobrados.",
-  "Da una imagen más profesional con presupuestos y facturas consistentes.",
-  "Facilita recuperar clientes con alertas, recordatorios y seguimiento comercial.",
+  "Recupera horas cada semana reduciendo tareas administrativas repetidas.",
+  "Ten claro qué vehículos están pendientes, en reparación, facturados o cobrados.",
+  "Ofrece una experiencia más profesional desde el presupuesto hasta la entrega.",
+  "Mantén el contacto con tus clientes y aumenta las probabilidades de que vuelvan.",
 ];
 
 const financeHighlights = [
@@ -135,22 +134,25 @@ const addOnModules = [
   {
     icon: BellRing,
     title: "Seguimiento Inteligente",
-    text: "ZagaPro identifica qué clientes necesitan seguimiento y prepara el contenido del mensaje y el contacto por WhatsApp en segundos.",
+    text: "Mantente presente en la mente de tus clientes y aumenta las probabilidades de que vuelvan sin perder tiempo en llamadas repetitivas.",
     activation: "69,99 EUR",
     monthly: "14,99 EUR/mes",
+    publicMonthly: "Incluido en propuesta de lanzamiento",
   },
   {
     icon: Download,
     title: "Pack Facturas Gestoría",
-    text: "Descarga las facturas de un periodo en un solo archivo, organizado y listo para enviar a tu gestoría o conservar como respaldo administrativo.",
+    text: "Reduce el tiempo de cierre administrativo preparando la información del periodo de forma ordenada para gestoría o respaldo.",
     activation: "49,99 EUR",
     monthly: "9,99 EUR/mes",
+    publicMonthly: "Incluido en propuesta de lanzamiento",
   },
   {
     icon: HeartHandshake,
     title: "Pack Fidelidad",
-    text: "Recupera clientes y simplifica la administración mensual desde una única solucion.",
+    text: "Convierte el seguimiento en una rutina sencilla para recuperar clientes y generar más trabajo recurrente.",
     monthly: "19,99 EUR/mes",
+    publicMonthly: "Condiciones iniciales especiales",
     badge: "Pack recomendado",
     msg: "Con que vuelva un solo cliente, el pack prácticamente se paga solo.",
     featured: true,
@@ -161,22 +163,22 @@ const faqs = [
   {
     question: "¿Qué es ZagaPro?",
     answer:
-      "ZagaPro es un software de gestión para negocios de servicios que centraliza clientes, presupuestos, órdenes de trabajo, facturas, stock, ingresos y seguimiento comercial.",
+      "ZagaPro es un software para talleres mecánicos que ayuda a recuperar tiempo, tener más control del negocio y mantener el contacto con clientes para que vuelvan.",
   },
   {
     question: "¿Sirve solo para talleres mecánicos?",
     answer:
-      "No. ZagaPro funciona para talleres mecánicos, servicios técnicos, instaladores, empresas de mantenimiento, reformas, climatización, limpieza profesional y negocios multiservicio.",
+      "Ahora la landing está enfocada a talleres mecánicos porque es el primer mercado natural. La base del sistema puede adaptarse más adelante a otros negocios de servicios.",
   },
   {
     question: "¿Puedo crear presupuestos y convertirlos en trabajos?",
     answer:
-      "Sí. Puedes preparar presupuestos profesionales, registrar conceptos, controlar estados y convertir trabajos aceptados en órdenes de servicio o facturas.",
+      "Sí. La idea es reducir pasos repetidos: preparas el presupuesto, lo conviertes en trabajo y aprovechas esa información para facturar y hacer seguimiento.",
   },
   {
     question: "¿ZagaPro ayuda a controlar clientes recurrentes?",
     answer:
-      "Sí. El sistema permite mantener historial del cliente, alertas, recordatorios y seguimiento para recuperar oportunidades y mejorar la Fidelidad.",
+      "Sí. El objetivo es que no olvides clientes, revisiones o trabajos pendientes y puedas generar más oportunidades de regreso.",
   },
 ];
 
@@ -198,12 +200,12 @@ const productSlides = [
   },
   {
     title: "Órdenes de trabajo",
-    src: "/GenerarÓrdenes.png",
+    src: "/GenerarOrdenes.png",
     alt: "Pantalla para generar órdenes de trabajo en ZagaPro.",
   },
   {
     title: "Emisión de facturas",
-    src: "/Emisión_reimpresión_de_facturas.png",
+    src: "/Emision_reimpresion_de_facturas.png",
     alt: "Pantalla de emisión y reimpresión de facturas en ZagaPro.",
   },
   {
@@ -333,14 +335,13 @@ function App() {
         <div className="hero-content">
           <div className="hero-copy-block">
             <p className="eyebrow">
-              Software de gestión para negocios de servicios
+              Software de gestión para talleres mecánicos
             </p>
-            <h1>ZagaPro</h1>
+            <h1>Recupera tiempo y haz crecer tu taller.</h1>
             <p className="hero-copy">
-              Controla clientes, presupuestos, órdenes de trabajo, facturas,
-              stock, ingresos, egresos, balance y seguimiento desde una
-              plataforma adaptable a talleres, instaladores, mantenimiento y
-              servicios técnicos.
+              Menos papeles, menos WhatsApp perdido y menos hojas de cálculo.
+              Ten clientes, vehículos, trabajos y cobros organizados en un solo
+              lugar para trabajar con más control y dar una mejor imagen.
             </p>
             <div className="hero-actions">
               <a
@@ -358,9 +359,10 @@ function App() {
             </div>
             <div className="hero-tags" aria-label="Beneficios principales">
               <span>Sin instalaciones</span>
-              <span>Balance por periodo</span>
+              <span>Más tiempo útil</span>
+              <span>Más control del taller</span>
+              <span>Clientes que regresan</span>
               <span>Demo personalizada</span>
-              <span>Preparado para servicios</span>
             </div>
           </div>
 
@@ -370,7 +372,7 @@ function App() {
           >
             <div className="showcase-status">
               <span>Operación activa</span>
-              <strong>Clientes, trabajos y cobros conectados</strong>
+              <strong>Tiempo, control y clientes conectados</strong>
             </div>
             <div className="showcase-frame">
               {productSlides.map((slide, index) => (
@@ -413,31 +415,31 @@ function App() {
 
       <section className="proof-band" aria-label="Indicadores del sistema">
         <div>
-          <strong>360</strong>
-          <span>gestión operativa</span>
+          <strong>Más tiempo</strong>
+          <span>menos tareas repetidas</span>
         </div>
         <div>
-          <strong>Balance</strong>
-          <span>ingresos y egresos</span>
+          <strong>Más control</strong>
+          <span>todo el taller en un lugar</span>
         </div>
         <div>
-          <strong>Valencia</strong>
-          <span>uso real en taller</span>
+          <strong>Más regreso</strong>
+          <span>seguimiento a clientes</span>
         </div>
       </section>
 
       <section className="section split" id="software">
         <div>
-          <p className="section-kicker">Gestión completa</p>
+          <p className="section-kicker">Resultados para tu taller</p>
           <h2>
-            Todo lo que tu negocio necesita para vender, ejecutar y cobrar servicios.
+            Recupera horas de trabajo cada semana y ofrece una experiencia más profesional.
           </h2>
         </div>
         <p className="section-lead">
-          ZagaPro centraliza la gestión diaria de empresas de servicios:
-          clientes, presupuestos, órdenes de trabajo, facturas, gastos, stock y
-          seguimiento comercial. Menos información perdida, menos tareas
-          repetidas y más control sobre lo que ocurre en el negocio.
+          Un taller no necesita más herramientas sueltas. Necesita saber qué
+          está pendiente, qué está en reparación, qué falta por cobrar y qué
+          cliente conviene contactar. ZagaPro centraliza esa información para
+          que trabajes con más orden, menos errores y más tiempo útil.
         </p>
       </section>
 
@@ -458,12 +460,13 @@ function App() {
         <div className="audience-copy">
           <p className="section-kicker">Para quién es</p>
           <h2>
-            Para negocios que viven de atender clientes y cerrar trabajos.
+            Para talleres que quieren trabajar con más orden sin complicarse.
           </h2>
           <p>
-            Si tu empresa recibe solicitudes, prepara presupuestos, agenda
-            servicios, compra materiales, factura y necesita hacer seguimiento,
-            ZagaPro te ayuda a tener una operativa ordenada desde el primer día.
+            Si tu taller recibe vehículos, prepara presupuestos, compra
+            repuestos, factura reparaciones y necesita hacer seguimiento,
+            ZagaPro te ayuda a convertir todo ese flujo en una rutina más clara
+            para que la administración no se coma horas de taller.
           </p>
         </div>
         <div className="audience-list">
@@ -479,7 +482,7 @@ function App() {
       <section className="section impact" id="flujo">
         <div className="impact-panel">
           <Search size={28} />
-          <h2>De la primera consulta al cobro final.</h2>
+          <h2>Vende el resultado: más tiempo, más control y clientes que vuelven.</h2>
           <div className="benefits">
             {seoPages.map((page) => (
               <p key={page.title}>
@@ -493,19 +496,19 @@ function App() {
         <div className="workflow" aria-label="Flujo operativo">
           <div>
             <Building2 size={21} />
-            Nuevo cliente
+            Información localizada
           </div>
           <div>
             <Wrench size={21} />
-            Trabajo asignado
+            Trabajo bajo control
           </div>
           <div>
             <ClipboardList size={21} />
-            Presupuesto aprobado
+            Menos errores
           </div>
           <div>
             <Gauge size={21} />
-            Factura y seguimiento
+            Cliente que regresa
           </div>
         </div>
       </section>
@@ -514,15 +517,15 @@ function App() {
         <div>
           <p className="section-kicker">Probado en operativa real</p>
           <h2>
-            ZagaPro ya se usa en un taller mecánico en Valencia.
+            Creado desde problemas reales de un taller mecánico en Valencia.
           </h2>
         </div>
         <p className="section-lead">
-          El primer caso de uso viene de un taller que necesitaba ordenar
-          clientes, trabajos, presupuestos, facturas, repuestos e ingresos.
-          Esa misma base sirve para otros negocios de servicios con problemás
-          parecidos: demásiada información repartida y poca visibilidad del día
-          a dia.
+          El primer caso de uso viene de un taller que necesitaba recuperar
+          tiempo, reducir errores administrativos y tener más visibilidad del
+          día a día. Si buscas software para taller mecánico en Albal,
+          Catarroja, Massanassa o Valencia, la demo se puede adaptar a tu forma
+          real de trabajar.
         </p>
       </section>
 
@@ -533,7 +536,7 @@ function App() {
             {index === 1 && <Gauge size={24} />}
             {index === 2 && <HeartHandshake size={24} />}
             {index === 3 && <Search size={24} />}
-            <h3>{["Orden operativo", "Control del negocio", "Imagen profesional", "Clientes recurrentes"][index]}</h3>
+            <h3>{["Más tiempo", "Más control", "Mejor imagen", "Clientes que regresan"][index]}</h3>
             <p>{benefit}</p>
           </article>
         ))}
@@ -542,12 +545,11 @@ function App() {
       <section className="finance-section" id="balance">
         <div className="finance-copy">
           <p className="section-kicker">Control financiero</p>
-          <h2>Ingresos, egresos y balance visibles todo el tiempo.</h2>
+          <h2>Toma decisiones con números claros, no con intuición.</h2>
           <p>
-            ZagaPro permite revisar el estado económico del negocio por periodos
-            de tiempo. Puedes filtrar ingresos, egresos y balance mensual,
-            semanal o por el rango que necesites, con detalle de cada movimiento
-            y referencia al número de factura cuando corresponde.
+            Cuando ingresos, gastos y balance están ordenados, sabes mejor qué
+            trabajos son rentables, qué falta por cobrar y cómo está funcionando
+            el taller. Menos cuentas dispersas, más claridad para decidir.
           </p>
         </div>
 
@@ -588,33 +590,41 @@ function App() {
 
       <section className="pricing-section" id="planes">
         <div className="pricing-copy">
-          <p className="section-kicker">Plan empresarial</p>
-          <h2>Un precio claro para empezar a operar con ZagaPro.</h2>
+          <p className="section-kicker">Lanzamiento para talleres</p>
+          <h2>Empieza con una propuesta pensada para recuperar tiempo.</h2>
           <p>
-            Pensado para negocios de servicios que necesitan organizar su
-            gestión y tener una base preparada para crecer.
+            Soluciones adaptadas al tamaño de tu taller. Solicita una demo y
+            recibe una propuesta personalizada centrada en ordenar tu operativa,
+            reducir papeleo y liberar horas de gestión cada semana.
           </p>
+          <div className="pricing-value-list" aria-label="Valor de la promoción">
+            <span>Recupera tiempo en presupuestos, facturas y seguimiento.</span>
+            <span>Empieza con una puesta en marcha guiada y ordenada.</span>
+            <span>Accede a condiciones especiales para los primeros talleres.</span>
+          </div>
         </div>
 
         <article className="price-card">
           <div className="price-icon">
             <BadgeEuro size={28} />
           </div>
-          <p className="price-label">Plan Empresa</p>
+          <p className="price-label">Plan Taller</p>
+          <p className="launch-badge">Oferta de lanzamiento</p>
           <div className="price">
-            <small className="price-prefix">Desde</small>
-            <span>99 EUR</span>
-            <small>/mes</small>
+            <small className="price-prefix">Referencia</small>
+            <span>por menos que una reparación habitual al mes</span>
           </div>
           <p className="setup-price">
-            Puesta en marcha inicial: <strong>349,00 EUR</strong>
+            Promoción de lanzamiento para los primeros talleres. Solicita una
+            demo y recibe una propuesta personalizada según el tamaño de tu
+            taller.
           </p>
           <ul>
-            <li>Configuración inicial del negocio.</li>
-            <li>Clientes, presupuestos y órdenes de trabajo.</li>
+            <li>Configuración inicial del taller.</li>
+            <li>Clientes, vehículos, presupuestos y órdenes de trabajo.</li>
             <li>Facturación, ingresos, gastos y seguimiento.</li>
-            <li>Stock, proveedores y servicios frecuentes.</li>
-            <li>Hasta 3 usuarios por negocio.</li>
+            <li>Repuestos, proveedores y servicios frecuentes.</li>
+            <li>Hasta 3 usuarios por taller.</li>
             <li>Acompañamiento inicial para empezar a usarlo.</li>
           </ul>
           <a
@@ -623,7 +633,7 @@ function App() {
             target="_blank"
             rel="noreferrer"
           >
-            Solicitar puesta en marcha
+            Solicitar propuesta
             <ArrowRight size={18} />
           </a>
         </article>
@@ -633,12 +643,12 @@ function App() {
         <div className="modules-heading">
           <div>
             <p className="section-kicker">Módulos adicionales</p>
-            <h2>Amplía ZagaPro según lo que necesite tu negocio.</h2>
+          <h2>Convierte tareas administrativas en oportunidades de venta.</h2>
           </div>
           <p>
-            Empieza con la gestión principal y suma herramientas para
-            seguimiento, gestoría y Fidelidad cuando quieras vender más,
-            controlar mejor la administración o recuperar clientes.
+            Empieza con la gestión principal y suma herramientas para mantener
+            contacto con clientes, cerrar mejor la administración y generar más
+            trabajo recurrente.
           </p>
         </div>
 
@@ -669,20 +679,11 @@ function App() {
                       Promoción de lanzamiento
                     </span>
 
-                    {module.activation && (
-                      <>
-                        Activación{" "}
-                        <strong className="activation-old">
-                          {module.activation}
-                        </strong>
-                      </>
-                    )}
-
                     <em>Sin coste de activación por tiempo limitado</em>
                   </span>
 
                   <span className="monthly-price">
-                    Uso mensual <strong>{module.monthly}</strong>
+                    Uso mensual <strong>{module.publicMonthly}</strong>
                   </span>
 
                   {module.msg && <p className="roi-text">{module.msg}</p>}
@@ -696,11 +697,13 @@ function App() {
       <section className="demo-section" id="demo">
         <div>
           <p className="section-kicker">Demo personalizada</p>
-          <h2>Ve ZagaPro aplicado a tu propio negocio de servicios.</h2>
+          <h2>Ve cómo tu taller puede recuperar tiempo y trabajar con más control.</h2>
           <p>
-            Cuéntanos tu sector, ciudad y flujo de trabajo. Te mostramos cómo
-            se verían clientes, presupuestos, órdenes, facturas y seguimiento en
-            una demo concreta.
+            Cuéntanos tu ciudad y flujo de trabajo. Te mostramos cómo se verían
+            clientes, vehículos, presupuestos, órdenes, facturas y seguimiento
+            en una demo concreta para talleres de Albal, Catarroja, Massanassa
+            y Valencia, con foco en el resultado: menos gestión repetida, más
+            orden y clientes mejor atendidos.
           </p>
         </div>
         <a
@@ -717,11 +720,11 @@ function App() {
       <section className="faq-section" id="preguntas">
         <div className="faq-heading">
           <p className="section-kicker">Preguntas frecuentes</p>
-          <h2>Software de gestión para servicios, talleres e instaladores.</h2>
+          <h2>Primero el resultado. Después la herramienta.</h2>
           <p>
-            ZagaPro está pensado para negocios que necesitan organizar clientes,
-            presupuestos, órdenes de trabajo, facturación, stock y seguimiento
-            sin perder tiempo entre herramientas separadas.
+            ZagaPro está pensado para talleres que quieren recuperar tiempo,
+            trabajar con más control, cometer menos errores y mantener el
+            contacto con clientes sin perderse entre herramientas separadas.
           </p>
         </div>
         <div className="faq-grid">
@@ -738,10 +741,10 @@ function App() {
         <section className="contact-section" id="contacto" ref={contactRef}>
           <div className="contact-copy">
             <p className="section-kicker">Contacto directo</p>
-            <h2>Cuéntanos qué negocio quieres gestiónar con ZagaPro.</h2>
+            <h2>Cuéntanos qué taller quieres gestionar con ZagaPro.</h2>
             <p>
               Recibiremos tu consulta para preparar una respuesta concreta por
-              sector, necesidad y estado actual del negocio.
+              ciudad, necesidad y estado actual del taller.
             </p>
           </div>
 
@@ -773,7 +776,7 @@ function App() {
                 />
               </label>
               <label>
-                Empresa o negocio
+                Taller
                 <input
                   value={contactForm.company}
                   onChange={updateContactField("company")}
@@ -824,7 +827,7 @@ function App() {
                 rows={5}
                 value={contactForm.message}
                 onChange={updateContactField("message")}
-                placeholder="Cuéntanos qué quieres revisar: demo, sector, módulos, precios, usuarios o puesta en marcha."
+                placeholder="Cuéntanos qué quieres revisar: demo, módulos, condiciones de lanzamiento, usuarios o puesta en marcha."
                 required
               />
             </label>
@@ -897,8 +900,8 @@ function App() {
           <div className="footer-brand">
             <img src="/logozagapro.png" alt="ZagaPro" />
             <p>
-              Software de gestión para negocios de servicios: clientes,
-              presupuestos, órdenes de trabajo, facturación, stock y
+              Software de gestión para talleres mecánicos: clientes, vehículos,
+              presupuestos, órdenes de trabajo, facturación, repuestos y
               seguimiento comercial.
             </p>
           </div>
@@ -912,9 +915,10 @@ function App() {
           <div className="footer-column">
             <strong>Soluciones</strong>
             <span>Talleres mecánicos</span>
-            <span>Servicios técnicos</span>
-            <span>Instaladores</span>
-            <span>Mantenimiento</span>
+            <span>Albal</span>
+            <span>Catarroja</span>
+            <span>Massanassa</span>
+            <span>Valencia</span>
           </div>
           <div className="footer-column">
             <strong>Contacto</strong>
@@ -929,7 +933,7 @@ function App() {
         </div>
         <div className="footer-bottom">
           <span>ZagaPro</span>
-          <span>Gestión profesional para empresas de servicios.</span>
+          <span>Gestión profesional para talleres mecánicos en Valencia.</span>
         </div>
       </footer>
 
