@@ -128,8 +128,44 @@ const financeHighlights = [
     value: "Siempre visible",
     text: "Filtra por rango de fechas y revisa el balance entre ingresos y egresos en segundos.",
   },
+  {
+    label: "Dashboard Pro",
+    value: "Indicadores clave",
+    text: "Revisa rentabilidad, evolución financiera y señales del negocio sin depender de hojas externas.",
+  },
+  {
+    label: "CxC",
+    value: "Crédito controlado",
+    text: "Identifica facturas a crédito, saldos pendientes, vencimientos y clientes deudores.",
+  },
 ];
 
+const commercialAreas = [
+  {
+    icon: Wrench,
+    title: "Operación del taller",
+    text: "Controla el vehículo desde que entra hasta que se entrega.",
+    modules: ["Pre-órdenes", "Órdenes de trabajo", "Vehículos por estado", "Fotos de recepción", "Mecánica y chapa"],
+  },
+  {
+    icon: ReceiptText,
+    title: "Facturación y administración",
+    text: "Emite documentos con menos pasos y deja la información lista para gestión.",
+    modules: ["Facturas normales", "Recambio", "Rapel", "Sin IVA", "Exportación de facturas"],
+  },
+  {
+    icon: TrendingUp,
+    title: "Finanzas y cobros",
+    text: "Mira lo facturado, lo pendiente de cobro y el estado real del negocio.",
+    modules: ["Facturado hoy y mes", "Estado de resultados", "Cuentas por cobrar", "Mayor", "Balance"],
+  },
+  {
+    icon: BellRing,
+    title: "Comunicación y seguimiento",
+    text: "Avisa al cliente en el momento correcto y evita conversaciones perdidas.",
+    modules: ["Alertas WhatsApp", "Vehículo listo", "Seguimiento", "Historial del cliente"],
+  },
+];
 const addOnModules = [
   {
     icon: BellRing,
@@ -156,6 +192,77 @@ const addOnModules = [
     badge: "Pack recomendado",
     msg: "Con que vuelva un solo cliente, el pack prácticamente se paga solo.",
     featured: true,
+  },
+  {
+    icon: Gauge,
+    title: "Dashboard Pro",
+    text: "Una vista avanzada para revisar indicadores financieros, rentabilidad por repuesto y señales de gestión del taller.",
+    monthly: "Incluido en Pro",
+    publicMonthly: "Disponible desde plan Pro",
+    badge: "Nuevo",
+  },
+  {
+    icon: ReceiptText,
+    title: "Cuentas por Cobrar",
+    text: "Controla facturas a crédito, abonos parciales, saldos pendientes, vencimientos y clientes deudores desde un solo panel.",
+    monthly: "Incluido en Premium",
+    publicMonthly: "Disponible en plan Premium",
+    badge: "Nuevo módulo",
+    featured: true,
+  },
+];
+
+const pricingPlans = [
+  {
+    name: "Básico",
+    setupPrice: "499",
+    monthlyPrice: "129",
+    intro: "Para talleres que quieren ordenar la operación diaria y empezar a trabajar con menos papeleo.",
+    features: [
+      "Clientes",
+      "Vehículos",
+      "Proveedores",
+      "Facturación",
+      "Gastos",
+      "Dashboard financiero básico",
+      "Historial del vehículo",
+      "Órdenes de trabajo",
+      "Puesta en marcha guiada",
+    ],
+  },
+  {
+    name: "Pro",
+    setupPrice: "799",
+    monthlyPrice: "159",
+    badge: "Más vendido",
+    featured: true,
+    intro: "Para talleres que quieren medir mejor, automatizar comunicación y cerrar mejor la gestión financiera.",
+    prefix: "Todo lo anterior +",
+    features: [
+      "Pre-órdenes",
+      "Fotos de recepción",
+      "WhatsApp vehículo listo",
+      "Exportación de facturas",
+      "Facturas de recambio",
+      "Dashboard avanzado",
+    ],
+  },
+  {
+    name: "Premium",
+    setupPrice: "1.200",
+    monthlyPrice: "199",
+    intro: "Para talleres que trabajan con crédito, abonos parciales y necesitan controlar vencimientos sin perder cobros.",
+    prefix: "Todo lo anterior +",
+    features: [
+      "Cuentas por cobrar",
+      "Mayor",
+      "Estado de resultados",
+      "Facturas Rapel",
+      "Facturas sin IVA",
+      "Saldos pendientes y vencimientos",
+      "Prioridad en soporte",
+      "Configuración inicial de crédito y CxC",
+    ],
   },
 ];
 
@@ -320,9 +427,10 @@ function App() {
           </a>
           <div className="nav-links">
             <a href="#software">Software</a>
-            <a href="#sectores">Sectores</a>
+            <a href="#control">Módulos</a>
             <a href="#flujo">Flujo</a>
             <a href="#balance">Balance</a>
+            <a href="#planes">Planes</a>
             <a href="#preguntas">Preguntas</a>
             <a href="#demo">Demo</a>
           </div>
@@ -337,7 +445,7 @@ function App() {
             <p className="eyebrow">
               Software de gestión para talleres mecánicos
             </p>
-            <h1>Recupera tiempo y haz crecer tu taller.</h1>
+            <h1>Ordena tu taller desde la recepción del vehículo hasta la factura.</h1>
             <p className="hero-copy">
               Menos papeles, menos WhatsApp perdido y menos hojas de cálculo.
               Ten clientes, vehículos, trabajos y cobros organizados en un solo
@@ -456,6 +564,33 @@ function App() {
         })}
       </section>
 
+      <section className="commercial-section" id="control">
+        <div className="commercial-heading">
+          <p className="section-kicker">Todo lo que controlas</p>
+          <h2>Los módulos se explican por lo que resuelven, no por configuración técnica.</h2>
+          <p>
+            ZagaPro agrupa la operación, la facturación, las finanzas y la comunicación del taller para que cada tarea termine conectada con el siguiente paso.
+          </p>
+        </div>
+        <div className="commercial-grid">
+          {commercialAreas.map((area) => {
+            const Icon = area.icon;
+            return (
+              <article className="commercial-card" key={area.title}>
+                <Icon size={24} />
+                <h3>{area.title}</h3>
+                <p>{area.text}</p>
+                <div className="commercial-tags">
+                  {area.modules.map((module) => (
+                    <span key={module}>{module}</span>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
       <section className="section audience" id="sectores">
         <div className="audience-copy">
           <p className="section-kicker">Para quién es</p>
@@ -545,11 +680,12 @@ function App() {
       <section className="finance-section" id="balance">
         <div className="finance-copy">
           <p className="section-kicker">Control financiero</p>
-          <h2>Toma decisiones con números claros, no con intuición.</h2>
+              <h2>Dashboard Pro y cuentas por cobrar para decidir con números claros.</h2>
           <p>
-            Cuando ingresos, gastos y balance están ordenados, sabes mejor qué
-            trabajos son rentables, qué falta por cobrar y cómo está funcionando
-            el taller. Menos cuentas dispersas, más claridad para decidir.
+            Cuando ingresos, gastos, rentabilidad, vencimientos y saldos están
+            ordenados, sabes mejor qué trabajos son rentables, qué falta por
+            cobrar y cómo está funcionando el taller. Menos cuentas dispersas,
+            más claridad para decidir.
           </p>
         </div>
 
@@ -588,112 +724,112 @@ function App() {
         </div>
       </section>
 
-      <section className="pricing-section" id="planes">
+      <section className="pricing-section pricing-section-pro" id="planes">
         <div className="pricing-copy">
-          <p className="section-kicker">Lanzamiento para talleres</p>
-          <h2>Empieza con una propuesta pensada para recuperar tiempo.</h2>
+          <p className="section-kicker">Planes ZagaPro</p>
+          <h2>Elige el nivel de control que necesita tu taller.</h2>
           <p>
-            Soluciones adaptadas al tamaño de tu taller. Solicita una demo y
-            recibe una propuesta personalizada centrada en ordenar tu operativa,
-            reducir papeleo y liberar horas de gestión cada semana.
+            Tres planes claros para empezar ordenando el día a día, sumar recepción avanzada y facturación especial, o controlar crédito, cobros y resultados con más profundidad.
           </p>
-          <div className="pricing-value-list" aria-label="Valor de la promoción">
-            <span>Recupera tiempo en presupuestos, facturas y seguimiento.</span>
-            <span>Empieza con una puesta en marcha guiada y ordenada.</span>
-            <span>Accede a condiciones especiales para los primeros talleres.</span>
+          <div className="pricing-value-list" aria-label="Valor de los planes">
+            <span>Básico ordena clientes, vehículos, órdenes, facturación y gastos.</span>
+            <span>Pro añade pre-órdenes, fotos, WhatsApp, recambio y dashboard avanzado.</span>
+            <span>Premium suma cuentas por cobrar, mayor, resultados, Rapel y Sin IVA.</span>
           </div>
         </div>
 
-        <article className="price-card">
-          <div className="price-icon">
-            <BadgeEuro size={28} />
+        <div className="plans-grid" aria-label="Planes y precios de ZagaPro">
+          {pricingPlans.map((plan) => (
+            <article
+              className={`plan-card ${plan.featured ? "featured-plan" : ""}`}
+              key={plan.name}
+            >
+              {plan.badge && <span className="plan-badge">{plan.badge}</span>}
+              <div className="plan-head">
+                <div className="price-icon">
+                  <BadgeEuro size={26} />
+                </div>
+                <div>
+                  <p className="price-label">{plan.name}</p>
+                  <p className="plan-intro">{plan.intro}</p>
+                </div>
+              </div>
+              <div className="plan-price">
+                <div className="plan-price-line">
+                  <small>Implantación</small>
+                  <span>{plan.setupPrice} €</span>
+                </div>
+                <div className="plan-price-line monthly">
+                  <small>Mensualidad</small>
+                  <span>{plan.monthlyPrice} €<em>/mes</em></span>
+                </div>
+              </div>
+              {plan.prefix && <p className="plan-prefix">{plan.prefix}</p>}
+              <ul>
+                {plan.features.map((feature) => (
+                  <li key={feature}>{feature}</li>
+                ))}
+              </ul>
+              <a
+                className={plan.featured ? "primary-button" : "secondary-button"}
+                href={onboardingWhatsappHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Solicitar {plan.name}
+                <ArrowRight size={18} />
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <div className="implementation-card">
+          <div>
+            <p className="section-kicker">Puesta en marcha</p>
+            <h3>Te ayudamos a dejar ZagaPro listo para operar, no solo instalado.</h3>
           </div>
-          <p className="price-label">Plan Taller</p>
-          <p className="launch-badge">Oferta de lanzamiento</p>
-          <div className="price">
-            <small className="price-prefix">Referencia</small>
-            <span>por menos que una reparación habitual al mes</span>
-          </div>
-          <p className="setup-price">
-            Promoción de lanzamiento para los primeros talleres. Solicita una
-            demo y recibe una propuesta personalizada según el tamaño de tu
-            taller.
-          </p>
           <ul>
-            <li>Configuración inicial del taller.</li>
-            <li>Clientes, vehículos, presupuestos y órdenes de trabajo.</li>
-            <li>Facturación, ingresos, gastos y seguimiento.</li>
-            <li>Repuestos, proveedores y servicios frecuentes.</li>
-            <li>Hasta 3 usuarios por taller.</li>
-            <li>Acompañamiento inicial para empezar a usarlo.</li>
+            <li>Configuración inicial del taller, datos fiscales y serie de facturación.</li>
+            <li>Carga guiada de usuarios, proveedores, servicios frecuentes y flujo de trabajo.</li>
+            <li>Acompañamiento inicial para emitir documentos y revisar el dashboard.</li>
+            <li>En Premium, configuración de crédito, vencimientos y cuentas por cobrar.</li>
           </ul>
-          <a
-            className="primary-button"
-            href={onboardingWhatsappHref}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Solicitar propuesta
-            <ArrowRight size={18} />
-          </a>
-        </article>
+        </div>
       </section>
 
       <section className="modules-section" id="módulos">
         <div className="modules-heading">
           <div>
-            <p className="section-kicker">Módulos adicionales</p>
-          <h2>Convierte tareas administrativas en oportunidades de venta.</h2>
+            <p className="section-kicker">Módulos en vigencia</p>
+            <h2>Funcionalidades listas para crecer sin cambiar de sistema.</h2>
           </div>
           <p>
-            Empieza con la gestión principal y suma herramientas para mantener
-            contacto con clientes, cerrar mejor la administración y generar más
-            trabajo recurrente.
+            La configuración por módulo permite activar lo que cada taller necesita sin complicar la experiencia diaria. En la landing lo resumimos por impacto comercial.
           </p>
         </div>
 
-        <div className="modules-grid">
-          {addOnModules.map((module) => {
-            const Icon = module.icon;
+        <div className="modules-grid compact-modules-grid">
+          {commercialAreas.map((area) => {
+            const Icon = area.icon;
             return (
-              <article
-                className={`module-card ${module.featured ? "featured-module" : ""}`}
-                key={module.title}
-              >
-                {module.badge && (
-                  <span className="module-badge">{module.badge}</span>
-                )}
-
+              <article className="module-card compact-module-card" key={area.title}>
                 <div className="module-icon">
                   <Icon size={24} />
                 </div>
-
                 <div>
-                  <h3>{module.title}</h3>
-                  <p>{module.text}</p>
+                  <h3>{area.title}</h3>
+                  <p>{area.text}</p>
                 </div>
-
-                <div className="module-prices">
-                  <span className="activation-promo">
-                    <span className="promo-label">
-                      Promoción de lanzamiento
-                    </span>
-
-                    <em>Sin coste de activación por tiempo limitado</em>
-                  </span>
-
-                  <span className="monthly-price">
-                    Uso mensual <strong>{module.publicMonthly}</strong>
-                  </span>
-
-                  {module.msg && <p className="roi-text">{module.msg}</p>}
+                <div className="module-prices module-tags-list">
+                  {area.modules.map((module) => (
+                    <span key={module}>{module}</span>
+                  ))}
                 </div>
               </article>
             );
           })}
         </div>
       </section>
-
       <section className="demo-section" id="demo">
         <div>
           <p className="section-kicker">Demo personalizada</p>
@@ -908,8 +1044,8 @@ function App() {
           <div className="footer-column">
             <strong>Producto</strong>
             <a href="#software">Software</a>
-            <a href="#sectores">Sectores</a>
-            <a href="#planes">Plan Empresa</a>
+            <a href="#control">Módulos</a>
+            <a href="#planes">Planes</a>
             <a href="#módulos">Módulos</a>
           </div>
           <div className="footer-column">
@@ -952,3 +1088,8 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+
+
+
+
