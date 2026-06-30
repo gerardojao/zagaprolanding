@@ -468,6 +468,103 @@ h1 {
   font-weight: 760;
 }
 
+.trust-section {
+  width: min(1180px, calc(100% - 40px));
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 18px;
+  margin: 34px auto 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.trust-label {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 0.82rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.trust-section h2 {
+  max-width: 520px;
+  margin-top: 12px;
+  font-size: clamp(1.65rem, 2.6vw, 2.45rem);
+}
+
+.trust-workshops {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.trust-workshops article {
+  min-height: 176px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, #fbfdf9 0%, #eef8f4 100%);
+}
+
+.trust-workshops span {
+  display: block;
+  color: #111a17;
+  font-size: 1.36rem;
+  font-weight: 950;
+}
+
+.trust-workshops strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--green-dark);
+  font-size: 0.88rem;
+  text-transform: uppercase;
+}
+
+.trust-workshops p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.authority-section {
+  width: min(1180px, calc(100% - 40px));
+  margin: 18px auto 0;
+  padding: 38px;
+  border: 1px solid rgba(14, 122, 93, 0.18);
+  border-radius: 16px;
+  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(19, 32, 28, 0.96), rgba(9, 79, 63, 0.95)),
+    url("/hero-zagapro.png") center / cover no-repeat;
+  box-shadow: var(--shadow-soft);
+}
+
+.authority-section .section-kicker {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #d8fff0;
+}
+
+.authority-section h2 {
+  max-width: 760px;
+  margin-bottom: 18px;
+  color: #fff;
+}
+
+.authority-section p:not(.section-kicker) {
+  max-width: 920px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.08rem;
+  line-height: 1.72;
+}
+
 .section,
 .feature-grid,
 .footer {
@@ -535,6 +632,58 @@ h2 {
 
 .feature-card p {
   margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.result-grid {
+  width: min(1180px, calc(100% - 40px));
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 auto;
+  padding: 6px 0 64px;
+}
+
+.result-card {
+  display: grid;
+  align-content: start;
+  min-height: 250px;
+  padding: 24px;
+  border: 1px solid rgba(14, 122, 93, 0.16);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.result-card div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.result-card svg {
+  color: var(--green);
+}
+
+.result-card span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.result-card h3 {
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: 1.18rem;
+  line-height: 1.22;
+}
+
+.result-card p {
+  margin: 0;
   color: var(--muted);
   line-height: 1.58;
 }
@@ -833,6 +982,62 @@ h2 {
   line-height: 1.58;
 }
 
+.scope-section {
+  width: min(1220px, calc(100% - 40px));
+  margin: 0 auto 76px;
+  padding: 44px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.scope-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1fr);
+  gap: 42px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.scope-heading p:not(.section-kicker) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.scope-grid article {
+  display: grid;
+  gap: 9px;
+  min-height: 132px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f9fbf7;
+}
+
+.scope-grid svg {
+  color: var(--green);
+}
+
+.scope-grid strong {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.scope-grid span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 .pricing-section {
   width: min(1180px, calc(100% - 40px));
   display: grid;
@@ -1065,36 +1270,39 @@ h2 {
   line-height: 1.16;
 }
 
-.implementation-card ul {
+.rollout-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
-.implementation-card li {
-  position: relative;
-  padding: 14px 14px 14px 42px;
+.rollout-grid article {
+  padding: 18px;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: #fff;
-  color: var(--ink);
-  font-weight: 780;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
 }
 
-.implementation-card li::before {
-  content: "";
-  position: absolute;
-  left: 17px;
-  top: 20px;
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--green);
+.rollout-grid span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--green-dark);
+  font-size: 0.78rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.rollout-grid strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 1.08rem;
+}
+
+.rollout-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .price-card {
@@ -1833,6 +2041,50 @@ h2 {
   line-height: 1.7;
 }
 
+.workflow-timeline {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.workflow-timeline div {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  min-height: 112px;
+  padding: 16px 13px;
+  border: 1px solid rgba(14, 122, 93, 0.16);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.workflow-timeline div::after {
+  content: "";
+  position: absolute;
+  top: 31px;
+  right: -9px;
+  width: 9px;
+  height: 2px;
+  background: rgba(14, 122, 93, 0.28);
+}
+
+.workflow-timeline div:last-child::after {
+  display: none;
+}
+
+.workflow-timeline span {
+  color: var(--green);
+  font-size: 0.76rem;
+  font-weight: 950;
+}
+
+.workflow-timeline strong {
+  color: var(--ink);
+  font-size: 0.94rem;
+  line-height: 1.28;
+}
+
 .commercial-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1896,6 +2148,22 @@ h2 {
   min-height: auto;
 }
 @media (max-width: 1100px) {
+  .result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .scope-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .workflow-timeline {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .workflow-timeline div:nth-child(4)::after {
+    display: none;
+  }
+
   .finance-highlights {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1920,7 +2188,21 @@ h2 {
 @media (max-width: 900px) {
   .commercial-heading,
   .commercial-grid,
+  .workflow-timeline,
   .compact-modules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-timeline div::after {
+    display: none;
+  }
+
+  .trust-section,
+  .scope-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-workshops {
     grid-template-columns: 1fr;
   }
 
@@ -1949,7 +2231,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .implementation-card ul {
+  .rollout-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1974,7 +2256,8 @@ h2 {
   }
 
   .proof-band,
-  .feature-grid {
+  .feature-grid,
+  .result-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2011,13 +2294,16 @@ h2 {
   .hero-content,
   .section,
   .feature-grid,
+  .result-grid,
   .footer-main,
   .footer-bottom,
   .proof-band,
+  .trust-section,
   .demo-section,
   .faq-section,
   .modules-section,
   .finance-section,
+  .scope-section,
   .pricing-section,
   .contact-section {
     width: min(100% - 28px, 1180px);
@@ -2071,10 +2357,12 @@ h2 {
   }
 
   .feature-card,
+  .result-card,
   .impact-panel,
   .price-card,
   .modules-section,
   .finance-section,
+  .scope-section,
   .demo-section,
   .contact-section {
     padding: 22px;
@@ -2102,6 +2390,7 @@ h2 {
   .finance-section,
   .finance-highlights,
   .finance-metrics,
+  .scope-grid,
   .plans-grid,
   .implementation-card,
   .footer-main {

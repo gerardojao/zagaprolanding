@@ -16,6 +16,7 @@ import {
   ReceiptText,
   Search,
   ShieldCheck,
+  Signature,
   TrendingUp,
   UsersRound,
   Wrench,
@@ -51,6 +52,99 @@ const sectors = [
   "Talleres multimarca",
   "Servicios de diagnosis",
   "Negocios locales de automoción",
+];
+
+const trustedWorkshops = [
+  {
+    name: "Master Touch",
+    city: "Valencia",
+    specialty: "Taller que ha impulsado funcionalidades desde la operativa diaria.",
+  },
+  {
+    name: "Multiservicios Crower",
+    city: "Albal, Valencia",
+    specialty: "Gestión profesional de clientes, vehículos, órdenes y facturación.",
+  },
+];
+
+const resultReframes = [
+  {
+    icon: Gauge,
+    old: "Estado de resultados",
+    title: "Descubre cuánto gana realmente tu taller cada mes.",
+    text: "Revisa ingresos, gastos y resultado con una lectura clara para tomar decisiones con números.",
+  },
+  {
+    icon: ReceiptText,
+    old: "Cuentas por cobrar",
+    title: "No vuelvas a olvidar un cobro.",
+    text: "Identifica facturas a crédito, abonos parciales, vencimientos y clientes con saldo pendiente.",
+  },
+  {
+    icon: ShieldCheck,
+    old: "Fotos de recepción",
+    title: "Evita reclamaciones con evidencia fotográfica.",
+    text: "Deja constancia visual del estado del vehículo antes de iniciar el trabajo.",
+  },
+  {
+    icon: Signature,
+    old: "Firma digital",
+    title: "Autoriza reparaciones sin imprimir documentos.",
+    text: "Convierte autorizaciones y aceptación de trabajos en un proceso más profesional y rápido.",
+  },
+];
+
+const workflowSteps = [
+  "Recepción del vehículo",
+  "Presupuesto",
+  "Orden de trabajo",
+  "Fotos",
+  "Firma",
+  "Facturación",
+  "Cobro",
+  "Estado de resultados",
+];
+
+const rolloutWeeks = [
+  {
+    week: "Semana 1",
+    title: "Configuración",
+    text: "Dejamos preparado el taller, usuarios, datos fiscales, series, módulos y flujo inicial.",
+  },
+  {
+    week: "Semana 2",
+    title: "Formación",
+    text: "El equipo aprende a crear clientes, vehículos, presupuestos, órdenes y facturas.",
+  },
+  {
+    week: "Semana 3",
+    title: "Primeras órdenes",
+    text: "Acompañamos la puesta en marcha con trabajo real para ajustar la rutina diaria.",
+  },
+  {
+    week: "Semana 4",
+    title: "Primer informe financiero",
+    text: "Revisamos cobros, gastos, balance y resultados para empezar a dirigir con números.",
+  },
+];
+
+const productScope = [
+  { icon: UsersRound, title: "Clientes", text: "Historial y datos localizados." },
+  { icon: Wrench, title: "Vehículos", text: "Matrículas, trabajos y estados." },
+  { icon: FileText, title: "Presupuestos", text: "Base para órdenes y facturas." },
+  { icon: ClipboardList, title: "Preórdenes", text: "Recepción más ordenada." },
+  { icon: ClipboardList, title: "Órdenes", text: "Trabajo diario bajo control." },
+  { icon: ShieldCheck, title: "Fotografías", text: "Evidencia de recepción." },
+  { icon: Signature, title: "Firmas", text: "Autorizaciones sin papel." },
+  { icon: ReceiptText, title: "Facturación", text: "Normal, recambio, Rapel y Sin IVA." },
+  { icon: BadgeEuro, title: "Cobros", text: "Crédito, abonos y vencimientos." },
+  { icon: Building2, title: "Bancos", text: "Movimientos y control financiero." },
+  { icon: Gauge, title: "Dashboards", text: "Indicadores operativos y financieros." },
+  { icon: TrendingUp, title: "Resultados", text: "Beneficio, mayor y balance." },
+  { icon: MessageCircle, title: "WhatsApp", text: "Avisos y seguimiento." },
+  { icon: ShieldCheck, title: "Permisos", text: "Usuarios y módulos configurables." },
+  { icon: Download, title: "Gestoría", text: "Exportación de facturas." },
+  { icon: HeartHandshake, title: "Fidelización", text: "Clientes que vuelven." },
 ];
 
 const features = [
@@ -251,17 +345,17 @@ const pricingPlans = [
     name: "Premium",
     setupPrice: "1.200",
     monthlyPrice: "199",
-    intro: "Para talleres que trabajan con crédito, abonos parciales y necesitan controlar vencimientos sin perder cobros.",
+    intro: "Dirige el taller con números, no con intuición.",
     prefix: "Todo lo anterior +",
     features: [
-      "Cuentas por cobrar",
+      "Beneficio mensual",
+      "Cobros pendientes",
+      "Balance",
       "Mayor",
-      "Estado de resultados",
-      "Facturas Rapel",
-      "Facturas sin IVA",
-      "Saldos pendientes y vencimientos",
+      "Bancos",
+      "Rentabilidad",
+      "Cuentas por cobrar",
       "Prioridad en soporte",
-      "Configuración inicial de crédito y CxC",
     ],
   },
 ];
@@ -443,13 +537,13 @@ function App() {
         <div className="hero-content">
           <div className="hero-copy-block">
             <p className="eyebrow">
-              Software de gestión para talleres mecánicos
+              ERP especializado para talleres independientes
             </p>
-            <h1>Ordena tu taller desde la recepción del vehículo hasta la factura.</h1>
+            <h1>Controla todo tu taller desde una sola plataforma.</h1>
             <p className="hero-copy">
-              Menos papeles, menos WhatsApp perdido y menos hojas de cálculo.
-              Ten clientes, vehículos, trabajos y cobros organizados en un solo
-              lugar para trabajar con más control y dar una mejor imagen.
+              Clientes, vehículos, órdenes de trabajo, facturación, cobros,
+              WhatsApp y rentabilidad conectados para trabajar con más control,
+              menos papel y una imagen más profesional.
             </p>
             <div className="hero-actions">
               <a
@@ -462,14 +556,14 @@ function App() {
                 <ArrowRight size={18} />
               </a>
               <a className="secondary-button" href="#software">
-                Ver funciones
+                Ver cómo funciona
               </a>
             </div>
             <div className="hero-tags" aria-label="Beneficios principales">
-              <span>Sin instalaciones</span>
-              <span>Más tiempo útil</span>
-              <span>Más control del taller</span>
-              <span>Clientes que regresan</span>
+              <span>Menos papel</span>
+              <span>Más control</span>
+              <span>Más beneficios</span>
+              <span>Cobros visibles</span>
               <span>Demo personalizada</span>
             </div>
           </div>
@@ -523,32 +617,76 @@ function App() {
 
       <section className="proof-band" aria-label="Indicadores del sistema">
         <div>
-          <strong>Más tiempo</strong>
-          <span>menos tareas repetidas</span>
+          <strong>Ya confían</strong>
+          <span>talleres reales en ZagaPro</span>
         </div>
         <div>
-          <strong>Más control</strong>
-          <span>todo el taller en un lugar</span>
+          <strong>Operativa real</strong>
+          <span>órdenes, facturas y vehículos</span>
         </div>
         <div>
-          <strong>Más regreso</strong>
-          <span>seguimiento a clientes</span>
+          <strong>ERP vertical</strong>
+          <span>no solo un programa de facturas</span>
         </div>
+      </section>
+
+      <section className="trust-section" aria-label="Clientes que confían en ZagaPro">
+        <div>
+          <p className="trust-label">Ya utilizan ZagaPro</p>
+          <h2>Talleres reales. Trabajo real. Necesidades reales.</h2>
+        </div>
+        <div className="trust-workshops">
+          {trustedWorkshops.map((workshop) => (
+            <article key={workshop.name}>
+              <span>{workshop.name}</span>
+              <strong>{workshop.city}</strong>
+              <p>{workshop.specialty}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="authority-section">
+        <p className="section-kicker">Desarrollado junto a talleres reales</p>
+        <h2>No copiamos otros programas. Construimos desde problemas de taller.</h2>
+        <p>
+          Cada función de ZagaPro nace de necesidades detectadas en talleres que
+          trabajan todos los días con clientes reales. Master Touch ha impulsado
+          funcionalidades desde la recepción, las órdenes, las fotos, las firmas,
+          la facturación y el control financiero. No desarrollamos funciones
+          porque sí. Desarrollamos soluciones para problemas reales.
+        </p>
       </section>
 
       <section className="section split" id="software">
         <div>
           <p className="section-kicker">Resultados para tu taller</p>
           <h2>
-            Recupera horas de trabajo cada semana y ofrece una experiencia más profesional.
+            No vendemos módulos. Vendemos tranquilidad, control y tiempo.
           </h2>
         </div>
         <p className="section-lead">
-          Un taller no necesita más herramientas sueltas. Necesita saber qué
-          está pendiente, qué está en reparación, qué falta por cobrar y qué
-          cliente conviene contactar. ZagaPro centraliza esa información para
-          que trabajes con más orden, menos errores y más tiempo útil.
+          Un taller no compra software porque quiera más pantallas. Lo compra
+          para saber qué está pendiente, qué vehículo está parado, qué falta por
+          cobrar y cuánto dinero deja realmente el mes. ZagaPro convierte esa
+          operación diaria en una forma de trabajar más clara y rentable.
         </p>
+      </section>
+
+      <section className="result-grid" aria-label="Resultados que resuelve ZagaPro">
+        {resultReframes.map((item) => {
+          const Icon = item.icon;
+          return (
+            <article className="result-card" key={item.title}>
+              <div>
+                <Icon size={24} />
+                <span>{item.old}</span>
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          );
+        })}
       </section>
 
       <section className="feature-grid" aria-label="Funciones principales">
@@ -567,10 +705,20 @@ function App() {
       <section className="commercial-section" id="control">
         <div className="commercial-heading">
           <p className="section-kicker">Todo lo que controlas</p>
-          <h2>Los módulos se explican por lo que resuelven, no por configuración técnica.</h2>
+          <h2>Así trabaja ZagaPro desde que entra el vehículo hasta que ves el resultado.</h2>
           <p>
-            ZagaPro agrupa la operación, la facturación, las finanzas y la comunicación del taller para que cada tarea termine conectada con el siguiente paso.
+            El cliente entiende mejor el producto cuando ve el flujo completo.
+            Cada paso deja información útil para el siguiente: operación,
+            documentación, facturación, cobro y análisis financiero.
           </p>
+        </div>
+        <div className="workflow-timeline" aria-label="Flujo completo de trabajo">
+          {workflowSteps.map((step, index) => (
+            <div key={step}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{step}</strong>
+            </div>
+          ))}
         </div>
         <div className="commercial-grid">
           {commercialAreas.map((area) => {
@@ -617,7 +765,7 @@ function App() {
       <section className="section impact" id="flujo">
         <div className="impact-panel">
           <Search size={28} />
-          <h2>Vende el resultado: más tiempo, más control y clientes que vuelven.</h2>
+          <h2>Menos papel. Más control. Más beneficios.</h2>
           <div className="benefits">
             {seoPages.map((page) => (
               <p key={page.title}>
@@ -652,15 +800,14 @@ function App() {
         <div>
           <p className="section-kicker">Probado en operativa real</p>
           <h2>
-            Creado desde problemas reales de un taller mecánico en Valencia.
+            ZagaPro nació trabajando junto a talleres reales.
           </h2>
         </div>
         <p className="section-lead">
-          El primer caso de uso viene de un taller que necesitaba recuperar
-          tiempo, reducir errores administrativos y tener más visibilidad del
-          día a día. Si buscas software para taller mecánico en Albal,
-          Catarroja, Massanassa o Valencia, la demo se puede adaptar a tu forma
-          real de trabajar.
+          Cada módulo se ha desarrollado a partir de necesidades detectadas en
+          el trabajo diario: recepción, presupuestos, órdenes, fotos, firmas,
+          facturas, cobros y control financiero. No desarrollamos software por
+          llenar menús. Ayudamos a que los talleres sean más rentables.
         </p>
       </section>
 
@@ -679,13 +826,12 @@ function App() {
 
       <section className="finance-section" id="balance">
         <div className="finance-copy">
-          <p className="section-kicker">Control financiero</p>
-              <h2>Dashboard Pro y cuentas por cobrar para decidir con números claros.</h2>
+          <p className="section-kicker">Así ve un gerente su taller cada mañana</p>
+          <h2>De un vistazo: ingresos, gastos, balance, cobros y rentabilidad.</h2>
           <p>
-            Cuando ingresos, gastos, rentabilidad, vencimientos y saldos están
-            ordenados, sabes mejor qué trabajos son rentables, qué falta por
-            cobrar y cómo está funcionando el taller. Menos cuentas dispersas,
-            más claridad para decidir.
+            El dueño no quiere perderse entre menús. Quiere abrir ZagaPro y
+            saber qué ha pasado, qué falta por cobrar, cómo va el mes y dónde
+            se está ganando o perdiendo dinero.
           </p>
         </div>
 
@@ -724,12 +870,38 @@ function App() {
         </div>
       </section>
 
+      <section className="scope-section" aria-label="Todo lo que ya incluye ZagaPro">
+        <div className="scope-heading">
+          <p className="section-kicker">Todo lo que ya incluye ZagaPro</p>
+          <h2>El tamaño del producto se nota cuando ves todo lo que conecta.</h2>
+          <p>
+            No es una herramienta para hacer facturas. Es un sistema completo
+            para gestionar operación, documentación, clientes, comunicación y
+            finanzas desde una misma plataforma.
+          </p>
+        </div>
+        <div className="scope-grid">
+          {productScope.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article key={item.title}>
+                <Icon size={21} />
+                <strong>{item.title}</strong>
+                <span>{item.text}</span>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
       <section className="pricing-section pricing-section-pro" id="planes">
         <div className="pricing-copy">
           <p className="section-kicker">Planes ZagaPro</p>
-          <h2>Elige el nivel de control que necesita tu taller.</h2>
+          <h2>Elige cuánto control necesita tu taller.</h2>
           <p>
-            Tres planes claros para empezar ordenando el día a día, sumar recepción avanzada y facturación especial, o controlar crédito, cobros y resultados con más profundidad.
+            Básico ordena la operación. Pro profesionaliza recepción,
+            comunicación y facturación. Premium convierte ZagaPro en el centro
+            financiero del taller.
           </p>
           <div className="pricing-value-list" aria-label="Valor de los planes">
             <span>Básico ordena clientes, vehículos, órdenes, facturación y gastos.</span>
@@ -786,14 +958,17 @@ function App() {
         <div className="implementation-card">
           <div>
             <p className="section-kicker">Puesta en marcha</p>
-            <h3>Te ayudamos a dejar ZagaPro listo para operar, no solo instalado.</h3>
+            <h3>¿Qué pasa cuando implantamos ZagaPro?</h3>
           </div>
-          <ul>
-            <li>Configuración inicial del taller, datos fiscales y serie de facturación.</li>
-            <li>Carga guiada de usuarios, proveedores, servicios frecuentes y flujo de trabajo.</li>
-            <li>Acompañamiento inicial para emitir documentos y revisar el dashboard.</li>
-            <li>En Premium, configuración de crédito, vencimientos y cuentas por cobrar.</li>
-          </ul>
+          <div className="rollout-grid">
+            {rolloutWeeks.map((item) => (
+              <article key={item.week}>
+                <span>{item.week}</span>
+                <strong>{item.title}</strong>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
