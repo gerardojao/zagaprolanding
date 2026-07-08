@@ -998,7 +998,7 @@ function App() {
             </p>
             <div className="hero-tags" aria-label="Beneficios principales">
               <span>Demo personalizada</span>
-              <span>-25% en implantación</span>
+              <span>-20% en implantación</span>
               <span>Compras y proveedores</span>
               <span>WhatsApp visible</span>
             </div>
