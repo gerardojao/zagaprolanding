@@ -46,7 +46,7 @@ function contactHtml(data) {
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ message: "Metodo no permitido." });
+    return res.status(405).json({ message: "Método no permitido." });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
 
   const body = readBody(req);
   if (body == null) {
-    return res.status(400).json({ message: "JSON invalido." });
+    return res.status(400).json({ message: "JSON inválido." });
   }
   if (clean(body.website)) {
     return res.status(200).json({ ok: true });
@@ -76,7 +76,7 @@ export default async function handler(req, res) {
   }
 
   if (!isValidEmail(payload.email)) {
-    return res.status(400).json({ message: "El email no es valido." });
+    return res.status(400).json({ message: "El email no es válido." });
   }
 
   const toEmail = process.env.CONTACT_TO_EMAIL || DEFAULT_TO_EMAIL;

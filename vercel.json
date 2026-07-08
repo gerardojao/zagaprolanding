@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/software-talleres-mecanicos",
+      "destination": "/software-talleres-mecanicos/index.html"
+    },
+    {
+      "source": "/software-talleres-mecanicos/",
+      "destination": "/software-talleres-mecanicos/index.html"
+    }
+  ]
+}
