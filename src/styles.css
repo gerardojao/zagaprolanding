@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #18231f;
@@ -7,7 +7,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   --ink: #18231f;
-  --muted: #66716b;
+  --muted: #353836;
   --line: #dfe5dc;
   --panel: #ffffff;
   --field: #f8faf6;
@@ -2015,6 +2015,19 @@ h2 {
   line-height: 1.72;
 }
 
+.purchase-section > div:nth-child(2) > p {
+  max-width: 570px;
+  padding: 18px 20px;
+  border: 1px solid rgba(14, 122, 93, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #26362f;
+  font-size: clamp(1.02rem, 1.35vw, 1.14rem);
+  font-weight: 650;
+  line-height: 1.72;
+  box-shadow: 0 18px 38px rgba(24, 35, 31, 0.08);
+}
+
 .comparison-section {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
@@ -2129,7 +2142,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
-  margin-top: 18px;
+  margin-top: 25px;
 }
 
 .purchase-tags span {
@@ -2446,6 +2459,10 @@ h2 {
   .comparison-section {
     width: min(100% - 28px, 1180px);
     padding: 22px;
+  }
+
+  .purchase-tags {
+    margin-top: 35px;
   }
 
   .comparison-table {
