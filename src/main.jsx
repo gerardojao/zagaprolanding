@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import {
   ArrowRight,
@@ -7,16 +7,14 @@ import {
   Building2,
   CheckCircle2,
   ClipboardList,
-  Download,
   FileText,
   Gauge,
-  HeartHandshake,
+  LogIn,
   Mail,
   MessageCircle,
   ReceiptText,
   Search,
   ShieldCheck,
-  Signature,
   TrendingUp,
   UsersRound,
   Wrench,
@@ -24,423 +22,253 @@ import {
 import "./styles.css";
 
 const whatsappNumber = "34624728398";
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-const whatsappTemplate = `Hola Gerardo, me gustaría solicitar una demo de ZagaPro para mi taller mecánico.
+const whatsappTemplate = `Hola Gerardo, me gustaria solicitar una demo de ZagaPro para mi taller.
 
 Mi nombre es:
 Taller:
-Tipo de servicio mecánico:
 Ciudad:
 
-Me interesa conocer cómo ZagaPro puede ayudarme a pasar menos tiempo entre papeles, WhatsApp y hojas de cálculo, controlar compras/proveedores y trabajar con más claridad.`;
+Quiero revisar como ZagaPro puede ayudarme con ordenes, facturas, cobros, compras y rentabilidad.`;
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-const sectors = [
-  "Talleres mecánicos",
-  "Talleres de reparación rápida",
-  "Electromecánica",
-  "Chapa y pintura",
-  "Neumáticos y mantenimiento",
-  "Talleres multimarca",
-  "Servicios de diagnosis",
-  "Negocios locales de automoción",
-];
-
-const trustedWorkshops = [
+const problems = [
   {
-    name: "Master Touch",
-    city: "Valencia",
-    specialty: "Taller que ha impulsado funcionalidades desde la operativa diaria.",
-  },
-  {
-    name: "Multiservicios Crower",
-    city: "Albal, Valencia",
-    specialty: "Gestión profesional de clientes, vehículos, órdenes y facturación.",
-  },
-];
-
-const resultReframes = [
-  {
-    icon: Gauge,
-    old: "Estado de resultados",
-    title: "Descubre cuánto gana realmente tu taller cada mes.",
-    text: "Revisa ingresos, gastos y resultado con una lectura clara para tomar decisiones con números.",
+    icon: ClipboardList,
+    title: "Pierdes tiempo buscando informacion del cliente?",
+    text: "Todo el historial del cliente en segundos.",
   },
   {
     icon: ReceiptText,
-    old: "Cuentas por cobrar",
-    title: "No vuelvas a olvidar un cobro.",
-    text: "Identifica facturas a crédito, abonos parciales, vencimientos y clientes con saldo pendiente.",
+    title: "Se te quedan facturas pendientes por cobrar?",
+    text: "Cobra antes y ve que esta facturado, pagado o pendiente sin revisar conversaciones ni papeles.",
   },
   {
-    icon: ShieldCheck,
-    old: "Fotos de recepción",
-    title: "Evita reclamaciones con evidencia fotográfica.",
-    text: "Deja constancia visual del estado del vehículo antes de iniciar el trabajo.",
-  },
-  {
-    icon: Signature,
-    old: "Firma digital",
-    title: "Autoriza reparaciones sin imprimir documentos.",
-    text: "Convierte autorizaciones y aceptación de trabajos en un proceso más profesional y rápido.",
+    icon: Gauge,
+    title: "Sabes cuanto gana realmente cada trabajo?",
+    text: "Gestiona compras, proveedores, gastos y rentabilidad desde el mismo sistema.",
   },
 ];
 
-const workflowSteps = [
-  "Recepción del vehículo",
-  "Presupuesto",
-  "Orden de trabajo",
-  "Fotos",
-  "Firma",
-  "Facturación",
+const emotionalBenefits = [
+  "Recupera horas cada semana.",
+  "Deja de perder trabajos por falta de seguimiento.",
+  "Cobra antes y con mas orden.",
+  "Dedica menos tiempo a la administración del taller.",
+  "Encuentra cualquier reparacion en segundos.",
+];
+
+const workflow = [
+  "Recepcion",
+  "Diagnostico",
+  "Pre-orden",
+  "Orden",
+  "Factura",
   "Cobro",
-  "Estado de resultados",
+  "Rentabilidad",
 ];
 
-const rolloutWeeks = [
-  {
-    week: "Semana 1",
-    title: "Configuración",
-    text: "Dejamos preparado el taller, usuarios, datos fiscales, series, módulos y flujo inicial.",
-  },
-  {
-    week: "Semana 2",
-    title: "Formación",
-    text: "El equipo aprende a crear clientes, vehículos, presupuestos, órdenes y facturas.",
-  },
-  {
-    week: "Semana 3",
-    title: "Primeras órdenes",
-    text: "Acompañamos la puesta en marcha con trabajo real para ajustar la rutina diaria.",
-  },
-  {
-    week: "Semana 4",
-    title: "Primer informe financiero",
-    text: "Revisamos cobros, gastos, balance y resultados para empezar a dirigir con números.",
-  },
+const comparisonRows = [
+  ["Excel", "Todo integrado"],
+  ["WhatsApp disperso", "Seguimiento ordenado"],
+  ["Papeles y notas", "Historial por cliente y vehiculo"],
+  ["Facturas aisladas", "Gestion completa del taller"],
+  ["No sabes cuanto ganas", "Rentabilidad visible"],
 ];
 
-const productScope = [
-  { icon: UsersRound, title: "Clientes", text: "Historial y datos localizados." },
-  { icon: Wrench, title: "Vehículos", text: "Matrículas, trabajos y estados." },
-  { icon: FileText, title: "Presupuestos", text: "Base para órdenes y facturas." },
-  { icon: ClipboardList, title: "Preórdenes", text: "Recepción más ordenada." },
-  { icon: ClipboardList, title: "Órdenes", text: "Trabajo diario bajo control." },
-  { icon: ShieldCheck, title: "Fotografías", text: "Evidencia de recepción." },
-  { icon: Signature, title: "Firmas", text: "Autorizaciones sin papel." },
-  { icon: ReceiptText, title: "Facturación", text: "Normal, recambio, Rapel y Sin IVA." },
-  { icon: BadgeEuro, title: "Cobros", text: "Crédito, abonos y vencimientos." },
-  { icon: Building2, title: "Bancos", text: "Movimientos y control financiero." },
-  { icon: Gauge, title: "Dashboards", text: "Indicadores operativos y financieros." },
-  { icon: TrendingUp, title: "Resultados", text: "Beneficio, mayor y balance." },
-  { icon: MessageCircle, title: "WhatsApp", text: "Avisos y seguimiento." },
-  { icon: ShieldCheck, title: "Permisos", text: "Usuarios y módulos configurables." },
-  { icon: Download, title: "Gestoría", text: "Exportación de facturas." },
-  { icon: HeartHandshake, title: "Fidelización", text: "Clientes que vuelven." },
+const purchaseComparison = [
+  ["Facturacion", true, true],
+  ["Clientes", true, true],
+  ["Presupuestos", true, true],
+  ["Compras", false, true],
+  ["IVA soportado", false, true],
+  ["Cuentas por pagar", false, true],
 ];
 
-const features = [
+const modules = [
   {
     icon: UsersRound,
-    title: "Encuentra cada reparación en segundos",
-    text: "Ten clientes, vehículos, matrículas e historial organizados para no perder tiempo buscando datos en libretas o conversaciones.",
-  },
-  {
-    icon: FileText,
-    title: "Dedica menos tiempo al papeleo",
-    text: "Prepara presupuestos y facturas con menos tareas repetidas para que la administración no frene el ritmo del taller.",
+    title: "Clientes y vehiculos",
+    text: "Historial, matriculas, datos y trabajos localizados.",
   },
   {
     icon: ClipboardList,
-    title: "Sabe qué pasa en cada vehículo",
-    text: "Mantén trabajos, estados, responsables, repuestos y tareas pendientes bajo control sin depender de notas sueltas.",
+    title: "Ordenes de trabajo",
+    text: "Estados, tareas, responsables y seguimiento diario.",
+  },
+  {
+    icon: FileText,
+    title: "Presupuestos",
+    text: "Documentos claros que avanzan hacia orden y factura.",
   },
   {
     icon: ReceiptText,
-    title: "Cobra con más orden",
-    text: "Conecta reparaciones, facturas, ingresos y gastos para tener más claridad sobre lo que entra, lo que sale y lo que falta por cobrar.",
+    title: "Facturacion y cobros",
+    text: "Facturas, abonos, credito y pendientes de cobro.",
   },
   {
-    icon: BellRing,
-    title: "Haz que tus clientes vuelvan",
-    text: "Mantén el contacto con clientes pendientes, revisiones y mantenimientos para aumentar las oportunidades de trabajo recurrente.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Da una imagen más profesional",
-    text: "Trabaja con documentos, seguimiento y comunicación más consistentes para que el cliente perciba un taller más organizado.",
-  },
-];
-
-const seoPages = [
-  {
-    title: "Más tiempo",
-    text: "Recupera horas cada semana reduciendo tareas repetidas en presupuestos, órdenes, facturas y seguimiento.",
-  },
-  {
-    title: "Más control",
-    text: "Ten toda la información del taller organizada en un solo lugar para saber qué está pendiente, en curso, facturado o cobrado.",
-  },
-  {
-    title: "Más ingresos",
-    text: "Dedica menos tiempo al papeleo y más tiempo a trabajos que generan dinero dentro del taller.",
-  },
-  {
-    title: "Clientes que regresan",
-    text: "Mantente presente con recordatorios y seguimiento para que tus clientes vuelvan cuando necesiten mantenimiento o reparación.",
-  },
-];
-
-const benefits = [
-  "Recupera horas cada semana reduciendo tareas administrativas repetidas.",
-  "Ten claro qué vehículos están pendientes, en reparación, facturados o cobrados.",
-  "Ofrece una experiencia más profesional desde el presupuesto hasta la entrega.",
-  "Mantén el contacto con tus clientes y aumenta las probabilidades de que vuelvan.",
-];
-
-const financeHighlights = [
-  {
-    label: "Ingresos",
-    value: "Por factura",
-    text: "Consulta cada ingreso con su número de factura, cliente, fecha, concepto e importe.",
-  },
-  {
-    label: "Egresos",
-    value: "Por periodo",
-    text: "Registra gastos, proveedores, compras y salidas para saber dónde se va el dinero.",
-  },
-  {
-    label: "Balance",
-    value: "Siempre visible",
-    text: "Filtra por rango de fechas y revisa el balance entre ingresos y egresos en segundos.",
-  },
-  {
-    label: "Dashboard Pro",
-    value: "Indicadores clave",
-    text: "Revisa rentabilidad, evolución financiera y señales del negocio sin depender de hojas externas.",
-  },
-  {
-    label: "CxC",
-    value: "Crédito controlado",
-    text: "Identifica facturas a crédito, saldos pendientes, vencimientos y clientes deudores.",
-  },
-];
-
-const commercialAreas = [
-  {
-    icon: Wrench,
-    title: "Operación del taller",
-    text: "Controla el vehículo desde que entra hasta que se entrega.",
-    modules: ["Pre-órdenes", "Órdenes de trabajo", "Vehículos por estado", "Fotos de recepción", "Mecánica y chapa"],
-  },
-  {
-    icon: ReceiptText,
-    title: "Facturación y administración",
-    text: "Emite documentos con menos pasos y deja la información lista para gestión.",
-    modules: ["Facturas normales", "Recambio", "Rapel", "Sin IVA", "Exportación de facturas"],
+    icon: Building2,
+    title: "Compras y proveedores",
+    text: "Albaranes, facturas recibidas y cuentas por pagar.",
   },
   {
     icon: TrendingUp,
-    title: "Finanzas y cobros",
-    text: "Mira lo facturado, lo comprado, lo pendiente de cobro y el estado real del negocio.",
-    modules: ["Facturado hoy y mes", "Estado de resultados", "Cuentas por cobrar", "Mayor", "Balance"],
-  },
-  {
-    icon: ReceiptText,
-    title: "Compras y proveedores",
-    text: "Controla facturas recibidas, albaranes, pagos a proveedor e IVA soportado.",
-    modules: ["Facturas proveedor", "Albaranes", "Cuentas por pagar", "Libro de compras", "IVA soportado", "Compras avanzadas"],
-  },
-  {
-    icon: BellRing,
-    title: "Comunicación y seguimiento",
-    text: "Avisa al cliente en el momento correcto y evita conversaciones perdidas.",
-    modules: ["Alertas WhatsApp", "Vehículo listo", "Seguimiento", "Historial del cliente"],
+    title: "Balance y mayor",
+    text: "Ingresos, gastos, compras y resultado del negocio.",
   },
 ];
-const addOnModules = [
+
+const purchaseTags = [
+  "Facturas proveedor",
+  "Albaranes",
+  "Cuentas por pagar",
+  "Libro de compras",
+  "IVA soportado",
+  "Proveedores",
+  "Compras avanzadas",
+];
+
+const productSlides = [
   {
-    icon: BellRing,
-    title: "Seguimiento Inteligente",
-    text: "Mantente presente en la mente de tus clientes y aumenta las probabilidades de que vuelvan sin perder tiempo en llamadas repetitivas.",
-    activation: "69,99 EUR",
-    monthly: "14,99 EUR/mes",
-    publicMonthly: "Incluido en propuesta de lanzamiento",
+    label: "PANEL",
+    title: "Panel principal",
+    src: "/pantalla1.png",
+    alt: "Panel principal de ZagaPro con indicadores de gestion del taller.",
   },
   {
-    icon: Download,
-    title: "Pack Facturas Gestoría",
-    text: "Reduce el tiempo de cierre administrativo preparando la información del periodo de forma ordenada para gestoría o respaldo.",
-    activation: "49,99 EUR",
-    monthly: "9,99 EUR/mes",
-    publicMonthly: "Incluido en propuesta de lanzamiento",
+    label: "CLIENTES",
+    title: "Vista operativa",
+    src: "/Pantalla2.png",
+    alt: "Vista operativa de ZagaPro.",
   },
   {
-    icon: HeartHandshake,
-    title: "Pack Fidelidad",
-    text: "Convierte el seguimiento en una rutina sencilla para recuperar clientes y generar más trabajo recurrente.",
-    monthly: "19,99 EUR/mes",
-    publicMonthly: "Condiciones iniciales especiales",
-    badge: "Pack recomendado",
-    msg: "Con que vuelva un solo cliente, el pack prácticamente se paga solo.",
-    featured: true,
+    label: "ORDENES",
+    title: "Ordenes de trabajo",
+    src: "/GenerarOrdenes.png",
+    alt: "Pantalla para generar ordenes de trabajo en ZagaPro.",
   },
   {
-    icon: Gauge,
-    title: "Dashboard Pro",
-    text: "Una vista avanzada para revisar indicadores financieros, rentabilidad por repuesto y señales de gestión del taller.",
-    monthly: "Incluido en Pro",
-    publicMonthly: "Disponible desde plan Pro",
-    badge: "Nuevo",
+    label: "FACTURACION",
+    title: "Emite una factura en menos de un minuto.",
+    src: "/Emision_reimpresion_de_facturas.png",
+    alt: "Pantalla de emision y reimpresion de facturas en ZagaPro.",
   },
   {
-    icon: ReceiptText,
-    title: "Cuentas por Cobrar",
-    text: "Controla facturas a crédito, abonos parciales, saldos pendientes, vencimientos y clientes deudores desde un solo panel.",
-    monthly: "Incluido en Premium",
-    publicMonthly: "Disponible en plan Premium",
-    badge: "Nuevo módulo",
-    featured: true,
+    label: "COBROS",
+    title: "Registra facturas cobradas y pendientes de cobro.",
+    src: "/pantalla4.png",
+    alt: "Modulo de cuentas por cobrar en ZagaPro.",
+  },
+  {
+    label: "COMPRAS",
+    title: "Registra y monitorea en tiempo real tus pagos pendientes a proveedores.",
+    src: "/pantalla5.png",
+    alt: "Modulo de compras y proveedores en ZagaPro.",
+  },
+  {
+    label: "BALANCE",
+    title: "Monitorea tus ganancias al momento por ventas de recambios y servicios",
+    src: "/RentabilidadLineasFacturadas.png",
+    alt: "Pantalla de rentabilidad de lineas facturadas en ZagaPro.",
   },
 ];
 
 const pricingPlans = [
   {
-    name: "Básico",
+    name: "Basico",
     setupPrice: "599",
+    promoPrice: "449",
     monthlyPrice: "129",
-    promo: "Promoción crecimiento: -25% en implantación",
-    intro: "Para talleres que quieren ordenar la operación diaria y empezar a trabajar con menos papeleo.",
+    ideal: "Ideal para talleres pequenos.",
+    intro: "Operacion diaria del taller.",
     features: [
-      "Clientes y vehículos",
-      "Órdenes de trabajo",
+      "Clientes y vehiculos",
+      "Ordenes de trabajo",
       "Presupuestos",
-      "Facturación",
-      "Cobros",
-      "Gastos simples",
-      "Proveedores básicos",
-      "Balance básico",
-      "Puesta en marcha guiada",
+      "Facturacion",
+      "Cobros", "Rentabilidad por recambio y servicio",
     ],
   },
   {
     name: "Pro",
     setupPrice: "899",
+    promoPrice: "674",
     monthlyPrice: "169",
-    badge: "Más vendido",
+    badge: "Mas vendido",
     featured: true,
-    promo: "Promoción crecimiento: -25% en implantación",
-    intro: "Para talleres que quieren más control comercial, operativo y financiero.",
-    prefix: "Todo lo anterior +",
+    ideal: "Ideal para talleres de 2-5 empleados.",
+    intro: "Mas control comercial, operativo y financiero.",
     features: [
-      "Compras avanzadas opcional",
-      "Control de albaranes",
-      "Gestión avanzada de proveedores",
+      "Todo lo del Basico",
+      "Registro y conversion de albaranes a facturas",
+      "Gestion avanzada de proveedores",
       "Inventario y repuestos",
-      "Rentabilidad por repuesto",
-      "Mayor detalle financiero",
       "Soporte prioritario",
     ],
   },
   {
     name: "Premium",
     setupPrice: "1.490",
+    promoPrice: "1.117",
     monthlyPrice: "229",
-    promo: "Promoción crecimiento: -25% en implantación",
-    intro: "Convierte ZagaPro en el centro financiero completo del taller.",
-    prefix: "Todo lo anterior +",
+    ideal: "Ideal para talleres que quieren controlar toda la parte financiera.",
+    intro: "Centro financiero completo del taller.",
     features: [
-      "Compras avanzadas incluidas",
-      "Facturas recibidas",
-      "Facturas pendientes de cobro",
+      "Todo lo del Pro",
+      "Gestion automatizada de facturas recibidas e IVA soportado",
+      "Balance avanzado y mayor contable",
+      "Libro de compras y compras avanzadas",
       "Cuentas por pagar",
-      "Libro de compras",
-      "IVA repercutido/soportado",
-      "Mayor contable",
-      "Prioridad en soporte",
     ],
+  },
+];
+
+const testimonials = [
+  {
+    logo: "/logocrower.png",
+    name: "Multiservicios Crower",
+    author: "Vanessa G.",
+    role: "Administradora",
+    quote:
+      "Excelente sistema y amigable por demás, es muy fácil su manejo y facilita muchísimo el trabajo, además que el soporte es muy bueno, calificado, con gran conocimiento y rapidez, éxitos y gracias por servirnos.",
+
+  },
+  {
+    logo: "/logomaster.png",
+    name: "Master Touch",
+    author: "Alex B.",
+    role: "CEO",
+    quote:
+      "ZagaPro se adapto a nuestra forma de trabajar y nos permite crecer con mas orden.",
+  
   },
 ];
 
 const faqs = [
   {
-    question: "¿Qué es ZagaPro?",
+    question: "Que es ZagaPro?",
     answer:
-      "ZagaPro es un software para talleres mecánicos que ayuda a recuperar tiempo, tener más control del negocio y mantener el contacto con clientes para que vuelvan.",
+      "ZagaPro es un software para talleres mecanicos en Espana que organiza clientes, vehiculos, ordenes, facturas, cobros, compras y resultados.",
   },
   {
-    question: "¿Sirve solo para talleres mecánicos?",
+    question: "El modulo de compras es obligatorio?",
     answer:
-      "Ahora la landing está enfocada a talleres mecánicos porque es el primer mercado natural. La base del sistema puede adaptarse más adelante a otros negocios de servicios.",
+      "No. Puedes empezar con operacion, facturacion y gastos basicos. Si necesitas mas organizacion, puedes activar compras avanzadas.",
   },
   {
-    question: "¿Puedo crear presupuestos y convertirlos en trabajos?",
+    question: "Que incluye la promocion de crecimiento?",
     answer:
-      "Sí. La idea es reducir pasos repetidos: preparas el presupuesto, lo conviertes en trabajo y aprovechas esa información para facturar y hacer seguimiento.",
+      "La promocion aplica un 25% de descuento sobre la implantacion inicial. La mensualidad se mantiene igual segun el plan elegido.",
   },
   {
-    question: "¿ZagaPro ayuda a controlar clientes recurrentes?",
+    question: "ZagaPro incluye Verifactu?",
     answer:
-      "Sí. El objetivo es que no olvides clientes, revisiones o trabajos pendientes y puedas generar más oportunidades de regreso.",
+      "Estamos desarrollando la integracion con Verifactu para adaptarnos a la normativa espanola en cuanto sea obligatoria.",
   },
   {
-    question: "¿El módulo de compras es obligatorio?",
+    question: "Por que no usar solo un programa de facturacion?",
     answer:
-      "No. Puedes empezar con operación, facturación y gastos básicos. Si el taller necesita más control, se puede activar compras avanzadas para gestionar facturas recibidas, albaranes, cuentas por pagar y libro de compras.",
-  },
-  {
-    question: "¿Qué incluye la promoción de lanzamiento?",
-    answer:
-      "La promoción aplica un 25% de descuento sobre la implantación inicial. La mensualidad se mantiene igual según el plan elegido.",
-  },
-  {
-    question: "¿Por qué ZagaPro cuesta más que un programa de facturación simple?",
-    answer:
-      "Porque ZagaPro no solo emite facturas. Centraliza la operación del taller: clientes, vehículos, órdenes, presupuestos, facturas, cobros, compras, proveedores y resultados del negocio.",
-  },
-];
-
-const productSlides = [
-  {
-    title: "Panel principal",
-    src: "/pantalla1.png",
-    alt: "Panel principal de ZagaPro con indicadores y accesos de gestión.",
-  },
-  {
-    title: "Vista operativa",
-    src: "/Pantalla2.png",
-    alt: "Vista operativa de ZagaPro para el control diario del negocio.",
-  },
-  {
-    title: "Alertas de cliente",
-    src: "/PantallaAlerta.png",
-    alt: "Pantalla de alertas de cliente y seguimiento en ZagaPro.",
-  },
-  {
-    title: "Órdenes de trabajo",
-    src: "/GenerarOrdenes.png",
-    alt: "Pantalla para generar órdenes de trabajo en ZagaPro.",
-  },
-  {
-    title: "Emisión de facturas",
-    src: "/Emision_reimpresion_de_facturas.png",
-    alt: "Pantalla de emisión y reimpresión de facturas en ZagaPro.",
-  },
-   {
-    title: "Facturas pendientes de cobro",
-    src: "/pantalla4.png",
-    alt: "Módulo de cuentas por cobrar en ZagaPro.",
-  },
-  {
-    title: "Módulo de Compras",
-    src: "/pantalla5.png",
-    alt: "Módulo de compras en ZagaPro.",
-  },
-  {
-    title: "Rentabilidad de líneas",
-    src: "/RentabilidadLineasFacturadas.png",
-    alt: "Pantalla de rentabilidad de líneas facturadas en ZagaPro.",
+      "Porque el taller necesita ver tambien ordenes, compras, proveedores, cobros pendientes, gastos y rentabilidad, no solo emitir facturas.",
   },
 ];
 
@@ -505,7 +333,7 @@ function App() {
     if (!emailPattern.test(trimmedEmail)) {
       setContactStatus({
         type: "error",
-        text: "Introduce un correo electrónico válido para poder responderte.",
+        text: "Introduce un correo electronico valido para poder responderte.",
       });
       return;
     }
@@ -513,11 +341,14 @@ function App() {
     const payload = {
       ...contactForm,
       name: contactForm.name.trim(),
-      company: contactForm.company.trim(),
+      company: contactForm.company.trim() || "Demo solicitada desde landing",
       email: trimmedEmail,
       phone: contactForm.phone.trim(),
-      businessType: contactForm.businessType.trim(),
-      message: contactForm.message.trim(),
+      businessType:
+        contactForm.businessType.trim() || "Demo solicitada desde landing",
+      message:
+        contactForm.message.trim() ||
+        "Quiere solicitar una demo personalizada de ZagaPro.",
     };
 
     try {
@@ -551,7 +382,7 @@ function App() {
       setContactStatus({
         type: "error",
         text:
-          error?.message || "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+          error?.message || "No se pudo enviar el mensaje. Intentalo de nuevo.",
       });
     } finally {
       setContactSubmitting(false);
@@ -561,36 +392,47 @@ function App() {
   return (
     <main>
       <section className="hero" id="inicio">
-        <nav className="nav" aria-label="Navegación principal">
+        <nav className="nav" aria-label="Navegacion principal">
           <a className="brand" href="#inicio" aria-label="ZagaPro inicio">
             <img src="/logozagapro.png" alt="ZagaPro" />
           </a>
           <div className="nav-links">
-            <a href="#software">Software</a>
-            <a href="#control">Módulos</a>
-            <a href="#flujo">Flujo</a>
-            <a href="#balance">Balance</a>
-            <a href="#planes">Planes</a>
-            <a href="#preguntas">Preguntas</a>
-            <a href="#demo">Demo</a>
+            <a href="#funciona">Como funciona</a>
+            <a href="#modulos">Módulos</a>
+            <a href="#planes">Precios</a>
+            <button type="button" onClick={openContact}>
+              Solicitar demo
+            </button>
           </div>
           <button className="nav-cta" type="button" onClick={openContact}>
             <Mail size={17} />
             Contactar
           </button>
+          <a
+            className="client-access-cta"
+            href="https://zagapro.store"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>Ya eres cliente?</span>
+            Accede al sistema
+            <LogIn size={17} />
+          </a>
         </nav>
 
         <div className="hero-content">
           <div className="hero-copy-block">
             <p className="eyebrow">
-              ERP especializado para talleres independientes
+              Software para talleres mecanicos en Espana
             </p>
-            <h2>Controla todo tu taller desde una sola plataforma.</h2>
+            <h1>
+             Todo tu taller organizado desde una sola plataforma.
+            </h1>
             <p className="hero-copy">
-              ZagaPro no es un programa de facturación genérico. Es un ERP
-              vertical para talleres que conecta clientes, vehículos, órdenes,
-              facturas, cobros, compras, proveedores y resultados del negocio.
+              Dedica menos tiempo al papeleo y mas tiempo a reparar vehiculos.
+              Toda la gestion de tu taller en un unico sistema.
             </p>
+
             <div className="hero-actions">
               <button
                 className="primary-button"
@@ -600,16 +442,18 @@ function App() {
                 Solicitar demo
                 <ArrowRight size={18} />
               </button>
-              <a className="secondary-button" href="#software">
-                Ver cómo funciona
+              <a className="secondary-button" href="#planes">
+                Ver precios
               </a>
             </div>
+            <p className="hero-trust">
+              Ya utilizado por talleres reales en Espana.
+            </p>
             <div className="hero-tags" aria-label="Beneficios principales">
-              <span>Menos papel</span>
-              <span>Más control</span>
-              <span>Más beneficios</span>
-              <span>Cobros visibles</span>
               <span>Demo personalizada</span>
+              <span>-25% en implantacion</span>
+              <span>Compras y proveedores</span>
+              <span>WhatsApp visible</span>
             </div>
           </div>
 
@@ -618,8 +462,8 @@ function App() {
             aria-label="Capturas del producto ZagaPro"
           >
             <div className="showcase-status">
-              <span>Operación activa</span>
-              <strong>Tiempo, control y clientes conectados</strong>
+              <span>Operacion activa</span>
+              <strong>Capturas reales del sistema</strong>
             </div>
             <div className="showcase-frame">
               {productSlides.map((slide, index) => (
@@ -632,19 +476,19 @@ function App() {
                     type="button"
                     className="slide-image-button"
                     onClick={() => setExpandedSlide(slide)}
-                    aria-label={`Amplíar ${slide.title}`}
+                    aria-label={`Ampliar ${slide.title}`}
                   >
                     <img
                       src={slide.src}
                       alt={slide.alt}
                       loading={index === 0 ? "eager" : "lazy"}
                     />
+                    {/* <span className="slide-label">{slide.label}</span> */}
                   </button>
                   <figcaption>{slide.title}</figcaption>
                 </figure>
               ))}
             </div>
-
             <div className="showcase-controls" aria-label="Seleccionar captura">
               {productSlides.map((slide, index) => (
                 <button
@@ -660,123 +504,136 @@ function App() {
         </div>
       </section>
 
-      <section className="proof-band" aria-label="Indicadores del sistema">
+            <section className="positioning-band">
+        Mientras otros programas solo hacen facturas, ZagaPro organiza todo el
+        taller.
+      </section>
+
+      <section className="proof-band" aria-label="Confianza inicial">
         <div>
-          <strong>Ya confían</strong>
-          <span>talleres reales en ZagaPro</span>
+          <strong>Desarrollado junto a talleres reales.</strong>
+          <span>Producto creado desde problemas reales de operativa diaria.</span>
         </div>
         <div>
-          <strong>Operativa real</strong>
-          <span>órdenes, facturas y vehículos</span>
+          <strong>En funcionamiento en talleres.</strong>
+          <span>Clientes, ordenes, facturas, cobros y compras en uso real.</span>
         </div>
         <div>
-          <strong>ERP vertical</strong>
-          <span>no solo un programa de facturas</span>
+          <strong>Promocion crecimiento.</strong>
+          <span>
+            25% de descuento sobre la implantacion inicial para las primeras
+            implantaciones.
+          </span>
         </div>
       </section>
 
-      <section className="trust-section" aria-label="Clientes que confían en ZagaPro">
-        <div>
-          <p className="trust-label">Ya utilizan ZagaPro</p>
-          <h2>Talleres reales. Trabajo real. Necesidades reales.</h2>
+
+      <section className="premium-product-section">
+        <div className="premium-product-copy">
+          <p className="section-kicker">Producto en uso real</p>
+          <h2>Una vista profesional del taller desde el primer dia.</h2>
+          <p>
+            ZagaPro no se queda en emitir documentos. Te muestra clientes,
+            vehiculos, ordenes, cobros, compras y balance en una pantalla clara
+            para tomar decisiones sin perder tiempo.
+          </p>
+          <button className="primary-button" type="button" onClick={openContact}>
+            Solicitar demo personalizada
+            <ArrowRight size={18} />
+          </button>
         </div>
-        <div className="trust-workshops">
-          {trustedWorkshops.map((workshop) => (
-            <article key={workshop.name}>
-              <span>{workshop.name}</span>
-              <strong>{workshop.city}</strong>
-              <p>{workshop.specialty}</p>
-            </article>
-          ))}
-        </div>
+    
+          <div className="laptop-screen">
+            <img
+              src="/imagenrealzagapro.jpeg"
+              alt="Dashboard real de ZagaPro abierto en un portatil."
+              loading="lazy"
+            />
+          </div>
+        
+     
       </section>
 
-      <section className="authority-section">
-        <p className="section-kicker">Desarrollado junto a talleres reales</p>
-        <h2>No copiamos otros programas. Construimos desde problemas de taller.</h2>
-        <p>
-          Cada función de ZagaPro nace de necesidades detectadas en talleres que
-          trabajan todos los días con clientes reales. Master Touch ha impulsado
-          funcionalidades desde la recepción, las órdenes, las fotos, las firmas,
-          la facturación y el control financiero. No desarrollamos funciones
-          porque sí. Desarrollamos soluciones para problemas reales.
-        </p>
+      <section className="emotion-strip" aria-label="Resultados esperados">
+        {emotionalBenefits.map((benefit) => (
+          <span key={benefit}>
+            <CheckCircle2 size={18} />
+            {benefit}
+          </span>
+        ))}
       </section>
 
-      <section className="section split" id="software">
+      <section className="section split" id="problemas">
         <div>
-          <p className="section-kicker">Resultados para tu taller</p>
-          <h2>
-            No vendemos módulos. Vendemos tranquilidad, control y tiempo.
-          </h2>
+          <p className="section-kicker">Dolores reales del taller</p>
+          <h2>Lo que te quita tiempo tambien te quita margen.</h2>
         </div>
         <p className="section-lead">
-          Un taller no compra software porque quiera más pantallas. Lo compra
-          para saber qué está pendiente, qué vehículo está parado, qué falta por
-          cobrar y cuánto dinero deja realmente el mes. ZagaPro convierte esa
-          operación diaria en una forma de trabajar más clara y rentable.
+          ZagaPro no empieza hablando de módulos. Empieza resolviendo lo que
+          pasa cada dia: informacion perdida, cobros que se atrasan y trabajos
+          que no sabes si realmente dejaron beneficio.
         </p>
       </section>
 
-      <section className="result-grid" aria-label="Resultados que resuelve ZagaPro">
-        {resultReframes.map((item) => {
-          const Icon = item.icon;
+      <section
+        className="feature-grid compact-grid"
+        aria-label="Problemas frecuentes"
+      >
+        {problems.map((problem) => {
+          const Icon = problem.icon;
           return (
-            <article className="result-card" key={item.title}>
-              <div>
-                <Icon size={24} />
-                <span>{item.old}</span>
-              </div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          );
-        })}
-      </section>
-
-      <section className="feature-grid" aria-label="Funciones principales">
-        {features.map((feature) => {
-          const Icon = feature.icon;
-          return (
-            <article className="feature-card" key={feature.title}>
+            <article className="feature-card" key={problem.title}>
               <Icon size={24} />
-              <h3>{feature.title}</h3>
-              <p>{feature.text}</p>
+              <h3>{problem.title}</h3>
+              <p>{problem.text}</p>
             </article>
           );
         })}
       </section>
-
-      <section className="commercial-section" id="control">
-        <div className="commercial-heading">
-          <p className="section-kicker">Todo lo que controlas</p>
-          <h2>Así trabaja ZagaPro desde que entra el vehículo hasta que ves el resultado.</h2>
+{/* 
+      <section className="section impact" id="funciona">
+        <div className="impact-panel">
+          <Search size={28} />
+          <h2>Como funciona ZagaPro</h2>
           <p>
-            El cliente entiende mejor el producto cuando ve el flujo completo.
-            Cada paso deja información útil para el siguiente: operación,
-            documentación, facturación, cobro y análisis financiero.
+            Cada paso deja informacion util para el siguiente. Evitas duplicar
+            datos y mantienes el taller ordenado desde la entrada del vehiculo
+            hasta el resultado financiero.
           </p>
         </div>
-        <div className="workflow-timeline" aria-label="Flujo completo de trabajo">
-          {workflowSteps.map((step, index) => (
+        <div className="workflow" aria-label="Flujo operativo">
+          {workflow.map((step) => (
             <div key={step}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{step}</strong>
+              <CheckCircle2 size={21} />
+              {step}
             </div>
           ))}
         </div>
-        <div className="commercial-grid">
-          {commercialAreas.map((area) => {
-            const Icon = area.icon;
+      </section> */}
+
+      <section className="modules-section" id="modulos">
+        <div className="modules-heading">
+          <div>
+            <p className="section-kicker">Módulos </p>
+            <h2>Todo lo que puedes controlar desde un solo lugar</h2>
+          </div>
+<p>Toda la información se conecta automáticamente entre los módulos.</p>
+        </div>
+
+        <div className="modules-grid">
+          {modules.map((module) => {
+            const Icon = module.icon;
             return (
-              <article className="commercial-card" key={area.title}>
-                <Icon size={24} />
-                <h3>{area.title}</h3>
-                <p>{area.text}</p>
-                <div className="commercial-tags">
-                  {area.modules.map((module) => (
-                    <span key={module}>{module}</span>
-                  ))}
+              <article
+                className="module-card compact-module"
+                key={module.title}
+              >
+                <div className="module-icon">
+                  <Icon size={24} />
+                </div>
+                <div>
+                  <h3>{module.title}</h3>
+                  <p>{module.text}</p>
                 </div>
               </article>
             );
@@ -784,243 +641,135 @@ function App() {
         </div>
       </section>
 
-      <section className="section audience" id="sectores">
-        <div className="audience-copy">
-          <p className="section-kicker">Para quién es</p>
-          <h2>
-            Para talleres que quieren trabajar con más orden sin complicarse.
-          </h2>
-          <p>
-            Si tu taller recibe vehículos, prepara presupuestos, compra
-            repuestos, factura reparaciones y necesita hacer seguimiento,
-            ZagaPro te ayuda a convertir todo ese flujo en una rutina más clara
-            para que la administración no se coma horas de taller.
-          </p>
-        </div>
-        <div className="audience-list">
-          {sectors.map((item) => (
-            <div key={item}>
-              <CheckCircle2 size={20} />
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="section impact" id="flujo">
-        <div className="impact-panel">
-          <Search size={28} />
-          <h2>Menos papel. Más control. Más beneficios.</h2>
-          <div className="benefits">
-            {seoPages.map((page) => (
-              <p key={page.title}>
-                <strong>{page.title}</strong>
-                <br />
-                {page.text}
-              </p>
-            ))}
-          </div>
-        </div>
-        <div className="workflow" aria-label="Flujo operativo">
-          <div>
-            <Building2 size={21} />
-            Información localizada
-          </div>
-          <div>
-            <Wrench size={21} />
-            Trabajo bajo control
-          </div>
-          <div>
-            <ClipboardList size={21} />
-            Menos errores
-          </div>
-          <div>
-            <Gauge size={21} />
-            Cliente que regresa
-          </div>
-        </div>
-      </section>
-
-      <section className="section split">
-        <div>
-          <p className="section-kicker">Probado en operativa real</p>
-          <h2>
-            ZagaPro nació trabajando junto a talleres reales.
-          </h2>
-        </div>
-        <p className="section-lead">
-          Cada módulo se ha desarrollado a partir de necesidades detectadas en
-          el trabajo diario: recepción, presupuestos, órdenes, fotos, firmas,
-          facturas, cobros y control financiero. No desarrollamos software por
-          llenar menús. Ayudamos a que los talleres sean más rentables.
-        </p>
-      </section>
-
-      <section className="feature-grid" aria-label="Beneficios comerciales">
-        {benefits.map((benefit, index) => (
-          <article className="feature-card" key={benefit}>
-            {index === 0 && <ClipboardList size={24} />}
-            {index === 1 && <Gauge size={24} />}
-            {index === 2 && <HeartHandshake size={24} />}
-            {index === 3 && <Search size={24} />}
-            <h3>{["Más tiempo", "Más control", "Mejor imagen", "Clientes que regresan"][index]}</h3>
-            <p>{benefit}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="finance-section" id="balance">
-        <div className="finance-copy">
-          <p className="section-kicker">Así ve un gerente su taller cada mañana</p>
-          <h2>De un vistazo: ingresos, gastos, balance, cobros y rentabilidad.</h2>
-          <p>
-            No solo ves lo que facturas. También ves lo que compras, lo que
-            debes a proveedores, lo que tienes pendiente de cobrar y el
-            resultado real del negocio.
-          </p>
-        </div>
-
-        <div className="finance-panel" aria-label="Capturas del balance e ingresos por periodo">
-          <div className="finance-panel-head">
-            <span>Vista real del sistema</span>
-            <strong>Balance general y detalle por factura</strong>
-          </div>
-          <figure className="finance-shot finance-shot-main">
-            <img
-              src="/balance-dashboard.png"
-              alt="Pantalla de ZagaPro con tarjetas de ingresos, gastos y balance general del negocio."
-              loading="lazy"
-            />
-            <figcaption>Balance visible para revisar ingresos, gastos y resultado del negocio.</figcaption>
-          </figure>
-          <figure className="finance-shot">
-            <img
-              src="/balance-control-redacted.png"
-              alt="Pantalla de ZagaPro con filtros por periodo, ingresos, IVA, total y detalle por número de factura con nombres protegidos."
-              loading="lazy"
-            />
-            <figcaption>Detalle por periodo con número de factura, tipo de ingreso, IVA, importe y total.</figcaption>
-          </figure>
-        </div>
-
-        <div className="finance-highlights">
-          {financeHighlights.map((item) => (
-            <article key={item.label}>
-              <TrendingUp size={22} />
-              <span>{item.label}</span>
-              <strong>{item.value}</strong>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="scope-section" aria-label="Todo lo que ya incluye ZagaPro">
-        <div className="scope-heading">
-          <p className="section-kicker">Todo lo que ya incluye ZagaPro</p>
-          <h2>El tamaño del producto se nota cuando ves todo lo que conecta.</h2>
-          <p>
-            No es una herramienta para hacer facturas. Es un sistema completo
-            para gestionar operación, documentación, clientes, comunicación,
-            compras, proveedores y finanzas desde una misma plataforma.
-          </p>
-        </div>
-        <div className="scope-grid">
-          {productScope.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article key={item.title}>
-                <Icon size={21} />
-                <strong>{item.title}</strong>
-                <span>{item.text}</span>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="purchase-section" aria-label="Compras y proveedores">
+      <section className="purchase-section">
         <div>
           <p className="section-kicker">Compras y proveedores</p>
-          <h2>Controla también lo que compras y debes.</h2>
+          <h2>La mayoría de programas terminan cuando emites una factura.</h2>
+          <strong>ZagaPro también gestiona compras, proveedores, IVA soportado y cuentas por pagar.</strong>
+        </div>
+        <div>
           <p>
-            Controla facturas recibidas, albaranes, pagos a proveedor e IVA
-            soportado. ZagaPro no solo te ayuda a facturar: también te muestra
-            lo que compras, lo que debes y cómo impacta en el resultado real
-            del taller.
+            Centraliza facturas recibidas, albaranes, pagos a proveedor e IVA
+            soportado. ZagaPro no solo te ayuda a facturar: tambien te muestra
+            lo que compras, lo que debes y como impacta en el resultado real del
+            taller.
           </p>
+          <div className="purchase-tags">
+            {purchaseTags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+          <div
+            className="purchase-comparison"
+            aria-label="Comparacion de compras frente a otros sistemas"
+          >
+            <div>
+              <strong>Muchos ERPs</strong>
+              {purchaseComparison.map(([label, common]) => (
+                <span className={common ? "ok" : "no"} key={`erp-${label}`}>
+                  {common ? "+" : "-"} {label}
+                </span>
+              ))}
+            </div>
+            <div>
+              <strong>ZagaPro</strong>
+              {purchaseComparison.map(([label, , zaga]) => (
+                <span className={zaga ? "ok" : "no"} key={`zaga-${label}`}>
+                  {zaga ? "+" : "-"} {label}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="purchase-tags" aria-label="Capacidades de compras">
-          {[
-            "Facturas proveedor",
-            "Albaranes",
-            "Cuentas por pagar",
-            "Libro de compras",
-            "IVA soportado",
-            "Proveedores",
-            "Compras avanzadas",
-          ].map((item) => (
-            <span key={item}>{item}</span>
-          ))}
+      </section>
+
+      <section className="comparison-section">
+        <div className="comparison-heading">
+          <p className="section-kicker">Antes y despues</p>
+          <h2>Menos herramientas sueltas. Mas taller bajo control.</h2>
         </div>
+        <div className="comparison-cards">
+          <article>
+            <h3>- Sin ZagaPro</h3>
+            {comparisonRows.map(([without]) => (
+              <p key={without}>
+                <span>-</span>
+                {without}
+              </p>
+            ))}
+          </article>
+          <article className="positive">
+            <h3>+ Con ZagaPro</h3>
+            {comparisonRows.map(([, withZaga]) => (
+              <p key={withZaga}>
+                <span>+</span>
+                {withZaga}
+              </p>
+            ))}
+          </article>
+        </div>
+      </section>
+
+      <section className="spain-section">
+        <div>
+          <p className="section-kicker">Espana y Verifactu</p>
+          <h2>Preparado para evolucionar con la normativa espanola.</h2>
+        </div>
+        <p>
+          Estamos desarrollando la integracion con Verifactu para adaptarnos a
+          la normativa espanola en cuanto sea obligatoria, manteniendo una base
+          fiscal ordenada desde el inicio.
+        </p>
       </section>
 
       <section className="pricing-section pricing-section-pro" id="planes">
         <div className="pricing-copy">
-          <p className="section-kicker">Planes ZagaPro</p>
-          <h2>Elige cuánto control necesita tu taller.</h2>
+          <p className="section-kicker">Planes y precios</p>
+          <h2>Elige el nivel de control que necesita tu taller.</h2>
           <p>
-            Básico ordena la operación diaria. Pro añade más control comercial
-            y operativo. Premium convierte ZagaPro en el centro financiero del
-            taller, incluyendo compras avanzadas y cuentas por pagar.
+            Promocion valida para las primeras implantaciones: 25% de descuento
+            sobre la implantacion inicial. La mensualidad no tiene descuento.
           </p>
-          <div className="pricing-value-list" aria-label="Valor de los planes">
-            <span>Básico ordena clientes, vehículos, órdenes, presupuestos, facturación, cobros y gastos simples.</span>
-            <span>Pro añade inventario, proveedores avanzados, albaranes y compras avanzadas como opción configurable.</span>
-            <span>Premium suma compras avanzadas incluidas, cuentas por pagar, libro de compras, mayor y balance avanzado.</span>
-          </div>
         </div>
 
-        <div className="plans-grid" aria-label="Planes y precios de ZagaPro">
+        <div className="plans-grid">
           {pricingPlans.map((plan) => (
             <article
-              className={`plan-card ${plan.featured ? "featured-plan" : ""}`}
+              className={`price-card plan-card ${plan.featured ? "featured-plan" : ""}`}
               key={plan.name}
             >
-              {plan.badge && <span className="plan-badge">{plan.badge}</span>}
-              <div className="plan-head">
-                <div className="price-icon">
-                  <BadgeEuro size={26} />
-                </div>
-                <div>
-                  <p className="price-label">{plan.name}</p>
-                  <p className="plan-intro">{plan.intro}</p>
-                </div>
+              {plan.badge && <span className="launch-badge">{plan.badge}</span>}
+              <div className="price-icon">
+                <BadgeEuro size={26} />
               </div>
+              <p className="price-label">{plan.name}</p>
+              <p className="plan-ideal">{plan.ideal}</p>
+              <p className="plan-intro">{plan.intro}</p>
               <div className="plan-price">
                 <div className="plan-price-line">
-                  <small>Implantación</small>
-                  <span>{plan.setupPrice} €</span>
+                  <small>Implantacion</small>
+                  <span className="old-setup">{plan.setupPrice} EUR</span>
                 </div>
-                {plan.promo && (
-                  <div className="plan-promo" aria-label="Promoción de lanzamiento">
-                    <strong>{plan.promo}</strong>
-                    {/* <small>La mensualidad no tiene descuento.</small> */}
-                  </div>
-                )}
+                <div className="plan-promo">
+                  <small>Primeras implantaciones</small>
+                  <strong>{plan.promoPrice} EUR</strong>
+                </div>
                 <div className="plan-price-line monthly">
                   <small>Mensualidad</small>
-                  <span>{plan.monthlyPrice} €<em>/mes</em></span>
+                  <span>
+                    {plan.monthlyPrice} EUR<em>/mes</em>
+                  </span>
                 </div>
               </div>
-              {plan.prefix && <p className="plan-prefix">{plan.prefix}</p>}
               <ul>
                 {plan.features.map((feature) => (
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
               <button
-                className={plan.featured ? "primary-button" : "secondary-button"}
+                className={
+                  plan.featured ? "primary-button" : "secondary-button"
+                }
                 type="button"
                 onClick={openContact}
               >
@@ -1030,90 +779,40 @@ function App() {
             </article>
           ))}
         </div>
-
-        <div className="implementation-card">
-          <div>
-            <p className="section-kicker">Puesta en marcha</p>
-            <h3>¿Qué pasa cuando implantamos ZagaPro?</h3>
-          </div>
-          <div className="rollout-grid">
-            {rolloutWeeks.map((item) => (
-              <article key={item.week}>
-                <span>{item.week}</span>
-                <strong>{item.title}</strong>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
       </section>
 
-      <section className="modules-section" id="módulos">
-        <div className="modules-heading">
-          <div>
-            <p className="section-kicker">Módulos en vigencia</p>
-            <h2>Funcionalidades listas para crecer sin cambiar de sistema.</h2>
-          </div>
+      <section className="testimonials-section" id="testimonios">
+        <div className="testimonials-heading">
+          <p className="section-kicker">Clientes reales</p>
+          <h2>Desarrollado junto a talleres reales.</h2>
           <p>
-            La configuración por módulo permite activar lo que cada taller
-            necesita sin complicar la experiencia diaria. Compras y proveedores
-            puede crecer al ritmo del negocio, desde gastos simples hasta libro
-            de compras y cuentas por pagar.
+            Crower y Master Touch estan satisfechos con el producto y han
+            ayudado a convertir ZagaPro en una herramienta pegada a la operativa
+            diaria del taller.
           </p>
         </div>
-
-        <div className="modules-grid compact-modules-grid">
-          {commercialAreas.map((area) => {
-            const Icon = area.icon;
-            return (
-              <article className="module-card compact-module-card" key={area.title}>
-                <div className="module-icon">
-                  <Icon size={24} />
-                </div>
-                <div>
-                  <h3>{area.title}</h3>
-                  <p>{area.text}</p>
-                </div>
-                <div className="module-prices module-tags-list">
-                  {area.modules.map((module) => (
-                    <span key={module}>{module}</span>
-                  ))}
-                </div>
-              </article>
-            );
-          })}
+        <div className="testimonial-grid">
+          {testimonials.map((testimonial) => (
+            <article className="testimonial-card" key={testimonial.name}>
+              <img src={testimonial.logo} alt={testimonial.name} />
+              <blockquote>{testimonial.quote}</blockquote>
+              <h3>{testimonial.name}</h3>
+              <span className="testimonial-author">
+                {testimonial.author} · {testimonial.role}
+              </span>
+              <p>{testimonial.text}</p>
+            </article>
+          ))}
         </div>
-      </section>
-      <section className="demo-section" id="demo">
-        <div>
-          <p className="section-kicker">Demo personalizada</p>
-          <h2>Ve cómo tu taller puede recuperar tiempo y trabajar con más control.</h2>
-          <p>
-            Cuéntanos tu ciudad y flujo de trabajo. Te mostramos cómo se verían
-            clientes, vehículos, presupuestos, órdenes, facturas y seguimiento
-            en una demo concreta para talleres de Albal, Catarroja, Massanassa
-            y Valencia, con foco en el resultado: menos gestión repetida, más
-            orden y clientes mejor atendidos.
-          </p>
-        </div>
-        <button
-          className="primary-button"
-          type="button"
-          onClick={openContact}
-        >
-          Solicitar una demo
-          <ArrowRight size={18} />
-        </button>
       </section>
 
       <section className="faq-section" id="preguntas">
         <div className="faq-heading">
           <p className="section-kicker">Preguntas frecuentes</p>
-          <h2>Primero el resultado. Después la herramienta.</h2>
+          <h2>Lo justo para decidir si merece una demo.</h2>
           <p>
-            ZagaPro está pensado para talleres que quieren recuperar tiempo,
-            trabajar con más control, cometer menos errores y mantener el
-            contacto con clientes sin perderse entre herramientas separadas.
+            Menos texto, mas claridad: si el taller necesita orden operativo y
+            financiero, ZagaPro encaja.
           </p>
         </div>
         <div className="faq-grid">
@@ -1126,11 +825,25 @@ function App() {
         </div>
       </section>
 
+      <section className="demo-section" id="demo">
+        <div>
+          <p className="section-kicker">Demo personalizada para tu taller</p>
+          <h2>Solicita tu demo gratuita.</h2>
+          <p>
+           En 20 minutos verás cómo organizar tu taller sin cambiar tu forma de trabajar.
+          </p>
+        </div>
+        <button className="primary-button" type="button" onClick={openContact}>
+          Solicitar una demo
+          <ArrowRight size={18} />
+        </button>
+      </section>
+
       {contactVisible && (
         <section className="contact-section" id="contacto" ref={contactRef}>
           <div className="contact-copy">
             <p className="section-kicker">Contacto directo</p>
-            <h2>Cuéntanos qué taller quieres gestionar con ZagaPro.</h2>
+            <h2>Cuentanos que taller quieres gestionar con ZagaPro.</h2>
             <p>
               Recibiremos tu consulta para preparar una respuesta concreta por
               ciudad, necesidad y estado actual del taller.
@@ -1165,16 +878,6 @@ function App() {
                 />
               </label>
               <label>
-                Taller
-                <input
-                  value={contactForm.company}
-                  onChange={updateContactField("company")}
-                  required
-                />
-              </label>
-            </div>
-            <div className="form-row">
-              <label>
                 Email
                 <input
                   type="email"
@@ -1186,43 +889,16 @@ function App() {
                   required
                 />
               </label>
+            </div>
+            <div className="form-row">
               <label>
-                Teléfono
+                Telefono
                 <input
                   value={contactForm.phone}
                   onChange={updateContactField("phone")}
                 />
               </label>
             </div>
-            <label>
-              Tipo de negocio
-              <select
-                value={contactForm.businessType}
-                onChange={updateContactField("businessType")}
-                required
-              >
-                <option value="">Selecciona una opción</option>
-                <option value="Taller mecánico">Taller mecánico</option>
-                <option value="Servicio técnico">Servicio técnico</option>
-                <option value="Instalador">Instalador</option>
-                <option value="Reformas o mantenimiento">
-                  Reformas o mantenimiento
-                </option>
-                <option value="Otro negocio de servicios">
-                  Otro negocio de servicios
-                </option>
-              </select>
-            </label>
-            <label>
-              Mensaje
-              <textarea
-                rows={5}
-                value={contactForm.message}
-                onChange={updateContactField("message")}
-                placeholder="Cuéntanos qué quieres revisar: demo, módulos, condiciones de lanzamiento, usuarios o puesta en marcha."
-                required
-              />
-            </label>
             <div className="contact-actions">
               <button
                 className="primary-button"
@@ -1292,40 +968,50 @@ function App() {
           <div className="footer-brand">
             <img src="/logozagapro.png" alt="ZagaPro" />
             <p>
-              Software de gestión para talleres mecánicos: clientes, vehículos,
-              presupuestos, órdenes de trabajo, facturación, repuestos y
-              seguimiento comercial.
+              Software para talleres mecanicos: clientes, vehiculos, ordenes,
+              facturas, cobros, compras, proveedores y rentabilidad.
             </p>
           </div>
           <div className="footer-column">
             <strong>Producto</strong>
-            <a href="#software">Software</a>
-            <a href="#control">Módulos</a>
+            <a href="#funciona">Como funciona</a>
+            <a href="#modulos">Módulos</a>
             <a href="#planes">Planes</a>
-            <a href="#módulos">Módulos</a>
+            <a href="#testimonios">Clientes</a>
           </div>
           <div className="footer-column">
             <strong>Soluciones</strong>
-            <span>Talleres mecánicos</span>
-            <span>Albal</span>
-            <span>Catarroja</span>
-            <span>Massanassa</span>
-            <span>Valencia</span>
+            <span>Talleres mecanicos</span>
+            <span>Chapa y pintura</span>
+            <span>Electromecanica</span>
+            <span>Talleres en Valencia</span>
           </div>
           <div className="footer-column">
             <strong>Contacto</strong>
-            <button className="footer-contact" type="button" onClick={openContact}>
+            <button
+              className="footer-contact"
+              type="button"
+              onClick={openContact}
+            >
               <Mail size={17} />
               Contactar
             </button>
             <a href={demoWhatsappHref} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
+            <a
+              className="footer-client-access"
+              href="https://zagapro.store"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ya eres cliente? Accede al sistema
+            </a>
           </div>
         </div>
         <div className="footer-bottom">
           <span>ZagaPro</span>
-          <span>Gestión profesional para talleres mecánicos en Valencia.</span>
+          <span>Gestion profesional para talleres mecanicos en Espana.</span>
         </div>
       </footer>
 
@@ -1344,8 +1030,3 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-
-
-
-
-

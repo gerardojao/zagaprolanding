@@ -1,72 +1,215 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZagaPro | Software para talleres mecanicos en Espana</title>
     <meta
       name="description"
-      content="ZagaPro es un ERP para talleres mecanicos con clientes, vehiculos, ordenes, facturas, cobros, compras, proveedores, albaranes, libro de compras, Verifactu y cuentas por pagar."
+      content="Software para talleres mecanicos en Espana. Controla ordenes, facturas, cobros, compras, proveedores y rentabilidad desde una sola plataforma."
     />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#0a1e31" />
-    <link rel="canonical" href="https://demo.zagapro.store/" />
+    <meta name="application-name" content="ZagaPro" />
+    <meta name="apple-mobile-web-app-title" content="ZagaPro" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="canonical" href="https://zagapro.es/" />
+    <link rel="alternate" hreflang="es-ES" href="https://zagapro.es/" />
+    <link rel="alternate" hreflang="x-default" href="https://zagapro.es/" />
     <link rel="icon" type="image/png" href="/logozagapro.png" />
     <link rel="apple-touch-icon" href="/logozagapro.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" as="image" href="/hero-zagapro.png" fetchpriority="high" />
+
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content="ZagaPro" />
-    <meta property="og:title" content="ZagaPro | ERP vertical para talleres mecanicos" />
-    <meta property="og:description" content="Software para talleres con compras y proveedores, gestion de albaranes, libro de compras, facturas recibidas, cuentas por pagar, cobros y Verifactu." />
-    <meta property="og:url" content="https://demo.zagapro.store/" />
-    <meta property="og:image" content="https://demo.zagapro.store/hero-zagapro.png" />
+    <meta property="og:title" content="ZagaPro | Software para talleres mecanicos en Espana" />
+    <meta
+      property="og:description"
+      content="Controla ordenes, facturas, cobros, compras, proveedores y rentabilidad del taller desde un solo lugar."
+    />
+    <meta property="og:url" content="https://zagapro.es/" />
+    <meta property="og:image" content="https://zagapro.es/hero-zagapro.png" />
+    <meta property="og:image:alt" content="ZagaPro, software de gestion para talleres mecanicos." />
+
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ZagaPro | ERP para talleres mecanicos" />
-    <meta name="twitter:description" content="Gestiona clientes, vehiculos, ordenes, facturas, compras, proveedores, albaranes, libro de compras y cuentas por pagar desde una sola plataforma." />
-    <meta name="twitter:image" content="https://demo.zagapro.store/hero-zagapro.png" />
+    <meta name="twitter:title" content="ZagaPro | Software para talleres mecanicos" />
+    <meta
+      name="twitter:description"
+      content="Software de gestion para talleres con ordenes de trabajo, facturacion, cobros, compras, proveedores y cuentas por pagar."
+    />
+    <meta name="twitter:image" content="https://zagapro.es/hero-zagapro.png" />
+    <meta name="twitter:image:alt" content="ZagaPro, software de gestion para talleres mecanicos." />
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "ZagaPro",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "url": "https://demo.zagapro.store/",
-        "image": "https://demo.zagapro.store/hero-zagapro.png",
-        "description": "ERP para talleres mecanicos con clientes, vehiculos, ordenes, facturas, compras, proveedores, gestion de albaranes para talleres, libro de compras para taller mecanico, facturas recibidas, cuentas por pagar y Verifactu.",
-        "offers": [
+        "@graph": [
           {
-            "@type": "Offer",
-            "name": "Basico",
-            "description": "Implantacion 599 EUR y mensualidad 129 EUR/mes.",
-            "price": "129",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock"
+            "@type": "Organization",
+            "@id": "https://zagapro.es/#organization",
+            "name": "ZagaPro",
+            "url": "https://zagapro.es/",
+            "logo": "https://zagapro.es/logozagapro.png",
+            "sameAs": []
           },
           {
-            "@type": "Offer",
-            "name": "Pro",
-            "description": "Implantacion 899 EUR y mensualidad 169 EUR/mes.",
-            "price": "169",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock"
+            "@type": "WebSite",
+            "@id": "https://zagapro.es/#website",
+            "name": "ZagaPro",
+            "url": "https://zagapro.es/",
+            "inLanguage": "es-ES",
+            "publisher": {
+              "@id": "https://zagapro.es/#organization"
+            }
           },
           {
-            "@type": "Offer",
-            "name": "Premium",
-            "description": "Implantacion 1490 EUR y mensualidad 229 EUR/mes.",
-            "price": "229",
-            "priceCurrency": "EUR",
-            "availability": "https://schema.org/InStock"
+            "@type": "SoftwareApplication",
+            "@id": "https://zagapro.es/#software",
+            "name": "ZagaPro",
+            "url": "https://zagapro.es/",
+            "image": "https://zagapro.es/hero-zagapro.png",
+            "applicationCategory": "BusinessApplication",
+            "applicationSubCategory": "WorkshopManagementSoftware",
+            "operatingSystem": "Web",
+            "inLanguage": "es-ES",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Espana"
+            },
+            "publisher": {
+              "@id": "https://zagapro.es/#organization"
+            },
+            "description": "Software para talleres mecanicos en Espana. Gestiona clientes, vehiculos, ordenes de trabajo, facturas, cobros, compras, proveedores, cuentas por pagar y rentabilidad.",
+            "featureList": [
+              "Clientes y vehiculos",
+              "Ordenes de trabajo",
+              "Presupuestos",
+              "Facturacion",
+              "Cobros",
+              "Compras y proveedores",
+              "Cuentas por pagar",
+              "Libro de compras",
+              "Balance y rentabilidad"
+            ],
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "ZagaPro Basico",
+                "url": "https://zagapro.es/#planes",
+                "price": "129",
+                "priceCurrency": "EUR",
+                "category": "subscription",
+                "description": "Plan Basico de ZagaPro con implantacion desde 599 EUR y mensualidad de 129 EUR.",
+                "availability": "https://schema.org/InStock"
+              },
+              {
+                "@type": "Offer",
+                "name": "ZagaPro Pro",
+                "url": "https://zagapro.es/#planes",
+                "price": "169",
+                "priceCurrency": "EUR",
+                "category": "subscription",
+                "description": "Plan Pro de ZagaPro con implantacion desde 899 EUR y mensualidad de 169 EUR.",
+                "availability": "https://schema.org/InStock"
+              },
+              {
+                "@type": "Offer",
+                "name": "ZagaPro Premium",
+                "url": "https://zagapro.es/#planes",
+                "price": "229",
+                "priceCurrency": "EUR",
+                "category": "subscription",
+                "description": "Plan Premium de ZagaPro con implantacion desde 1490 EUR y mensualidad de 229 EUR.",
+                "availability": "https://schema.org/InStock"
+              }
+            ]
+          },
+          {
+            "@type": "Product",
+            "@id": "https://zagapro.es/#product",
+            "name": "ZagaPro",
+            "brand": {
+              "@id": "https://zagapro.es/#organization"
+            },
+            "image": "https://zagapro.es/hero-zagapro.png",
+            "description": "Software de gestion para talleres mecanicos con ordenes de trabajo, facturacion, cobros, compras, proveedores y rentabilidad.",
+            "offers": {
+              "@type": "AggregateOffer",
+              "url": "https://zagapro.es/#planes",
+              "priceCurrency": "EUR",
+              "lowPrice": "129",
+              "highPrice": "229",
+              "offerCount": "3",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://zagapro.es/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://zagapro.es/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://zagapro.es/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Que es ZagaPro?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ZagaPro es un software para talleres mecanicos en Espana que organiza clientes, vehiculos, ordenes, facturas, cobros, compras y resultados."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "El modulo de compras es obligatorio?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Puedes empezar con operacion, facturacion y gastos basicos. Si necesitas mas control, puedes activar compras avanzadas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Que incluye la promocion de crecimiento?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "La promocion aplica un 25% de descuento sobre la implantacion inicial para las primeras implantaciones. La mensualidad se mantiene igual segun el plan elegido."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "ZagaPro incluye Verifactu?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Estamos desarrollando la integracion con Verifactu para adaptarnos a la normativa espanola en cuanto sea obligatoria."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Por que no usar solo un programa de facturacion?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Porque el taller necesita ver tambien ordenes, compras, proveedores, cobros pendientes, gastos y rentabilidad, no solo emitir facturas."
+                }
+              }
+            ]
           }
         ]
       }
     </script>
-    <title>ZagaPro | ERP para talleres con compras, albaranes y Verifactu</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-
-

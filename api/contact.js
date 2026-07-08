@@ -33,20 +33,20 @@ function contactHtml(data) {
     <div style="font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.55;color:#102033">
       <h2>Nueva consulta desde la landing ZagaPro</h2>
       <p><b>Nombre:</b> ${escapeHtml(data.name)}</p>
-      <p><b>Empresa o negocio:</b> ${escapeHtml(data.company)}</p>
+      <p><b>Taller:</b> ${escapeHtml(data.company)}</p>
       <p><b>Email:</b> ${escapeHtml(data.email)}</p>
-      <p><b>Teléfono:</b> ${escapeHtml(data.phone)}</p>
+      <p><b>Telefono:</b> ${escapeHtml(data.phone)}</p>
       <p><b>Tipo de negocio:</b> ${escapeHtml(data.businessType)}</p>
       <p><b>Mensaje:</b></p>
       <p style="white-space:pre-line">${escapeHtml(data.message)}</p>
-      <p style="color:#64748b;font-size:12px">Enviado desde el formulario público de ZagaPro.</p>
+      <p style="color:#64748b;font-size:12px">Enviado desde el formulario publico de ZagaPro.</p>
     </div>
   `;
 }
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ message: "Método no permitido." });
+    return res.status(405).json({ message: "Metodo no permitido." });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
 
   const body = readBody(req);
   if (body == null) {
-    return res.status(400).json({ message: "JSON inválido." });
+    return res.status(400).json({ message: "JSON invalido." });
   }
   if (clean(body.website)) {
     return res.status(200).json({ ok: true });
@@ -64,19 +64,19 @@ export default async function handler(req, res) {
 
   const payload = {
     name: clean(body.name),
-    company: clean(body.company),
+    company: clean(body.company) || "Demo solicitada desde landing",
     email: clean(body.email),
     phone: clean(body.phone),
-    businessType: clean(body.businessType),
-    message: clean(body.message),
+    businessType: clean(body.businessType) || "Demo solicitada desde landing",
+    message: clean(body.message) || "Quiere solicitar una demo personalizada de ZagaPro.",
   };
 
-  if (!payload.name || !payload.company || !payload.email || !payload.businessType || !payload.message) {
+  if (!payload.name || !payload.email) {
     return res.status(400).json({ message: "Completa los campos requeridos." });
   }
 
   if (!isValidEmail(payload.email)) {
-    return res.status(400).json({ message: "El email no es válido." });
+    return res.status(400).json({ message: "El email no es valido." });
   }
 
   const toEmail = process.env.CONTACT_TO_EMAIL || DEFAULT_TO_EMAIL;
@@ -93,7 +93,7 @@ export default async function handler(req, res) {
         from: `ZagaPro <${fromEmail}>`,
         to: [toEmail],
         reply_to: payload.email,
-        subject: `Contacto ZagaPro - ${payload.company}`,
+        subject: `Contacto ZagaPro - ${payload.name}`,
         html: contactHtml(payload),
       }),
     });
