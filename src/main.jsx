@@ -177,7 +177,7 @@ const pricingPlans = [
   {
     name: "Básico",
     setupPrice: "599",
-    promoPrice: "449",
+    promoPrice: "499",
     monthlyPrice: "129",
     ideal: "Ideal para talleres pequeños.",
     intro: "Operación diaria del taller.",
@@ -192,7 +192,7 @@ const pricingPlans = [
   {
     name: "Pro",
     setupPrice: "899",
-    promoPrice: "674",
+    promoPrice: "749",
     monthlyPrice: "169",
     badge: "Más vendido",
     featured: true,
@@ -209,7 +209,7 @@ const pricingPlans = [
   {
     name: "Premium",
     setupPrice: "1.490",
-    promoPrice: "1.117",
+    promoPrice: "1.250",
     monthlyPrice: "229",
     ideal: "Ideal para talleres que quieren controlar toda la parte financiera.",
     intro: "Centro financiero completo del taller.",
@@ -1270,7 +1270,7 @@ function App() {
       </section>
 
       <section className="pricing-section pricing-section-pro" id="planes">
-        <div className="pricing-copy">
+        <div id="planes" className="pricing-copy">
           <p className="section-kicker">Planes y precios</p>
           <h2>Elige el nivel de control que necesita tu taller.</h2>
           <p>
