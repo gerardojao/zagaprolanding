@@ -32,16 +32,9 @@ Taller:
 Tipo de servicio mecánico:
 Ciudad:
 
-Me interesa conocer cómo ZagaPro puede ayudarme a pasar menos tiempo entre papeles, WhatsApp y hojas de cálculo, y más tiempo atendiendo vehículos y clientes.`;
+Me interesa conocer cómo ZagaPro puede ayudarme a pasar menos tiempo entre papeles, WhatsApp y hojas de cálculo, controlar compras/proveedores y trabajar con más claridad.`;
 
-const onboardingWhatsappTemplate = `Hola Gerardo, quiero solicitar información para poner en marcha ZagaPro en mi taller mecánico.
-
-Mi nombre es:
-Taller:
-Usuarios aproximados:
-Ciudad:
-
-Quiero revisar condiciones de lanzamiento, módulos adicionales y puesta en marcha inicial.`;
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const sectors = [
   "Talleres mecánicos",
@@ -250,8 +243,14 @@ const commercialAreas = [
   {
     icon: TrendingUp,
     title: "Finanzas y cobros",
-    text: "Mira lo facturado, lo pendiente de cobro y el estado real del negocio.",
+    text: "Mira lo facturado, lo comprado, lo pendiente de cobro y el estado real del negocio.",
     modules: ["Facturado hoy y mes", "Estado de resultados", "Cuentas por cobrar", "Mayor", "Balance"],
+  },
+  {
+    icon: ReceiptText,
+    title: "Compras y proveedores",
+    text: "Controla facturas recibidas, albaranes, pagos a proveedor e IVA soportado.",
+    modules: ["Facturas proveedor", "Albaranes", "Cuentas por pagar", "Libro de compras", "IVA soportado", "Compras avanzadas"],
   },
   {
     icon: BellRing,
@@ -309,52 +308,56 @@ const addOnModules = [
 const pricingPlans = [
   {
     name: "Básico",
-    setupPrice: "499",
+    setupPrice: "599",
     monthlyPrice: "129",
+    promo: "Promoción crecimiento: -25% en implantación",
     intro: "Para talleres que quieren ordenar la operación diaria y empezar a trabajar con menos papeleo.",
     features: [
-      "Clientes",
-      "Vehículos",
-      "Proveedores",
-      "Facturación",
-      "Gastos",
-      "Dashboard financiero básico",
-      "Historial del vehículo",
+      "Clientes y vehículos",
       "Órdenes de trabajo",
+      "Presupuestos",
+      "Facturación",
+      "Cobros",
+      "Gastos simples",
+      "Proveedores básicos",
+      "Balance básico",
       "Puesta en marcha guiada",
     ],
   },
   {
     name: "Pro",
-    setupPrice: "799",
-    monthlyPrice: "159",
+    setupPrice: "899",
+    monthlyPrice: "169",
     badge: "Más vendido",
     featured: true,
-    intro: "Para talleres que quieren medir mejor, automatizar comunicación y cerrar mejor la gestión financiera.",
+    promo: "Promoción crecimiento: -25% en implantación",
+    intro: "Para talleres que quieren más control comercial, operativo y financiero.",
     prefix: "Todo lo anterior +",
     features: [
-      "Pre-órdenes",
-      "Fotos de recepción",
-      "WhatsApp vehículo listo",
-      "Exportación de facturas",
-      "Facturas de recambio",
-      "Dashboard avanzado",
+      "Compras avanzadas opcional",
+      "Control de albaranes",
+      "Gestión avanzada de proveedores",
+      "Inventario y repuestos",
+      "Rentabilidad por repuesto",
+      "Mayor detalle financiero",
+      "Soporte prioritario",
     ],
   },
   {
     name: "Premium",
-    setupPrice: "1.200",
-    monthlyPrice: "199",
-    intro: "Dirige el taller con números, no con intuición.",
+    setupPrice: "1.490",
+    monthlyPrice: "229",
+    promo: "Promoción crecimiento: -25% en implantación",
+    intro: "Convierte ZagaPro en el centro financiero completo del taller.",
     prefix: "Todo lo anterior +",
     features: [
-      "Beneficio mensual",
-      "Cobros pendientes",
-      "Balance",
-      "Mayor",
-      "Bancos",
-      "Rentabilidad",
-      "Cuentas por cobrar",
+      "Compras avanzadas incluidas",
+      "Facturas recibidas",
+      "Facturas pendientes de cobro",
+      "Cuentas por pagar",
+      "Libro de compras",
+      "IVA repercutido/soportado",
+      "Mayor contable",
       "Prioridad en soporte",
     ],
   },
@@ -380,6 +383,21 @@ const faqs = [
     question: "¿ZagaPro ayuda a controlar clientes recurrentes?",
     answer:
       "Sí. El objetivo es que no olvides clientes, revisiones o trabajos pendientes y puedas generar más oportunidades de regreso.",
+  },
+  {
+    question: "¿El módulo de compras es obligatorio?",
+    answer:
+      "No. Puedes empezar con operación, facturación y gastos básicos. Si el taller necesita más control, se puede activar compras avanzadas para gestionar facturas recibidas, albaranes, cuentas por pagar y libro de compras.",
+  },
+  {
+    question: "¿Qué incluye la promoción de lanzamiento?",
+    answer:
+      "La promoción aplica un 25% de descuento sobre la implantación inicial. La mensualidad se mantiene igual según el plan elegido.",
+  },
+  {
+    question: "¿Por qué ZagaPro cuesta más que un programa de facturación simple?",
+    answer:
+      "Porque ZagaPro no solo emite facturas. Centraliza la operación del taller: clientes, vehículos, órdenes, presupuestos, facturas, cobros, compras, proveedores y resultados del negocio.",
   },
 ];
 
@@ -409,6 +427,16 @@ const productSlides = [
     src: "/Emision_reimpresion_de_facturas.png",
     alt: "Pantalla de emisión y reimpresión de facturas en ZagaPro.",
   },
+   {
+    title: "Facturas pendientes de cobro",
+    src: "/pantalla4.png",
+    alt: "Módulo de cuentas por cobrar en ZagaPro.",
+  },
+  {
+    title: "Módulo de Compras",
+    src: "/pantalla5.png",
+    alt: "Módulo de compras en ZagaPro.",
+  },
   {
     title: "Rentabilidad de líneas",
     src: "/RentabilidadLineasFacturadas.png",
@@ -418,7 +446,6 @@ const productSlides = [
 
 function App() {
   const demoWhatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappTemplate)}`;
-  const onboardingWhatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(onboardingWhatsappTemplate)}`;
   const contactRef = React.useRef(null);
   const [contactVisible, setContactVisible] = React.useState(false);
   const [contactStatus, setContactStatus] = React.useState(null);
@@ -474,6 +501,25 @@ function App() {
     event.preventDefault();
     if (contactSubmitting) return;
 
+    const trimmedEmail = contactForm.email.trim();
+    if (!emailPattern.test(trimmedEmail)) {
+      setContactStatus({
+        type: "error",
+        text: "Introduce un correo electrónico válido para poder responderte.",
+      });
+      return;
+    }
+
+    const payload = {
+      ...contactForm,
+      name: contactForm.name.trim(),
+      company: contactForm.company.trim(),
+      email: trimmedEmail,
+      phone: contactForm.phone.trim(),
+      businessType: contactForm.businessType.trim(),
+      message: contactForm.message.trim(),
+    };
+
     try {
       setContactSubmitting(true);
       setContactStatus(null);
@@ -481,7 +527,7 @@ function App() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(contactForm),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json().catch(() => ({}));
@@ -490,7 +536,7 @@ function App() {
       }
 
       setSuccessModal({
-        text: `${contactForm.name.trim()}, tu consulta ha sido enviada a ZagaPro. Te responderemos con una propuesta concreta.`,
+        text: `${payload.name}, tu consulta ha sido enviada a ZagaPro. Te responderemos con una propuesta concreta.`,
       });
       setContactForm({
         name: "",
@@ -539,22 +585,21 @@ function App() {
             <p className="eyebrow">
               ERP especializado para talleres independientes
             </p>
-            <h1>Controla todo tu taller desde una sola plataforma.</h1>
+            <h2>Controla todo tu taller desde una sola plataforma.</h2>
             <p className="hero-copy">
-              Clientes, vehículos, órdenes de trabajo, facturación, cobros,
-              WhatsApp y rentabilidad conectados para trabajar con más control,
-              menos papel y una imagen más profesional.
+              ZagaPro no es un programa de facturación genérico. Es un ERP
+              vertical para talleres que conecta clientes, vehículos, órdenes,
+              facturas, cobros, compras, proveedores y resultados del negocio.
             </p>
             <div className="hero-actions">
-              <a
+              <button
                 className="primary-button"
-                href={demoWhatsappHref}
-                target="_blank"
-                rel="noreferrer"
+                type="button"
+                onClick={openContact}
               >
                 Solicitar demo
                 <ArrowRight size={18} />
-              </a>
+              </button>
               <a className="secondary-button" href="#software">
                 Ver cómo funciona
               </a>
@@ -829,9 +874,9 @@ function App() {
           <p className="section-kicker">Así ve un gerente su taller cada mañana</p>
           <h2>De un vistazo: ingresos, gastos, balance, cobros y rentabilidad.</h2>
           <p>
-            El dueño no quiere perderse entre menús. Quiere abrir ZagaPro y
-            saber qué ha pasado, qué falta por cobrar, cómo va el mes y dónde
-            se está ganando o perdiendo dinero.
+            No solo ves lo que facturas. También ves lo que compras, lo que
+            debes a proveedores, lo que tienes pendiente de cobrar y el
+            resultado real del negocio.
           </p>
         </div>
 
@@ -876,8 +921,8 @@ function App() {
           <h2>El tamaño del producto se nota cuando ves todo lo que conecta.</h2>
           <p>
             No es una herramienta para hacer facturas. Es un sistema completo
-            para gestionar operación, documentación, clientes, comunicación y
-            finanzas desde una misma plataforma.
+            para gestionar operación, documentación, clientes, comunicación,
+            compras, proveedores y finanzas desde una misma plataforma.
           </p>
         </div>
         <div className="scope-grid">
@@ -894,19 +939,45 @@ function App() {
         </div>
       </section>
 
+      <section className="purchase-section" aria-label="Compras y proveedores">
+        <div>
+          <p className="section-kicker">Compras y proveedores</p>
+          <h2>Controla también lo que compras y debes.</h2>
+          <p>
+            Controla facturas recibidas, albaranes, pagos a proveedor e IVA
+            soportado. ZagaPro no solo te ayuda a facturar: también te muestra
+            lo que compras, lo que debes y cómo impacta en el resultado real
+            del taller.
+          </p>
+        </div>
+        <div className="purchase-tags" aria-label="Capacidades de compras">
+          {[
+            "Facturas proveedor",
+            "Albaranes",
+            "Cuentas por pagar",
+            "Libro de compras",
+            "IVA soportado",
+            "Proveedores",
+            "Compras avanzadas",
+          ].map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+      </section>
+
       <section className="pricing-section pricing-section-pro" id="planes">
         <div className="pricing-copy">
           <p className="section-kicker">Planes ZagaPro</p>
           <h2>Elige cuánto control necesita tu taller.</h2>
           <p>
-            Básico ordena la operación. Pro profesionaliza recepción,
-            comunicación y facturación. Premium convierte ZagaPro en el centro
-            financiero del taller.
+            Básico ordena la operación diaria. Pro añade más control comercial
+            y operativo. Premium convierte ZagaPro en el centro financiero del
+            taller, incluyendo compras avanzadas y cuentas por pagar.
           </p>
           <div className="pricing-value-list" aria-label="Valor de los planes">
-            <span>Básico ordena clientes, vehículos, órdenes, facturación y gastos.</span>
-            <span>Pro añade pre-órdenes, fotos, WhatsApp, recambio y dashboard avanzado.</span>
-            <span>Premium suma cuentas por cobrar, mayor, resultados, Rapel y Sin IVA.</span>
+            <span>Básico ordena clientes, vehículos, órdenes, presupuestos, facturación, cobros y gastos simples.</span>
+            <span>Pro añade inventario, proveedores avanzados, albaranes y compras avanzadas como opción configurable.</span>
+            <span>Premium suma compras avanzadas incluidas, cuentas por pagar, libro de compras, mayor y balance avanzado.</span>
           </div>
         </div>
 
@@ -931,6 +1002,12 @@ function App() {
                   <small>Implantación</small>
                   <span>{plan.setupPrice} €</span>
                 </div>
+                {plan.promo && (
+                  <div className="plan-promo" aria-label="Promoción de lanzamiento">
+                    <strong>{plan.promo}</strong>
+                    {/* <small>La mensualidad no tiene descuento.</small> */}
+                  </div>
+                )}
                 <div className="plan-price-line monthly">
                   <small>Mensualidad</small>
                   <span>{plan.monthlyPrice} €<em>/mes</em></span>
@@ -942,15 +1019,14 @@ function App() {
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
-              <a
+              <button
                 className={plan.featured ? "primary-button" : "secondary-button"}
-                href={onboardingWhatsappHref}
-                target="_blank"
-                rel="noreferrer"
+                type="button"
+                onClick={openContact}
               >
                 Solicitar {plan.name}
                 <ArrowRight size={18} />
-              </a>
+              </button>
             </article>
           ))}
         </div>
@@ -979,7 +1055,10 @@ function App() {
             <h2>Funcionalidades listas para crecer sin cambiar de sistema.</h2>
           </div>
           <p>
-            La configuración por módulo permite activar lo que cada taller necesita sin complicar la experiencia diaria. En la landing lo resumimos por impacto comercial.
+            La configuración por módulo permite activar lo que cada taller
+            necesita sin complicar la experiencia diaria. Compras y proveedores
+            puede crecer al ritmo del negocio, desde gastos simples hasta libro
+            de compras y cuentas por pagar.
           </p>
         </div>
 
@@ -1017,15 +1096,14 @@ function App() {
             orden y clientes mejor atendidos.
           </p>
         </div>
-        <a
+        <button
           className="primary-button"
-          href={demoWhatsappHref}
-          target="_blank"
-          rel="noreferrer"
+          type="button"
+          onClick={openContact}
         >
           Solicitar una demo
           <ArrowRight size={18} />
-        </a>
+        </button>
       </section>
 
       <section className="faq-section" id="preguntas">
@@ -1102,6 +1180,9 @@ function App() {
                   type="email"
                   value={contactForm.email}
                   onChange={updateContactField("email")}
+                  autoComplete="email"
+                  inputMode="email"
+                  pattern={emailPattern.source}
                   required
                 />
               </label>
