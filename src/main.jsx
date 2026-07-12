@@ -957,7 +957,7 @@ function App() {
           </button>
           <a
             className="client-access-cta"
-            href="https://zagapro.store"
+            href="https://api-qa.zagapro.es"
             target="_blank"
             rel="noreferrer"
           >
