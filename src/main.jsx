@@ -192,9 +192,9 @@ const pricingPlans = [
   {
     name: "Pro",
     setupPrice: "899",
-    promoPrice: "749",
-    monthlyPrice: "169",
-    badge: "Más vendido",
+    promoPrice: "799",
+    monthlyPrice: "179",
+    // badge: "Más vendido",
     featured: true,
     ideal: "Ideal para talleres de 2-5 empleados.",
     intro: "Más control comercial, operativo y financiero.",
@@ -998,7 +998,7 @@ function App() {
             </p>
             <div className="hero-tags" aria-label="Beneficios principales">
               <span>Demo personalizada</span>
-              <span>-20% en implantación</span>
+              {/* <span>-20% en implantación</span> */}
               <span>Compras y proveedores</span>
               <span>WhatsApp visible</span>
             </div>
@@ -1068,7 +1068,7 @@ function App() {
         <div>
           <strong>Promocion crecimiento.</strong>
           <span>
-            25% de descuento sobre la implantación inicial para las primeras
+            Descuento sobre la implantación inicial para las primeras
             implantaciones.
           </span>
         </div>
@@ -1560,7 +1560,7 @@ function App() {
             </a>
             <a
               className="footer-client-access"
-              href="https://zagapro.store"
+              href="https://app-qa.zagapro.es"
               target="_blank"
               rel="noreferrer"
             >
