@@ -957,7 +957,7 @@ function App() {
           </button>
           <a
             className="client-access-cta"
-            href="https://app-qa.zagapro.es"
+            href="https://app.zagapro.es"
             target="_blank"
             rel="noreferrer"
           >
@@ -1560,7 +1560,7 @@ function App() {
             </a>
             <a
               className="footer-client-access"
-              href="https://app-qa.zagapro.es"
+              href="https://app.zagapro.es"
               target="_blank"
               rel="noreferrer"
             >
