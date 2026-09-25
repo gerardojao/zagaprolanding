@@ -2286,37 +2286,6 @@ h2 {
   font-weight: 850;
 }
 
-.plan-promo {
-  display: grid;
-  gap: 3px;
-  padding: 12px;
-  border: 1px solid rgba(183, 121, 31, 0.24);
-  border-radius: 10px;
-  background: #fff7e6;
-  color: #7a4d00;
-  line-height: 1.35;
-}
-
-.plan-promo small {
-  color: #7a4d00;
-  font-size: 0.76rem;
-  font-weight: 950;
-  text-transform: uppercase;
-}
-
-.plan-promo strong {
-  color: #5a3500;
-  font-size: 1.55rem;
-  line-height: 1;
-}
-
-.old-setup {
-  color: #9a3412 !important;
-  text-decoration: line-through;
-  text-decoration-thickness: 3px;
-  text-decoration-color: rgba(154, 52, 18, 0.7);
-}
-
 .plan-card .primary-button,
 .plan-card .secondary-button {
   width: 100%;

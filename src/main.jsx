@@ -1294,7 +1294,7 @@ function App() {
               <p className="plan-intro">{plan.intro}</p>
               <div className="plan-price">
                 <div className="plan-price-line">
-                  <small>Implantación</small>
+                  {/* <small>Implantación</small> */}
                   <span className="old-setup">{plan.setupPrice} EUR</span>
                 </div>
                 <div className="plan-promo">
