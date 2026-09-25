@@ -2255,35 +2255,80 @@ h2 {
 
 .plan-price {
   display: grid;
-  gap: 10px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 4px 0 22px;
 }
 
-.plan-price-line {
+.plan-price-item {
+  position: relative;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px 14px 14px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 31, 27, 0.1);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fff 0%, #f7f8f5 100%);
 }
 
-.plan-price-line small {
-  color: var(--muted);
-  font-weight: 850;
+.plan-price-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: #d39a36;
 }
 
-.plan-price-line span {
-  color: var(--ink);
-  font-size: 1.38rem;
+.plan-price-item.monthly {
+  border-color: rgba(14, 122, 93, 0.22);
+  background: linear-gradient(145deg, #f1fbf7 0%, #e6f7f0 100%);
+}
+
+.plan-price-item.monthly::before {
+  background: var(--green);
+}
+
+.plan-price-eyebrow {
+  color: #9a6815;
+  font-size: 0.65rem;
   font-weight: 950;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
-.plan-price-line em {
+.plan-price-item.monthly .plan-price-eyebrow {
+  color: var(--green-dark);
+}
+
+.plan-price-item small {
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.plan-price-item strong {
+  color: var(--ink);
+  font-size: clamp(1.45rem, 2.3vw, 1.9rem);
+  font-weight: 950;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.plan-price-item em {
+  color: var(--muted);
+  font-size: 0.68rem;
   font-style: normal;
   font-weight: 850;
+  letter-spacing: 0;
+}
+
+.featured-plan .plan-price-item.monthly {
+  border-color: rgba(14, 122, 93, 0.34);
+  box-shadow: 0 10px 24px rgba(14, 122, 93, 0.1);
 }
 
 .plan-card .primary-button,

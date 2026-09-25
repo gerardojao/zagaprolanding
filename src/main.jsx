@@ -177,7 +177,6 @@ const pricingPlans = [
   {
     name: "Básico",
     setupPrice: "599",
-    promoPrice: "499",
     monthlyPrice: "129",
     ideal: "Ideal para talleres pequeños.",
     intro: "Operación diaria del taller.",
@@ -192,7 +191,6 @@ const pricingPlans = [
   {
     name: "Pro",
     setupPrice: "899",
-    promoPrice: "799",
     monthlyPrice: "179",
     // badge: "Más vendido",
     featured: true,
@@ -209,7 +207,6 @@ const pricingPlans = [
   {
     name: "Premium",
     setupPrice: "1.490",
-    promoPrice: "1.250",
     monthlyPrice: "229",
     ideal: "Ideal para talleres que quieren controlar toda la parte financiera.",
     intro: "Centro financiero completo del taller.",
@@ -255,16 +252,15 @@ const faqs = [
     answer:
       "No. Puedes empezar con operación, facturación y gastos básicos. Si necesitas más organización, puedes activar compras avanzadas.",
   },
-  {
-    question: "¿Qué incluye la promoción de crecimiento?",
-    answer:
-      "La promoción aplica un 25% de descuento sobre la implantación inicial. La mensualidad se mantiene igual según el plan elegido.",
-  },
+  // {
+  //   question: "¿Qué incluye la promoción de crecimiento?",
+  //   answer:
+  //     "La promoción aplica un 25% de descuento sobre la implantación inicial. La mensualidad se mantiene igual según el plan elegido.",
+  // },
   {
     question: "ZagaPro incluye Verifactu?",
     answer:
-      "Estamos desarrollando la integración con Verifactu para adaptarnos a la normativa española en cuanto sea obligatoria.",
-  },
+ "Actualmente, ZagaPro no incluye VeriFactu. Estamos negociando con un proveedor externo para ofrecer la integración como un servicio adicional, con un coste que asumiría el cliente. Informaremos sobre su disponibilidad y precio cuando se concrete el acuerdo.",  },
   {
     question: "¿Por qué no usar solo un programa de facturación?",
     answer:
@@ -1273,10 +1269,7 @@ function App() {
         <div id="planes" className="pricing-copy">
           <p className="section-kicker">Planes y precios</p>
           <h2>Elige el nivel de control que necesita tu taller.</h2>
-          <p>
-            Promoción válida para las primeras implantaciones: 25% de descuento
-            sobre la implantación inicial. La mensualidad no tiene descuento.
-          </p>
+          <p>Una inversión inicial para ponerlo todo en marcha y una cuota mensual según el nivel de control que necesites.</p>
         </div>
 
         <div className="plans-grid">
@@ -1293,19 +1286,19 @@ function App() {
               <p className="plan-ideal">{plan.ideal}</p>
               <p className="plan-intro">{plan.intro}</p>
               <div className="plan-price">
-                <div className="plan-price-line">
-                  {/* <small>Implantación</small> */}
-                  <span className="old-setup">{plan.setupPrice} EUR</span>
+                <div className="plan-price-item setup">
+                  <span className="plan-price-eyebrow">Pago único</span>
+                  <small>Implantación</small>
+                  <strong>
+                    {plan.setupPrice}<em> EUR</em>
+                  </strong>
                 </div>
-                <div className="plan-promo">
-                  <small>Primeras implantaciones</small>
-                  <strong>{plan.promoPrice} EUR</strong>
-                </div>
-                <div className="plan-price-line monthly">
+                <div className="plan-price-item monthly">
+                  <span className="plan-price-eyebrow">Cuota recurrente</span>
                   <small>Mensualidad</small>
-                  <span>
-                    {plan.monthlyPrice} EUR<em>/mes</em>
-                  </span>
+                  <strong>
+                    {plan.monthlyPrice}<em> EUR/mes</em>
+                  </strong>
                 </div>
               </div>
               <ul>
