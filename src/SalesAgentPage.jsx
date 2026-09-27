@@ -28,7 +28,7 @@ const welcomeMessage = {
   id: "welcome",
   role: "assistant",
   content:
-    "Hola, soy **Zaga**, la asesora virtual comercial de ZagaPro. Puedo orientarte sobre los planes y conocer un poco tu taller para preparar una demo útil. ¿Qué te gustaría resolver o mejorar?",
+    "Hola, soy **Zagui**, la asesora virtual comercial de ZagaPro. Puedo orientarte sobre los planes y conocer un poco tu taller para preparar una demo útil. ¿Qué te gustaría resolver o mejorar?",
 };
 
 const suggestions = [

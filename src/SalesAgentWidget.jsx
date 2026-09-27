@@ -25,7 +25,7 @@ export default function SalesAgentWidget({ onClose, onContact }) {
   }, [onContact]);
 
   return (
-    <div className="sales-widget-layer" role="dialog" aria-modal="true" aria-label="Chat con Zaga, asesora virtual de ZagaPro">
+    <div className="sales-widget-layer" role="dialog" aria-modal="true" aria-label="Chat con Zagui, asesora virtual de ZagaPro">
       <button className="sales-widget-backdrop" type="button" onClick={onClose} aria-label="Cerrar chat con Zaga" />
       <section className="sales-widget-panel">
         <header className="sales-widget-header">

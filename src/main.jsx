@@ -746,7 +746,7 @@ function App() {
       ...current,
       message:
         current.message ||
-        "Tengo una consulta comercial que Zaga, la asesora virtual, no pudo confirmar. Quiero que una persona del equipo comercial de ZagaPro contacte conmigo.",
+        "Tengo una consulta comercial que Zagui, la asesora virtual, no pudo confirmar. Quiero que una persona del equipo comercial de ZagaPro contacte conmigo.",
     }));
     openContact();
   };
@@ -944,7 +944,7 @@ function App() {
           aria-label="Abrir chat con Zaga"
         >
           <span className="zaga-launcher-mark" aria-hidden="true"><img src="/logozagapro.png" alt="" /></span>
-          <span>Habla con Zaga</span>
+          <span>Habla con Zagui</span>
         </button>
         {salesAgentVisible && (
           <React.Suspense fallback={null}>
@@ -1603,7 +1603,7 @@ function App() {
         aria-label="Abrir chat con Zaga"
       >
         <span className="zaga-launcher-mark" aria-hidden="true"><img src="/logozagapro.png" alt="" /></span>
-        <span>Habla con Zaga</span>
+        <span>Habla con Zagui</span>
       </button>
 
       {salesAgentVisible && (
