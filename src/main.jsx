@@ -21,6 +21,9 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
+const SalesAgentPage = React.lazy(() => import("./SalesAgentPage"));
+const SalesAgentWidget = React.lazy(() => import("./SalesAgentWidget"));
+
 const whatsappNumber = "34624728398";
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -492,7 +495,7 @@ function SeoWorkshopHead() {
   return null;
 }
 
-function SoftwareWorkshopsPage({ openContact, contactSection }) {
+function SoftwareWorkshopsPage({ openContact, openSalesAgent, contactSection }) {
   return (
     <>
       <SeoWorkshopHead />
@@ -505,6 +508,9 @@ function SoftwareWorkshopsPage({ openContact, contactSection }) {
             <a href="#que-es">Qué es</a>
             <a href="#funcionalidades">Funcionalidades</a>
             <a href="#capturas">Capturas</a>
+            <button className="agent-nav-link" type="button" onClick={openSalesAgent}>
+              <span className="zaga-nav-mark" aria-hidden="true"><img src="/logozagapro.png" alt="" /></span> Habla con Zaga
+            </button>
             <button type="button" onClick={openContact}>
               Solicita una demo
             </button>
@@ -689,6 +695,7 @@ function App() {
   const demoWhatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappTemplate)}`;
   const contactRef = React.useRef(null);
   const [contactVisible, setContactVisible] = React.useState(false);
+  const [salesAgentVisible, setSalesAgentVisible] = React.useState(false);
   const [contactStatus, setContactStatus] = React.useState(null);
   const [contactSubmitting, setContactSubmitting] = React.useState(false);
   const [successModal, setSuccessModal] = React.useState(null);
@@ -731,6 +738,17 @@ function App() {
         block: "start",
       });
     }, 50);
+  };
+
+  const openAdvisorContact = () => {
+    setSalesAgentVisible(false);
+    setContactForm((current) => ({
+      ...current,
+      message:
+        current.message ||
+        "Tengo una consulta comercial que Zaga, la asesora virtual, no pudo confirmar. Quiero que una persona del equipo comercial de ZagaPro contacte conmigo.",
+    }));
+    openContact();
   };
 
   const updateContactField = (field) => (event) => {
@@ -915,19 +933,27 @@ function App() {
       <main className="seo-page">
         <SoftwareWorkshopsPage
           openContact={openContact}
+          openSalesAgent={() => setSalesAgentVisible(true)}
           contactSection={contactSection}
         />
         {successDialog}
-        <a
-          className="whatsapp-float"
-          href={demoWhatsappHref}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Contactar por WhatsApp"
+        <button
+          className="sales-agent-launcher"
+          type="button"
+          onClick={() => setSalesAgentVisible(true)}
+          aria-label="Abrir chat con Zaga"
         >
-          <MessageCircle size={24} />
-          <span>WhatsApp</span>
-        </a>
+          <span className="zaga-launcher-mark" aria-hidden="true"><img src="/logozagapro.png" alt="" /></span>
+          <span>Habla con Zaga</span>
+        </button>
+        {salesAgentVisible && (
+          <React.Suspense fallback={null}>
+            <SalesAgentWidget
+              onClose={() => setSalesAgentVisible(false)}
+              onContact={openAdvisorContact}
+            />
+          </React.Suspense>
+        )}
       </main>
     );
   }
@@ -943,6 +969,9 @@ function App() {
             <a href="#funciona">Cómo funciona</a>
             <a href="#modulos">Módulos</a>
             <a href="#planes">Precios</a>
+            <button className="agent-nav-link" type="button" onClick={() => setSalesAgentVisible(true)}>
+              <span className="zaga-nav-mark" aria-hidden="true"><img src="/logozagapro.png" alt="" /></span> Habla con Zaga
+            </button>
             <button type="button" onClick={openContact}>
               Solicitar demo
             </button>
@@ -1567,18 +1596,38 @@ function App() {
         </div>
       </footer>
 
-      <a
-        className="whatsapp-float"
-        href={demoWhatsappHref}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Contactar por WhatsApp"
+      <button
+        className="sales-agent-launcher"
+        type="button"
+        onClick={() => setSalesAgentVisible(true)}
+        aria-label="Abrir chat con Zaga"
       >
-        <MessageCircle size={24} />
-        <span>WhatsApp</span>
-      </a>
+        <span className="zaga-launcher-mark" aria-hidden="true"><img src="/logozagapro.png" alt="" /></span>
+        <span>Habla con Zaga</span>
+      </button>
+
+      {salesAgentVisible && (
+        <React.Suspense fallback={null}>
+          <SalesAgentWidget
+            onClose={() => setSalesAgentVisible(false)}
+            onContact={openAdvisorContact}
+          />
+        </React.Suspense>
+      )}
+
     </main>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+const isPrivateSalesAgentRoute =
+  window.location.pathname.replace(/\/$/, "") === "/agente-comercial";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  isPrivateSalesAgentRoute ? (
+    <React.Suspense fallback={null}>
+      <SalesAgentPage />
+    </React.Suspense>
+  ) : (
+    <App />
+  ),
+);

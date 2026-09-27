@@ -1,0 +1,25 @@
+/* AI Elements utilities only. Preflight is intentionally omitted so the
+   existing ZagaPro landing keeps its current visual rules. */
+@tailwind components;
+@tailwind utilities;
+
+.sales-agent-page {
+  --background: 105 20% 98%;
+  --foreground: 168 35% 9%;
+  --border: 150 12% 86%;
+  --input: 150 12% 86%;
+  --ring: 164 79% 27%;
+  --primary: 164 79% 27%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 150 25% 93%;
+  --secondary-foreground: 168 35% 12%;
+  --muted: 150 18% 94%;
+  --muted-foreground: 160 10% 40%;
+  --accent: 150 25% 91%;
+  --accent-foreground: 168 35% 12%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 168 35% 9%;
+  --radius: 0.9rem;
+}

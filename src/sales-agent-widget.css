@@ -1,0 +1,125 @@
+.sales-widget-layer {
+  position: fixed;
+  z-index: 80;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sales-widget-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: rgba(8, 24, 20, 0.2);
+  backdrop-filter: blur(2px);
+  pointer-events: auto;
+  cursor: default;
+}
+
+.sales-widget-panel {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: min(430px, calc(100vw - 32px));
+  height: min(720px, calc(100vh - 44px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(15, 31, 27, 0.14);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 30px 90px rgba(8, 35, 28, 0.3);
+  pointer-events: auto;
+  animation: sales-widget-enter 180ms ease-out;
+}
+
+.sales-widget-header {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #0b7659, #084d3d);
+}
+
+.sales-widget-avatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.sales-widget-avatar img {
+  width: auto;
+  max-width: none;
+  height: 40px;
+  transform: translateX(-1px);
+}
+
+.sales-widget-header div {
+  min-width: 0;
+  flex: 1;
+}
+
+.sales-widget-header strong,
+.sales-widget-header span {
+  display: block;
+}
+
+.sales-widget-header strong {
+  color: #fff;
+  font-size: 0.92rem;
+}
+
+.sales-widget-header div span {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.72rem;
+}
+
+.sales-widget-close {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+}
+
+.sales-widget-frame {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  border: 0;
+  background: #fbfcfa;
+}
+
+@keyframes sales-widget-enter {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 600px) {
+  .sales-widget-backdrop { display: none; }
+  .sales-widget-panel {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sales-widget-panel { animation: none; }
+}

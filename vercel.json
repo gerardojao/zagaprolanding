@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/agente-comercial",
+      "destination": "/index.html"
+    },
+    {
       "source": "/software-talleres-mecanicos",
       "destination": "/software-talleres-mecanicos/index.html"
     },

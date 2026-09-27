@@ -134,6 +134,7 @@ main {
 .nav-links a {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   min-height: 34px;
   padding: 0 13px;
   border-radius: 999px;
@@ -1717,7 +1718,7 @@ h2 {
   font-size: 0.9rem;
 }
 
-.whatsapp-float {
+.sales-agent-launcher {
   position: fixed;
   z-index: 30;
   right: 22px;
@@ -1726,20 +1727,59 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 9px;
-  min-height: 54px;
-  padding: 0 18px;
+  min-height: 52px;
+  padding: 0 17px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
-  background: #25d366;
-  color: #062416;
+  color: #fff;
+  background: var(--green-dark);
   font-weight: 900;
-  box-shadow: 0 18px 40px rgba(37, 211, 102, 0.34);
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 18px 40px rgba(8, 83, 64, 0.28);
   transition:
     transform 180ms ease,
     box-shadow 180ms ease;
 }
 
-.whatsapp-float:hover {
+.sales-agent-launcher:hover {
   transform: translateY(-2px);
+  box-shadow: 0 22px 44px rgba(8, 83, 64, 0.34);
+}
+
+.zaga-launcher-mark,
+.zaga-nav-mark {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.zaga-launcher-mark {
+  width: 27px;
+  height: 27px;
+}
+
+.zaga-nav-mark {
+  width: 21px;
+  height: 21px;
+}
+
+.zaga-launcher-mark img,
+.zaga-nav-mark img {
+  width: auto;
+  max-width: none;
+  transform: translateX(-1px);
+}
+
+.zaga-launcher-mark img {
+  height: 27px;
+}
+
+.zaga-nav-mark img {
+  height: 21px;
 }
 
 @media (max-width: 1100px) {
@@ -1933,15 +1973,12 @@ h2 {
     flex-direction: column;
   }
 
-  .whatsapp-float {
+  .sales-agent-launcher {
     right: 14px;
     bottom: 14px;
-    width: 54px;
-    padding: 0;
-  }
-
-  .whatsapp-float span {
-    display: none;
+    min-height: 48px;
+    padding: 0 14px;
+    font-size: 0.8rem;
   }
 }
 
