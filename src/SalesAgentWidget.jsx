@@ -33,7 +33,7 @@ export default function SalesAgentWidget({ onClose, onContact }) {
             <img src="/logozagapro.png" alt="" />
           </span>
           <div>
-            <strong>Zaga</strong>
+            <strong>Zagui</strong>
             <span>Asesora virtual de ZagaPro · En línea</span>
           </div>
           <button className="sales-widget-close" type="button" onClick={onClose} aria-label="Cerrar chat">
