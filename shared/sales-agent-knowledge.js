@@ -7,6 +7,50 @@ export const salesAgentFallbackAnswer =
 
 export const salesAgentAnswers = [
   {
+    id: "greetings",
+    keywords: [
+      "hola",
+      "buenos días",
+      "buenos dias",
+      "buenas tardes",
+      "buenas noches",
+      "qué tal",
+      "que tal",
+      "cómo estás",
+      "como estas",
+      "saludos",
+    ],
+    answer:
+      "¡Hola! Soy **Zagui**, la asesora virtual de ZagaPro. Puedo ayudarte con las funciones del sistema, los planes, los precios o preparar una demo para tu taller. ¿Qué te gustaría saber?",
+  },
+  {
+    id: "thanks",
+    keywords: [
+      "muchas gracias",
+      "gracias por la ayuda",
+      "gracias",
+      "perfecto gracias",
+      "vale gracias",
+    ],
+    answer:
+      "¡De nada! Ha sido un placer ayudarte. Si quieres, puedo resolver otra duda sobre ZagaPro o ayudarte a solicitar una demo.",
+  },
+  {
+    id: "farewells",
+    keywords: [
+      "adiós",
+      "adios",
+      "hasta luego",
+      "hasta pronto",
+      "nos vemos",
+      "chao",
+      "me despido",
+      "eso es todo",
+    ],
+    answer:
+      "¡Hasta pronto! Gracias por hablar conmigo. Cuando quieras conocer mejor ZagaPro, aquí estaré para ayudarte.",
+  },
+  {
     id: "program-purpose-functionality",
     keywords: [
       "es funcional este programa",
