@@ -38,7 +38,7 @@ const suggestions = [
 ];
 
 const whatsappHref = `https://wa.me/34624728398?text=${encodeURIComponent(
-  "Hola, vengo del chat de Zaga y prefiero continuar la conversación por WhatsApp.",
+  "Hola, vengo del chat de Zagui y prefiero continuar la conversación por WhatsApp.",
 )}`;
 
 function localReply(text, messages) {
@@ -169,7 +169,7 @@ export default function SalesAgentPage() {
           
           <h1>Una conversación comercial, no un formulario.</h1>
           <p>
-            Zaga conoce los planes vigentes, cualifica el taller con una
+            Zagui conoce los planes vigentes, cualifica el taller con una
             pregunta cada vez y propone una demo personalizada.
           </p>
           <ul className="sales-agent-scope">
@@ -246,7 +246,7 @@ export default function SalesAgentPage() {
               </PromptInputFooter>
             </PromptInput>
             <p className="sales-agent-note">
-              No introduzcas datos sensibles. Zaga puede equivocarse;
+              No introduzcas datos sensibles. Zagui puede equivocarse;
               las condiciones se confirman con el equipo de ZagaPro.
             </p>
             <a
