@@ -32,8 +32,9 @@ const welcomeMessage = {
 };
 
 const suggestions = [
-  "¿Cuánto cuestan los planes?",
-  "Necesito fotos y firma en recepción",
+  "¿Cómo puedo contratar ZagaPro?",
+  "¿Cómo puedo facturar?",
+  "¿Qué es una orden de trabajo?",
   "Quiero solicitar una demo",
 ];
 
