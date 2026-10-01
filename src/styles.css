@@ -1742,6 +1742,143 @@ h2 {
     box-shadow 180ms ease;
 }
 
+.analytics-section {
+  position: relative;
+  width: min(1220px, calc(100% - 40px));
+  display: grid;
+  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
+  gap: 42px;
+  align-items: center;
+  margin: 70px auto 76px;
+  padding: 48px;
+  overflow: hidden;
+  border: 1px solid rgba(14, 122, 93, 0.18);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 6% 8%, rgba(31, 180, 139, 0.13), transparent 32%),
+    linear-gradient(135deg, #f9fcfa 0%, #eef8f4 100%);
+  box-shadow: 0 28px 70px rgba(24, 35, 31, 0.11);
+}
+
+.analytics-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.analytics-copy h2 {
+  margin-bottom: 18px;
+}
+
+.analytics-copy > p:not(.section-kicker) {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.analytics-benefits {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.analytics-benefits span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-weight: 850;
+}
+
+.analytics-benefits svg {
+  flex: 0 0 auto;
+  color: var(--green);
+}
+
+.analytics-copy .secondary-button {
+  width: fit-content;
+}
+
+.analytics-visual {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(18, 51, 42, 0.16);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 25px 55px rgba(24, 35, 31, 0.18);
+  transform: perspective(1200px) rotateY(-2deg);
+}
+
+.analytics-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--line);
+  background: #f5f7f6;
+}
+
+.analytics-window-bar span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cad4cf;
+}
+
+.analytics-window-bar span:first-child { background: #67d7b7; }
+
+.analytics-window-bar strong {
+  margin-left: 5px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.analytics-image-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: #fff;
+  cursor: zoom-in;
+}
+
+.analytics-image-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 300ms ease;
+}
+
+.analytics-image-button span {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(7, 19, 16, 0.84);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 850;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.analytics-image-button:hover img { transform: scale(1.012); }
+.analytics-image-button:hover span,
+.analytics-image-button:focus-visible span { opacity: 1; transform: translateY(0); }
+
+.analytics-visual figcaption {
+  padding: 11px 15px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 780;
+}
+
 .sales-agent-launcher:hover {
   transform: translateY(-2px);
   box-shadow: 0 22px 44px rgba(8, 83, 64, 0.34);
@@ -1810,6 +1947,14 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .analytics-section {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-visual {
+    transform: none;
+  }
+
   .hero-content {
     min-height: auto;
     padding-top: 108px;
@@ -1873,6 +2018,19 @@ h2 {
   .pricing-section,
   .contact-section {
     width: min(100% - 28px, 1180px);
+  }
+
+  .analytics-section {
+    width: min(100% - 28px, 1180px);
+    margin-top: 44px;
+    margin-bottom: 52px;
+    padding: 24px;
+    gap: 30px;
+    border-radius: 18px;
+  }
+
+  .analytics-copy .secondary-button {
+    width: 100%;
   }
 
   .brand {

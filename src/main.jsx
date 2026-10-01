@@ -133,6 +133,12 @@ const purchaseTags = [
 
 const productSlides = [
   {
+    label: "ANALÍTICA",
+    title: "Todo el negocio de un vistazo",
+    src: "/analitycs.png",
+    alt: "Panel de analítica de ZagaPro con facturación, flujo de caja, clientes y estado de las órdenes.",
+  },
+  {
     label: "PANEL",
     title: "Panel principal",
     src: "/pantalla1.png",
@@ -1211,6 +1217,48 @@ function App() {
             );
           })}
         </div>
+      </section>
+
+      <section className="analytics-section" id="analitica">
+        <div className="analytics-copy">
+          <p className="section-kicker">Visión del propietario</p>
+          <h2>Los números de tu taller, claros y en tiempo real.</h2>
+          <p>
+            Consulta la facturación, el flujo de caja, los clientes que más
+            aportan y el estado de las órdenes desde una única vista. Sin
+            hojas de cálculo y sin esperar al cierre de mes.
+          </p>
+          <div className="analytics-benefits" aria-label="Ventajas del panel de analítica">
+            <span><TrendingUp size={19} /> Evolución de la facturación</span>
+            <span><BadgeEuro size={19} /> Ingresos y gastos registrados</span>
+            <span><UsersRound size={19} /> Principales clientes</span>
+            <span><ClipboardList size={19} /> Estado de las órdenes</span>
+          </div>
+          <button className="secondary-button" type="button" onClick={openContact}>
+            Quiero verlo con los datos de mi taller
+            <ArrowRight size={18} />
+          </button>
+        </div>
+        <figure className="analytics-visual">
+          <div className="analytics-window-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <strong>Panel de analítica ZagaPro</strong>
+          </div>
+          <button
+            type="button"
+            className="analytics-image-button"
+            onClick={() => setExpandedSlide(productSlides[0])}
+            aria-label="Ampliar panel de analítica de ZagaPro"
+          >
+            <img
+              src="/analitycs.png"
+              alt="Panel de analítica de ZagaPro con indicadores y gráficos del negocio."
+              loading="lazy"
+            />
+            <span>Haz clic para ampliar</span>
+          </button>
+          <figcaption>Información real para decidir con seguridad.</figcaption>
+        </figure>
       </section>
 
       <section className="purchase-section">
