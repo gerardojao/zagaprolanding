@@ -231,6 +231,88 @@ export const salesAgentAnswers = [
       "No. **ZagaPro funciona desde el navegador**, por lo que no tienes que instalar el programa por tu cuenta. El equipo de ZagaPro configura el acceso y te acompaña en la puesta en marcha según el plan contratado. ¿Desde cuántos equipos necesitarías utilizarlo?",
   },
   {
+    id: "purchase-process",
+    keywords: [
+      "cómo puedo comprar",
+      "como puedo comprar",
+      "cómo compro zagapro",
+      "como compro zagapro",
+      "quiero comprar",
+      "quiero contratar",
+      "cómo contratar",
+      "como contratar",
+      "proceso de compra",
+      "contratar zagapro",
+    ],
+    answer:
+      "Para contratar ZagaPro, primero hacemos una **demo personalizada de 20 a 30 minutos** para conocer tu taller y confirmar qué plan encaja mejor. Después, el equipo te prepara la propuesta correspondiente y, cuando la aceptas, coordina la implantación, la configuración del acceso y la formación. Para solicitar la demo necesito tu nombre, el nombre del taller, un teléfono o correo y qué te gustaría ver. ¿Quieres que empecemos por tu nombre?",
+  },
+  {
+    id: "purchase-invoice",
+    keywords: [
+      "me dan factura",
+      "me dais factura",
+      "recibo una factura",
+      "factura de la compra",
+      "factura por contratar",
+      "factura de zagapro",
+      "factura del servicio",
+      "factura de la suscripción",
+      "factura de la suscripcion",
+    ],
+    answer:
+      "Sí. **Recibirás la factura correspondiente por la implantación y por las cuotas del servicio contratado**, con los impuestos que correspondan. Los importes publicados en la web se muestran sin impuestos; el detalle final aparecerá en la propuesta y en la factura. ¿Quieres que te indique los precios de cada plan?",
+  },
+  {
+    id: "book-demo-appointment",
+    keywords: [
+      "cómo concreto una cita",
+      "como concreto una cita",
+      "cómo concertar una cita",
+      "como concertar una cita",
+      "concertar una cita",
+      "pedir una cita",
+      "reservar una demo",
+      "agendar una demo",
+      "concertar una demo",
+      "cita para una demo",
+    ],
+    answer:
+      "Puedes concertar una cita para la demo **directamente desde este chat**. Necesito tu nombre, el nombre del taller, un teléfono o correo y qué parte de ZagaPro quieres ver. El equipo recibirá la solicitud y contactará contigo para acordar el día y la hora. ¿Cómo te llamas?",
+  },
+  {
+    id: "how-to-create-invoice",
+    keywords: [
+      "cómo puedo facturar",
+      "como puedo facturar",
+      "cómo se factura",
+      "como se factura",
+      "hacer una factura",
+      "crear una factura",
+      "emitir una factura",
+      "generar una factura",
+      "facturar una reparación",
+      "facturar una reparacion",
+    ],
+    answer:
+      "Con ZagaPro puedes crear una factura con los datos del cliente y del vehículo, añadir la **mano de obra, los servicios y los repuestos**, revisar los importes y emitir el documento. También puedes partir de la información ya registrada en el flujo del trabajo para evitar introducirla de nuevo y después controlar si la factura está cobrada o pendiente. ¿Quieres verlo paso a paso en una demo?",
+  },
+  {
+    id: "work-order-definition",
+    keywords: [
+      "qué es una orden de trabajo",
+      "que es una orden de trabajo",
+      "qué son las órdenes de trabajo",
+      "que son las ordenes de trabajo",
+      "para qué sirve una orden de trabajo",
+      "para que sirve una orden de trabajo",
+      "orden de reparación",
+      "orden de reparacion",
+    ],
+    answer:
+      "Una **orden de trabajo** es el registro que organiza una reparación desde que entra el vehículo hasta que se entrega. Reúne el cliente y el vehículo, los trabajos solicitados, el diagnóstico, la mano de obra, los repuestos, el responsable y el estado del trabajo. En ZagaPro esa información queda conectada con el presupuesto, la factura, el cobro y la rentabilidad, evitando duplicar datos.",
+  },
+  {
     id: "all-plan-features",
     keywords: [
       "qué incluye cada plan",
