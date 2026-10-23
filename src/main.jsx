@@ -20,6 +20,7 @@ import {
   Wrench,
 } from "lucide-react";
 import "./styles.css";
+import LandingPage from "./LandingPage";
 
 const SalesAgentPage = React.lazy(() => import("./SalesAgentPage"));
 const SalesAgentWidget = React.lazy(() => import("./SalesAgentWidget"));
@@ -267,7 +268,7 @@ const faqs = [
   //     "La promoción aplica un 25% de descuento sobre la implantación inicial. La mensualidad se mantiene igual según el plan elegido.",
   // },
   {
-    question: "ZagaPro incluye Verifactu?",
+    question: "¿ZagaPro incluye VeriFactu?",
     answer:
  "Actualmente, ZagaPro no incluye VeriFactu. Estamos negociando con un proveedor externo para ofrecer la integración como un servicio adicional, con un coste que asumiría el cliente. Informaremos sobre su disponibilidad y precio cuando se concrete el acuerdo.",  },
   {
@@ -963,6 +964,22 @@ function App() {
       </main>
     );
   }
+
+  return (
+    <LandingPage
+      openContact={openContact}
+      contactSection={contactSection}
+      successDialog={successDialog}
+      pricingPlans={pricingPlans}
+      testimonials={testimonials}
+      faqs={faqs}
+      demoWhatsappHref={demoWhatsappHref}
+      salesAgentVisible={salesAgentVisible}
+      openSalesAgent={() => setSalesAgentVisible(true)}
+      closeSalesAgent={() => setSalesAgentVisible(false)}
+      openAdvisorContact={openAdvisorContact}
+    />
+  );
 
   return (
     <main>
