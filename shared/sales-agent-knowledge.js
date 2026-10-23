@@ -153,6 +153,41 @@ export const salesAgentAnswers = [
       "Sí. **Puedes configurar alertas para futuras citas** y llevar el seguimiento de los próximos servicios del cliente y su vehículo. Esto ayuda al taller a anticiparse y al cliente a no olvidar su cita. ¿Te gustaría ver cómo se programa una alerta durante la demo?",
   },
   {
+    id: "product-benefits",
+    keywords: [
+      "que ventajas tiene",
+      "cuales son sus ventajas",
+      "ventajas de zagapro",
+      "que beneficios tiene",
+      "que beneficios trae",
+      "que beneficios aporta",
+      "beneficios de zagapro",
+      "por que elegir zagapro",
+      "por que usar zagapro",
+      "que me aporta",
+      "como ayuda al taller",
+    ],
+    answer:
+      "Las principales ventajas de **ZagaPro** son:\n\n- Centraliza clientes, vehículos, órdenes, presupuestos, facturas y cobros.\n- Reutiliza la información entre pasos para evitar duplicar trabajo.\n- Permite localizar trabajos y controlar lo pendiente de cobro.\n- Muestra la rentabilidad de servicios y repuestos.\n- Según el plan, añade proveedores, inventario, compras y control financiero.\n\nAsí reduces información dispersa y tienes una visión más clara del taller. Si me cuentas qué quieres mejorar, puedo indicarte qué parte de ZagaPro te conviene revisar en una demo.",
+  },
+  {
+    id: "ease-of-use",
+    keywords: [
+      "es facil de usar",
+      "es sencillo de usar",
+      "es intuitivo",
+      "es complicado",
+      "es dificil de usar",
+      "cuesta aprender",
+      "facilidad de uso",
+      "aprender a usarlo",
+      "manejo del programa",
+      "programa amigable",
+    ],
+    answer:
+      "ZagaPro está diseñado para que la operativa habitual del taller sea clara: clientes, vehículos, órdenes, facturas y cobros siguen un flujo conectado. **Multiservicios Crower destaca que el sistema es amigable y muy fácil de manejar**, y la implantación incluye acompañamiento para configurar el acceso y empezar a utilizarlo. La mejor forma de comprobar si encaja con tu equipo es verlo con un proceso real de tu taller durante la demo.",
+  },
+  {
     id: "switching-value",
     keywords: ["programa más barato", "programa mas barato", "qué gano", "que gano", "cambiarme a zagapro"],
     answer:
@@ -214,7 +249,23 @@ export const salesAgentAnswers = [
   },
   {
     id: "support-channels-hours",
-    keywords: ["qué soporte", "que soporte", "canal de soporte", "horario de soporte", "soporte recibiré", "soporte recibire", "soporte prioritario"],
+    keywords: [
+      "qué soporte",
+      "que soporte",
+      "incluye soporte",
+      "incluyen soporte",
+      "tiene soporte",
+      "hay soporte",
+      "soporte incluido",
+      "ofrecen soporte",
+      "ayuda técnica",
+      "ayuda tecnica",
+      "canal de soporte",
+      "horario de soporte",
+      "soporte recibiré",
+      "soporte recibire",
+      "soporte prioritario",
+    ],
     answer:
       "ZagaPro contempla acompañamiento durante la implantación y el plan Pro indica soporte prioritario. Sin embargo, esta prueba todavía no tiene aprobados los canales, horarios ni tiempos de respuesta, por lo que no debo prometerlos. Gerardo puede confirmarte el soporte incluido en cada plan antes de contratar.",
   },
@@ -399,11 +450,20 @@ export const salesAgentAnswers = [
 ];
 
 export function findSalesAgentAnswer(input) {
-  const normalized = String(input || "").trim().toLowerCase();
+  const normalize = (value) =>
+    String(value || "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9€]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  const normalized = normalize(input);
   const matches = salesAgentAnswers
     .map((entry, index) => {
       const matchedKeywords = entry.keywords.filter((keyword) =>
-        normalized.includes(keyword),
+        normalized.includes(normalize(keyword)),
       );
       return {
         entry,
