@@ -6,8 +6,10 @@ import {
   Check,
   ChevronDown,
   ClipboardCheck,
+  CirclePlay,
   ExternalLink,
   LogIn,
+  Mail,
   Menu,
   WalletCards,
   X,
@@ -126,6 +128,9 @@ export default function LandingPage({
   const [controlStep, setControlStep] = React.useState(0);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [expandedImage, setExpandedImage] = React.useState(null);
+  const [videoEmail, setVideoEmail] = React.useState("");
+  const [videoStatus, setVideoStatus] = React.useState(null);
+  const [videoSubmitting, setVideoSubmitting] = React.useState(false);
   const currentJourney = journey[journeyStep];
   const currentControl = controlViews[controlStep];
 
@@ -141,6 +146,42 @@ export default function LandingPage({
   }, [expandedImage]);
 
   const openImage = (image, alt, title) => setExpandedImage({ image, alt, title });
+
+  const requestVideo = async (event) => {
+    event.preventDefault();
+    if (videoSubmitting) return;
+    const email = videoEmail.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      setVideoStatus({ type: "error", text: "Introduce un email válido." });
+      return;
+    }
+
+    try {
+      setVideoSubmitting(true);
+      setVideoStatus(null);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Solicitud de vídeo",
+          company: "Solicitud desde la landing",
+          email,
+          phone: "",
+          businessType: "Vídeo de demostración",
+          message: "Solicita el vídeo corto sobre cómo gestionar una orden y convertirla en factura con ZagaPro.",
+          website: "",
+        }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data?.message || "No se pudo registrar la solicitud.");
+      setVideoStatus({ type: "success", text: "Solicitud recibida. Te enviaremos el vídeo a este email." });
+      setVideoEmail("");
+    } catch (error) {
+      setVideoStatus({ type: "error", text: error?.message || "No se pudo registrar la solicitud." });
+    } finally {
+      setVideoSubmitting(false);
+    }
+  };
 
   return (
     <main className="landing-v2">
@@ -242,6 +283,34 @@ export default function LandingPage({
             </button>
           </figure>
         </div>
+      </section>
+
+      <section className="v2-video-cta" aria-labelledby="video-cta-title">
+        <div className="v2-video-icon" aria-hidden="true"><CirclePlay size={25} /></div>
+        <div className="v2-video-copy">
+          <h2 id="video-cta-title">¿Ahora no tienes tiempo para una demo?</h2>
+          <p>Te enviamos un vídeo corto para que veas cómo gestionar una orden y convertirla en factura con ZagaPro.</p>
+        </div>
+        <form className="v2-video-form" onSubmit={requestVideo} noValidate>
+          <div className="v2-video-field">
+            <Mail size={17} aria-hidden="true" />
+            <label className="sr-only" htmlFor="video-email">Tu email</label>
+            <input
+              id="video-email"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              placeholder="Tu email"
+              value={videoEmail}
+              onChange={(event) => { setVideoEmail(event.target.value); setVideoStatus(null); }}
+              required
+            />
+          </div>
+          <button type="submit" disabled={videoSubmitting}>
+            {videoSubmitting ? "Enviando…" : "Recibir el vídeo"}
+          </button>
+          {videoStatus && <p className={`v2-video-status ${videoStatus.type}`} role="status">{videoStatus.text}</p>}
+        </form>
       </section>
 
       <section className="v2-control" id="control">
